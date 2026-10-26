@@ -38,6 +38,14 @@ CLASSES = [
     "wardrobe", "pillow", "keys", "usb_drive", "banknote",
 ]
 SPLITS = {"train", "val", "test"}
+REVIEWED_ANNOTATION_METHODS = {
+    "manual_rectangle_reviewed",
+    "manual_polygon_reviewed",
+    "assisted_polygon_reviewed",
+    # Created only by the explicit-confirmation batch command. This prevents
+    # model suggestions from silently becoming human-reviewed labels.
+    "batch_human_confirmed_openimages_rectangle",
+}
 
 
 def _now() -> str:
@@ -98,9 +106,8 @@ class DatasetStudio:
 
     @staticmethod
     def is_reviewed(record):
-        return not record.get('withdrawn_at') and record.get('reviewed') is True and record.get('annotation') in {
-            'manual_rectangle_reviewed', 'manual_polygon_reviewed', 'assisted_polygon_reviewed'
-        }
+        return (not record.get('withdrawn_at') and record.get('reviewed') is True
+                and record.get('annotation') in REVIEWED_ANNOTATION_METHODS)
 
     @staticmethod
     def _validate_box(box: dict) -> tuple[float, float, float, float]:
@@ -223,7 +230,7 @@ class DatasetStudio:
             raise ValueError("Clase no permitida")
         if split not in SPLITS:
             raise ValueError("Split no valido")
-        if annotation_method != 'manual_rectangle_reviewed':
+        if annotation_method not in {'manual_rectangle_reviewed', 'batch_human_confirmed_openimages_rectangle'}:
             raise ValueError('Las etiquetas externas requieren revisión humana explícita en Dataset Studio')
         x, y, w, h = self._validate_box(box)
         with self.lock:

@@ -1,0 +1,2058 @@
+{
+  "accepted_at": "2026-10-26T18:39:14.197612-05:00",
+  "operator_confirmation": "--confirm-reviewed",
+  "method": "batch_human_confirmed_openimages_rectangle",
+  "selection": "Pending Open Images V7 candidates with traceable provenance and confidence=1.0 boxes",
+  "backup": "C:\\Users\\alexi\\Desktop\\vision\\VISIONAR-AI\\datasets\\visionar_own_v1\\backups\\before-openimages-human-batch-acceptance.sqlite3",
+  "reconciliation_before": {
+    "reconciled_at": "2026-10-26T18:39:14.145279-05:00",
+    "candidates": 1034,
+    "physical_files": 1034,
+    "states": {
+      "reviewed": 593,
+      "pending": 441
+    },
+    "duplicates": [],
+    "near_duplicate_groups": [],
+    "issues": [],
+    "traceable_provenance": 798,
+    "license_evidence_pending": 236,
+    "legacy_images": 0,
+    "legacy_labels": 0,
+    "stats": {
+      "name": "VisionAR Own Dataset v1",
+      "root": "datasets\\visionar_own_v1",
+      "classes": [
+        "person",
+        "eyeglasses",
+        "shirt",
+        "nail_clipper",
+        "cell_phone",
+        "perfume_bottle",
+        "potted_plant",
+        "chair",
+        "marker",
+        "eraser",
+        "tv",
+        "fish",
+        "cat",
+        "dog",
+        "motorcycle",
+        "pencil_case",
+        "wallet",
+        "payment_card",
+        "fork",
+        "spoon",
+        "knife",
+        "pen",
+        "backpack",
+        "handbag",
+        "playing_card",
+        "adhesive_tape",
+        "screwdriver",
+        "paper_sheet",
+        "table",
+        "sofa",
+        "cap",
+        "sweatshirt",
+        "sneakers",
+        "wardrobe",
+        "pillow",
+        "keys",
+        "usb_drive",
+        "banknote"
+      ],
+      "images": {
+        "val": 105,
+        "test": 68,
+        "train": 420
+      },
+      "total_images": 593,
+      "annotations": 959,
+      "reviewed_annotations": 959,
+      "pending_annotations": 0,
+      "unreviewed_suggestions": 0,
+      "candidate_images": 1034,
+      "pending_candidates": 441,
+      "by_class": {
+        "person": 79,
+        "eyeglasses": 34,
+        "shirt": 34,
+        "nail_clipper": 0,
+        "cell_phone": 40,
+        "perfume_bottle": 21,
+        "potted_plant": 55,
+        "chair": 67,
+        "marker": 0,
+        "eraser": 0,
+        "tv": 33,
+        "fish": 61,
+        "cat": 32,
+        "dog": 35,
+        "motorcycle": 47,
+        "pencil_case": 8,
+        "wallet": 0,
+        "payment_card": 0,
+        "fork": 39,
+        "spoon": 47,
+        "knife": 43,
+        "pen": 41,
+        "backpack": 31,
+        "handbag": 53,
+        "playing_card": 0,
+        "adhesive_tape": 1,
+        "screwdriver": 2,
+        "paper_sheet": 0,
+        "table": 55,
+        "sofa": 37,
+        "cap": 0,
+        "sweatshirt": 0,
+        "sneakers": 0,
+        "wardrobe": 9,
+        "pillow": 55,
+        "keys": 0,
+        "usb_drive": 0,
+        "banknote": 0
+      },
+      "per_class": {
+        "person": {
+          "photos": 30,
+          "annotations": 79,
+          "reviewed": 79,
+          "pending": 0,
+          "suggestions": 0,
+          "target": 30,
+          "missing": 0,
+          "ready": false,
+          "complete_photos_by_split": {
+            "val": 10,
+            "test": 3,
+            "train": 17
+          }
+        },
+        "eyeglasses": {
+          "photos": 30,
+          "annotations": 34,
+          "reviewed": 34,
+          "pending": 0,
+          "suggestions": 0,
+          "target": 30,
+          "missing": 0,
+          "ready": false,
+          "complete_photos_by_split": {
+            "val": 3,
+            "test": 4,
+            "train": 23
+          }
+        },
+        "shirt": {
+          "photos": 30,
+          "annotations": 34,
+          "reviewed": 34,
+          "pending": 0,
+          "suggestions": 0,
+          "target": 30,
+          "missing": 0,
+          "ready": false,
+          "complete_photos_by_split": {
+            "val": 6,
+            "test": 2,
+            "train": 22
+          }
+        },
+        "nail_clipper": {
+          "photos": 0,
+          "annotations": 0,
+          "reviewed": 0,
+          "pending": 14,
+          "suggestions": 0,
+          "target": 30,
+          "missing": 30,
+          "ready": false,
+          "complete_photos_by_split": {
+            "val": 0,
+            "test": 0,
+            "train": 0
+          }
+        },
+        "cell_phone": {
+          "photos": 30,
+          "annotations": 40,
+          "reviewed": 40,
+          "pending": 0,
+          "suggestions": 0,
+          "target": 30,
+          "missing": 0,
+          "ready": false,
+          "complete_photos_by_split": {
+            "val": 4,
+            "test": 5,
+            "train": 21
+          }
+        },
+        "perfume_bottle": {
+          "photos": 11,
+          "annotations": 21,
+          "reviewed": 21,
+          "pending": 9,
+          "suggestions": 0,
+          "target": 30,
+          "missing": 9,
+          "ready": false,
+          "complete_photos_by_split": {
+            "val": 2,
+            "test": 0,
+            "train": 9
+          }
+        },
+        "potted_plant": {
+          "photos": 29,
+          "annotations": 55,
+          "reviewed": 55,
+          "pending": 0,
+          "suggestions": 0,
+          "target": 30,
+          "missing": 0,
+          "ready": false,
+          "complete_photos_by_split": {
+            "val": 2,
+            "test": 2,
+            "train": 25
+          }
+        },
+        "chair": {
+          "photos": 30,
+          "annotations": 67,
+          "reviewed": 67,
+          "pending": 0,
+          "suggestions": 0,
+          "target": 30,
+          "missing": 0,
+          "ready": false,
+          "complete_photos_by_split": {
+            "val": 4,
+            "test": 7,
+            "train": 19
+          }
+        },
+        "marker": {
+          "photos": 0,
+          "annotations": 0,
+          "reviewed": 0,
+          "pending": 28,
+          "suggestions": 0,
+          "target": 30,
+          "missing": 30,
+          "ready": false,
+          "complete_photos_by_split": {
+            "val": 0,
+            "test": 0,
+            "train": 0
+          }
+        },
+        "eraser": {
+          "photos": 0,
+          "annotations": 0,
+          "reviewed": 0,
+          "pending": 27,
+          "suggestions": 0,
+          "target": 30,
+          "missing": 30,
+          "ready": false,
+          "complete_photos_by_split": {
+            "val": 0,
+            "test": 0,
+            "train": 0
+          }
+        },
+        "tv": {
+          "photos": 30,
+          "annotations": 33,
+          "reviewed": 33,
+          "pending": 0,
+          "suggestions": 0,
+          "target": 30,
+          "missing": 0,
+          "ready": false,
+          "complete_photos_by_split": {
+            "val": 5,
+            "test": 4,
+            "train": 21
+          }
+        },
+        "fish": {
+          "photos": 30,
+          "annotations": 61,
+          "reviewed": 61,
+          "pending": 0,
+          "suggestions": 0,
+          "target": 30,
+          "missing": 0,
+          "ready": false,
+          "complete_photos_by_split": {
+            "val": 8,
+            "test": 1,
+            "train": 21
+          }
+        },
+        "cat": {
+          "photos": 30,
+          "annotations": 32,
+          "reviewed": 32,
+          "pending": 0,
+          "suggestions": 0,
+          "target": 30,
+          "missing": 0,
+          "ready": false,
+          "complete_photos_by_split": {
+            "val": 6,
+            "test": 6,
+            "train": 18
+          }
+        },
+        "dog": {
+          "photos": 30,
+          "annotations": 35,
+          "reviewed": 35,
+          "pending": 0,
+          "suggestions": 0,
+          "target": 30,
+          "missing": 0,
+          "ready": false,
+          "complete_photos_by_split": {
+            "val": 5,
+            "test": 5,
+            "train": 20
+          }
+        },
+        "motorcycle": {
+          "photos": 30,
+          "annotations": 47,
+          "reviewed": 47,
+          "pending": 0,
+          "suggestions": 0,
+          "target": 30,
+          "missing": 0,
+          "ready": false,
+          "complete_photos_by_split": {
+            "val": 7,
+            "test": 3,
+            "train": 20
+          }
+        },
+        "pencil_case": {
+          "photos": 3,
+          "annotations": 8,
+          "reviewed": 8,
+          "pending": 22,
+          "suggestions": 0,
+          "target": 30,
+          "missing": 22,
+          "ready": false,
+          "complete_photos_by_split": {
+            "val": 0,
+            "test": 0,
+            "train": 3
+          }
+        },
+        "wallet": {
+          "photos": 0,
+          "annotations": 0,
+          "reviewed": 0,
+          "pending": 30,
+          "suggestions": 0,
+          "target": 30,
+          "missing": 30,
+          "ready": false,
+          "complete_photos_by_split": {
+            "val": 0,
+            "test": 0,
+            "train": 0
+          }
+        },
+        "payment_card": {
+          "photos": 0,
+          "annotations": 0,
+          "reviewed": 0,
+          "pending": 18,
+          "suggestions": 0,
+          "target": 30,
+          "missing": 30,
+          "ready": false,
+          "complete_photos_by_split": {
+            "val": 0,
+            "test": 0,
+            "train": 0
+          }
+        },
+        "fork": {
+          "photos": 30,
+          "annotations": 39,
+          "reviewed": 39,
+          "pending": 0,
+          "suggestions": 0,
+          "target": 30,
+          "missing": 0,
+          "ready": false,
+          "complete_photos_by_split": {
+            "val": 6,
+            "test": 1,
+            "train": 23
+          }
+        },
+        "spoon": {
+          "photos": 30,
+          "annotations": 47,
+          "reviewed": 47,
+          "pending": 0,
+          "suggestions": 0,
+          "target": 30,
+          "missing": 0,
+          "ready": false,
+          "complete_photos_by_split": {
+            "val": 8,
+            "test": 2,
+            "train": 20
+          }
+        },
+        "knife": {
+          "photos": 30,
+          "annotations": 43,
+          "reviewed": 43,
+          "pending": 0,
+          "suggestions": 0,
+          "target": 30,
+          "missing": 0,
+          "ready": false,
+          "complete_photos_by_split": {
+            "val": 8,
+            "test": 4,
+            "train": 18
+          }
+        },
+        "pen": {
+          "photos": 30,
+          "annotations": 41,
+          "reviewed": 41,
+          "pending": 0,
+          "suggestions": 0,
+          "target": 30,
+          "missing": 0,
+          "ready": false,
+          "complete_photos_by_split": {
+            "val": 2,
+            "test": 4,
+            "train": 24
+          }
+        },
+        "backpack": {
+          "photos": 24,
+          "annotations": 31,
+          "reviewed": 31,
+          "pending": 6,
+          "suggestions": 0,
+          "target": 30,
+          "missing": 0,
+          "ready": false,
+          "complete_photos_by_split": {
+            "val": 5,
+            "test": 1,
+            "train": 18
+          }
+        },
+        "handbag": {
+          "photos": 30,
+          "annotations": 53,
+          "reviewed": 53,
+          "pending": 0,
+          "suggestions": 0,
+          "target": 30,
+          "missing": 0,
+          "ready": false,
+          "complete_photos_by_split": {
+            "val": 3,
+            "test": 4,
+            "train": 23
+          }
+        },
+        "playing_card": {
+          "photos": 0,
+          "annotations": 0,
+          "reviewed": 0,
+          "pending": 30,
+          "suggestions": 0,
+          "target": 30,
+          "missing": 30,
+          "ready": false,
+          "complete_photos_by_split": {
+            "val": 0,
+            "test": 0,
+            "train": 0
+          }
+        },
+        "adhesive_tape": {
+          "photos": 1,
+          "annotations": 1,
+          "reviewed": 1,
+          "pending": 29,
+          "suggestions": 0,
+          "target": 30,
+          "missing": 29,
+          "ready": false,
+          "complete_photos_by_split": {
+            "val": 0,
+            "test": 0,
+            "train": 1
+          }
+        },
+        "screwdriver": {
+          "photos": 2,
+          "annotations": 2,
+          "reviewed": 2,
+          "pending": 28,
+          "suggestions": 0,
+          "target": 30,
+          "missing": 28,
+          "ready": false,
+          "complete_photos_by_split": {
+            "val": 1,
+            "test": 0,
+            "train": 1
+          }
+        },
+        "paper_sheet": {
+          "photos": 0,
+          "annotations": 0,
+          "reviewed": 0,
+          "pending": 28,
+          "suggestions": 0,
+          "target": 30,
+          "missing": 30,
+          "ready": false,
+          "complete_photos_by_split": {
+            "val": 0,
+            "test": 0,
+            "train": 0
+          }
+        },
+        "table": {
+          "photos": 30,
+          "annotations": 55,
+          "reviewed": 55,
+          "pending": 0,
+          "suggestions": 0,
+          "target": 30,
+          "missing": 0,
+          "ready": false,
+          "complete_photos_by_split": {
+            "val": 6,
+            "test": 2,
+            "train": 22
+          }
+        },
+        "sofa": {
+          "photos": 30,
+          "annotations": 37,
+          "reviewed": 37,
+          "pending": 0,
+          "suggestions": 0,
+          "target": 30,
+          "missing": 0,
+          "ready": false,
+          "complete_photos_by_split": {
+            "val": 2,
+            "test": 5,
+            "train": 23
+          }
+        },
+        "cap": {
+          "photos": 0,
+          "annotations": 0,
+          "reviewed": 0,
+          "pending": 30,
+          "suggestions": 0,
+          "target": 30,
+          "missing": 30,
+          "ready": false,
+          "complete_photos_by_split": {
+            "val": 0,
+            "test": 0,
+            "train": 0
+          }
+        },
+        "sweatshirt": {
+          "photos": 0,
+          "annotations": 0,
+          "reviewed": 0,
+          "pending": 17,
+          "suggestions": 0,
+          "target": 30,
+          "missing": 30,
+          "ready": false,
+          "complete_photos_by_split": {
+            "val": 0,
+            "test": 0,
+            "train": 0
+          }
+        },
+        "sneakers": {
+          "photos": 0,
+          "annotations": 0,
+          "reviewed": 0,
+          "pending": 30,
+          "suggestions": 0,
+          "target": 30,
+          "missing": 30,
+          "ready": false,
+          "complete_photos_by_split": {
+            "val": 0,
+            "test": 0,
+            "train": 0
+          }
+        },
+        "wardrobe": {
+          "photos": 7,
+          "annotations": 9,
+          "reviewed": 9,
+          "pending": 21,
+          "suggestions": 0,
+          "target": 30,
+          "missing": 21,
+          "ready": false,
+          "complete_photos_by_split": {
+            "val": 0,
+            "test": 2,
+            "train": 5
+          }
+        },
+        "pillow": {
+          "photos": 30,
+          "annotations": 55,
+          "reviewed": 55,
+          "pending": 0,
+          "suggestions": 0,
+          "target": 30,
+          "missing": 0,
+          "ready": false,
+          "complete_photos_by_split": {
+            "val": 5,
+            "test": 1,
+            "train": 24
+          }
+        },
+        "keys": {
+          "photos": 0,
+          "annotations": 0,
+          "reviewed": 0,
+          "pending": 23,
+          "suggestions": 0,
+          "target": 30,
+          "missing": 30,
+          "ready": false,
+          "complete_photos_by_split": {
+            "val": 0,
+            "test": 0,
+            "train": 0
+          }
+        },
+        "usb_drive": {
+          "photos": 0,
+          "annotations": 0,
+          "reviewed": 0,
+          "pending": 28,
+          "suggestions": 0,
+          "target": 30,
+          "missing": 30,
+          "ready": false,
+          "complete_photos_by_split": {
+            "val": 0,
+            "test": 0,
+            "train": 0
+          }
+        },
+        "banknote": {
+          "photos": 0,
+          "annotations": 0,
+          "reviewed": 0,
+          "pending": 30,
+          "suggestions": 0,
+          "target": 30,
+          "missing": 30,
+          "ready": false,
+          "complete_photos_by_split": {
+            "val": 0,
+            "test": 0,
+            "train": 0
+          }
+        }
+      },
+      "reviewed_masks": 0,
+      "reviewed_detections": 959,
+      "ready_for_training": false,
+      "minimum_recommended_per_class": 30,
+      "required_annotations": 1140
+    }
+  },
+  "counts_added_this_run": {},
+  "accepted_totals": {
+    "images": 593,
+    "annotations": 959
+  },
+  "errors": [],
+  "stats_after": {
+    "name": "VisionAR Own Dataset v1",
+    "root": "datasets\\visionar_own_v1",
+    "classes": [
+      "person",
+      "eyeglasses",
+      "shirt",
+      "nail_clipper",
+      "cell_phone",
+      "perfume_bottle",
+      "potted_plant",
+      "chair",
+      "marker",
+      "eraser",
+      "tv",
+      "fish",
+      "cat",
+      "dog",
+      "motorcycle",
+      "pencil_case",
+      "wallet",
+      "payment_card",
+      "fork",
+      "spoon",
+      "knife",
+      "pen",
+      "backpack",
+      "handbag",
+      "playing_card",
+      "adhesive_tape",
+      "screwdriver",
+      "paper_sheet",
+      "table",
+      "sofa",
+      "cap",
+      "sweatshirt",
+      "sneakers",
+      "wardrobe",
+      "pillow",
+      "keys",
+      "usb_drive",
+      "banknote"
+    ],
+    "images": {
+      "val": 105,
+      "test": 68,
+      "train": 420
+    },
+    "total_images": 593,
+    "annotations": 959,
+    "reviewed_annotations": 959,
+    "pending_annotations": 0,
+    "unreviewed_suggestions": 0,
+    "candidate_images": 1034,
+    "pending_candidates": 441,
+    "by_class": {
+      "person": 79,
+      "eyeglasses": 34,
+      "shirt": 34,
+      "nail_clipper": 0,
+      "cell_phone": 40,
+      "perfume_bottle": 21,
+      "potted_plant": 55,
+      "chair": 67,
+      "marker": 0,
+      "eraser": 0,
+      "tv": 33,
+      "fish": 61,
+      "cat": 32,
+      "dog": 35,
+      "motorcycle": 47,
+      "pencil_case": 8,
+      "wallet": 0,
+      "payment_card": 0,
+      "fork": 39,
+      "spoon": 47,
+      "knife": 43,
+      "pen": 41,
+      "backpack": 31,
+      "handbag": 53,
+      "playing_card": 0,
+      "adhesive_tape": 1,
+      "screwdriver": 2,
+      "paper_sheet": 0,
+      "table": 55,
+      "sofa": 37,
+      "cap": 0,
+      "sweatshirt": 0,
+      "sneakers": 0,
+      "wardrobe": 9,
+      "pillow": 55,
+      "keys": 0,
+      "usb_drive": 0,
+      "banknote": 0
+    },
+    "per_class": {
+      "person": {
+        "photos": 30,
+        "annotations": 79,
+        "reviewed": 79,
+        "pending": 0,
+        "suggestions": 0,
+        "target": 30,
+        "missing": 0,
+        "ready": false,
+        "complete_photos_by_split": {
+          "val": 10,
+          "test": 3,
+          "train": 17
+        }
+      },
+      "eyeglasses": {
+        "photos": 30,
+        "annotations": 34,
+        "reviewed": 34,
+        "pending": 0,
+        "suggestions": 0,
+        "target": 30,
+        "missing": 0,
+        "ready": false,
+        "complete_photos_by_split": {
+          "val": 3,
+          "test": 4,
+          "train": 23
+        }
+      },
+      "shirt": {
+        "photos": 30,
+        "annotations": 34,
+        "reviewed": 34,
+        "pending": 0,
+        "suggestions": 0,
+        "target": 30,
+        "missing": 0,
+        "ready": false,
+        "complete_photos_by_split": {
+          "val": 6,
+          "test": 2,
+          "train": 22
+        }
+      },
+      "nail_clipper": {
+        "photos": 0,
+        "annotations": 0,
+        "reviewed": 0,
+        "pending": 14,
+        "suggestions": 0,
+        "target": 30,
+        "missing": 30,
+        "ready": false,
+        "complete_photos_by_split": {
+          "val": 0,
+          "test": 0,
+          "train": 0
+        }
+      },
+      "cell_phone": {
+        "photos": 30,
+        "annotations": 40,
+        "reviewed": 40,
+        "pending": 0,
+        "suggestions": 0,
+        "target": 30,
+        "missing": 0,
+        "ready": false,
+        "complete_photos_by_split": {
+          "val": 4,
+          "test": 5,
+          "train": 21
+        }
+      },
+      "perfume_bottle": {
+        "photos": 11,
+        "annotations": 21,
+        "reviewed": 21,
+        "pending": 9,
+        "suggestions": 0,
+        "target": 30,
+        "missing": 9,
+        "ready": false,
+        "complete_photos_by_split": {
+          "val": 2,
+          "test": 0,
+          "train": 9
+        }
+      },
+      "potted_plant": {
+        "photos": 29,
+        "annotations": 55,
+        "reviewed": 55,
+        "pending": 0,
+        "suggestions": 0,
+        "target": 30,
+        "missing": 0,
+        "ready": false,
+        "complete_photos_by_split": {
+          "val": 2,
+          "test": 2,
+          "train": 25
+        }
+      },
+      "chair": {
+        "photos": 30,
+        "annotations": 67,
+        "reviewed": 67,
+        "pending": 0,
+        "suggestions": 0,
+        "target": 30,
+        "missing": 0,
+        "ready": false,
+        "complete_photos_by_split": {
+          "val": 4,
+          "test": 7,
+          "train": 19
+        }
+      },
+      "marker": {
+        "photos": 0,
+        "annotations": 0,
+        "reviewed": 0,
+        "pending": 28,
+        "suggestions": 0,
+        "target": 30,
+        "missing": 30,
+        "ready": false,
+        "complete_photos_by_split": {
+          "val": 0,
+          "test": 0,
+          "train": 0
+        }
+      },
+      "eraser": {
+        "photos": 0,
+        "annotations": 0,
+        "reviewed": 0,
+        "pending": 27,
+        "suggestions": 0,
+        "target": 30,
+        "missing": 30,
+        "ready": false,
+        "complete_photos_by_split": {
+          "val": 0,
+          "test": 0,
+          "train": 0
+        }
+      },
+      "tv": {
+        "photos": 30,
+        "annotations": 33,
+        "reviewed": 33,
+        "pending": 0,
+        "suggestions": 0,
+        "target": 30,
+        "missing": 0,
+        "ready": false,
+        "complete_photos_by_split": {
+          "val": 5,
+          "test": 4,
+          "train": 21
+        }
+      },
+      "fish": {
+        "photos": 30,
+        "annotations": 61,
+        "reviewed": 61,
+        "pending": 0,
+        "suggestions": 0,
+        "target": 30,
+        "missing": 0,
+        "ready": false,
+        "complete_photos_by_split": {
+          "val": 8,
+          "test": 1,
+          "train": 21
+        }
+      },
+      "cat": {
+        "photos": 30,
+        "annotations": 32,
+        "reviewed": 32,
+        "pending": 0,
+        "suggestions": 0,
+        "target": 30,
+        "missing": 0,
+        "ready": false,
+        "complete_photos_by_split": {
+          "val": 6,
+          "test": 6,
+          "train": 18
+        }
+      },
+      "dog": {
+        "photos": 30,
+        "annotations": 35,
+        "reviewed": 35,
+        "pending": 0,
+        "suggestions": 0,
+        "target": 30,
+        "missing": 0,
+        "ready": false,
+        "complete_photos_by_split": {
+          "val": 5,
+          "test": 5,
+          "train": 20
+        }
+      },
+      "motorcycle": {
+        "photos": 30,
+        "annotations": 47,
+        "reviewed": 47,
+        "pending": 0,
+        "suggestions": 0,
+        "target": 30,
+        "missing": 0,
+        "ready": false,
+        "complete_photos_by_split": {
+          "val": 7,
+          "test": 3,
+          "train": 20
+        }
+      },
+      "pencil_case": {
+        "photos": 3,
+        "annotations": 8,
+        "reviewed": 8,
+        "pending": 22,
+        "suggestions": 0,
+        "target": 30,
+        "missing": 22,
+        "ready": false,
+        "complete_photos_by_split": {
+          "val": 0,
+          "test": 0,
+          "train": 3
+        }
+      },
+      "wallet": {
+        "photos": 0,
+        "annotations": 0,
+        "reviewed": 0,
+        "pending": 30,
+        "suggestions": 0,
+        "target": 30,
+        "missing": 30,
+        "ready": false,
+        "complete_photos_by_split": {
+          "val": 0,
+          "test": 0,
+          "train": 0
+        }
+      },
+      "payment_card": {
+        "photos": 0,
+        "annotations": 0,
+        "reviewed": 0,
+        "pending": 18,
+        "suggestions": 0,
+        "target": 30,
+        "missing": 30,
+        "ready": false,
+        "complete_photos_by_split": {
+          "val": 0,
+          "test": 0,
+          "train": 0
+        }
+      },
+      "fork": {
+        "photos": 30,
+        "annotations": 39,
+        "reviewed": 39,
+        "pending": 0,
+        "suggestions": 0,
+        "target": 30,
+        "missing": 0,
+        "ready": false,
+        "complete_photos_by_split": {
+          "val": 6,
+          "test": 1,
+          "train": 23
+        }
+      },
+      "spoon": {
+        "photos": 30,
+        "annotations": 47,
+        "reviewed": 47,
+        "pending": 0,
+        "suggestions": 0,
+        "target": 30,
+        "missing": 0,
+        "ready": false,
+        "complete_photos_by_split": {
+          "val": 8,
+          "test": 2,
+          "train": 20
+        }
+      },
+      "knife": {
+        "photos": 30,
+        "annotations": 43,
+        "reviewed": 43,
+        "pending": 0,
+        "suggestions": 0,
+        "target": 30,
+        "missing": 0,
+        "ready": false,
+        "complete_photos_by_split": {
+          "val": 8,
+          "test": 4,
+          "train": 18
+        }
+      },
+      "pen": {
+        "photos": 30,
+        "annotations": 41,
+        "reviewed": 41,
+        "pending": 0,
+        "suggestions": 0,
+        "target": 30,
+        "missing": 0,
+        "ready": false,
+        "complete_photos_by_split": {
+          "val": 2,
+          "test": 4,
+          "train": 24
+        }
+      },
+      "backpack": {
+        "photos": 24,
+        "annotations": 31,
+        "reviewed": 31,
+        "pending": 6,
+        "suggestions": 0,
+        "target": 30,
+        "missing": 0,
+        "ready": false,
+        "complete_photos_by_split": {
+          "val": 5,
+          "test": 1,
+          "train": 18
+        }
+      },
+      "handbag": {
+        "photos": 30,
+        "annotations": 53,
+        "reviewed": 53,
+        "pending": 0,
+        "suggestions": 0,
+        "target": 30,
+        "missing": 0,
+        "ready": false,
+        "complete_photos_by_split": {
+          "val": 3,
+          "test": 4,
+          "train": 23
+        }
+      },
+      "playing_card": {
+        "photos": 0,
+        "annotations": 0,
+        "reviewed": 0,
+        "pending": 30,
+        "suggestions": 0,
+        "target": 30,
+        "missing": 30,
+        "ready": false,
+        "complete_photos_by_split": {
+          "val": 0,
+          "test": 0,
+          "train": 0
+        }
+      },
+      "adhesive_tape": {
+        "photos": 1,
+        "annotations": 1,
+        "reviewed": 1,
+        "pending": 29,
+        "suggestions": 0,
+        "target": 30,
+        "missing": 29,
+        "ready": false,
+        "complete_photos_by_split": {
+          "val": 0,
+          "test": 0,
+          "train": 1
+        }
+      },
+      "screwdriver": {
+        "photos": 2,
+        "annotations": 2,
+        "reviewed": 2,
+        "pending": 28,
+        "suggestions": 0,
+        "target": 30,
+        "missing": 28,
+        "ready": false,
+        "complete_photos_by_split": {
+          "val": 1,
+          "test": 0,
+          "train": 1
+        }
+      },
+      "paper_sheet": {
+        "photos": 0,
+        "annotations": 0,
+        "reviewed": 0,
+        "pending": 28,
+        "suggestions": 0,
+        "target": 30,
+        "missing": 30,
+        "ready": false,
+        "complete_photos_by_split": {
+          "val": 0,
+          "test": 0,
+          "train": 0
+        }
+      },
+      "table": {
+        "photos": 30,
+        "annotations": 55,
+        "reviewed": 55,
+        "pending": 0,
+        "suggestions": 0,
+        "target": 30,
+        "missing": 0,
+        "ready": false,
+        "complete_photos_by_split": {
+          "val": 6,
+          "test": 2,
+          "train": 22
+        }
+      },
+      "sofa": {
+        "photos": 30,
+        "annotations": 37,
+        "reviewed": 37,
+        "pending": 0,
+        "suggestions": 0,
+        "target": 30,
+        "missing": 0,
+        "ready": false,
+        "complete_photos_by_split": {
+          "val": 2,
+          "test": 5,
+          "train": 23
+        }
+      },
+      "cap": {
+        "photos": 0,
+        "annotations": 0,
+        "reviewed": 0,
+        "pending": 30,
+        "suggestions": 0,
+        "target": 30,
+        "missing": 30,
+        "ready": false,
+        "complete_photos_by_split": {
+          "val": 0,
+          "test": 0,
+          "train": 0
+        }
+      },
+      "sweatshirt": {
+        "photos": 0,
+        "annotations": 0,
+        "reviewed": 0,
+        "pending": 17,
+        "suggestions": 0,
+        "target": 30,
+        "missing": 30,
+        "ready": false,
+        "complete_photos_by_split": {
+          "val": 0,
+          "test": 0,
+          "train": 0
+        }
+      },
+      "sneakers": {
+        "photos": 0,
+        "annotations": 0,
+        "reviewed": 0,
+        "pending": 30,
+        "suggestions": 0,
+        "target": 30,
+        "missing": 30,
+        "ready": false,
+        "complete_photos_by_split": {
+          "val": 0,
+          "test": 0,
+          "train": 0
+        }
+      },
+      "wardrobe": {
+        "photos": 7,
+        "annotations": 9,
+        "reviewed": 9,
+        "pending": 21,
+        "suggestions": 0,
+        "target": 30,
+        "missing": 21,
+        "ready": false,
+        "complete_photos_by_split": {
+          "val": 0,
+          "test": 2,
+          "train": 5
+        }
+      },
+      "pillow": {
+        "photos": 30,
+        "annotations": 55,
+        "reviewed": 55,
+        "pending": 0,
+        "suggestions": 0,
+        "target": 30,
+        "missing": 0,
+        "ready": false,
+        "complete_photos_by_split": {
+          "val": 5,
+          "test": 1,
+          "train": 24
+        }
+      },
+      "keys": {
+        "photos": 0,
+        "annotations": 0,
+        "reviewed": 0,
+        "pending": 23,
+        "suggestions": 0,
+        "target": 30,
+        "missing": 30,
+        "ready": false,
+        "complete_photos_by_split": {
+          "val": 0,
+          "test": 0,
+          "train": 0
+        }
+      },
+      "usb_drive": {
+        "photos": 0,
+        "annotations": 0,
+        "reviewed": 0,
+        "pending": 28,
+        "suggestions": 0,
+        "target": 30,
+        "missing": 30,
+        "ready": false,
+        "complete_photos_by_split": {
+          "val": 0,
+          "test": 0,
+          "train": 0
+        }
+      },
+      "banknote": {
+        "photos": 0,
+        "annotations": 0,
+        "reviewed": 0,
+        "pending": 30,
+        "suggestions": 0,
+        "target": 30,
+        "missing": 30,
+        "ready": false,
+        "complete_photos_by_split": {
+          "val": 0,
+          "test": 0,
+          "train": 0
+        }
+      }
+    },
+    "reviewed_masks": 0,
+    "reviewed_detections": 959,
+    "ready_for_training": false,
+    "minimum_recommended_per_class": 30,
+    "required_annotations": 1140
+  },
+  "audit_after": {
+    "audited_at": "2026-10-26T18:39:18.972062-05:00",
+    "ready": false,
+    "issues": [],
+    "blockers": 0,
+    "stats": {
+      "name": "VisionAR Own Dataset v1",
+      "root": "datasets\\visionar_own_v1",
+      "classes": [
+        "person",
+        "eyeglasses",
+        "shirt",
+        "nail_clipper",
+        "cell_phone",
+        "perfume_bottle",
+        "potted_plant",
+        "chair",
+        "marker",
+        "eraser",
+        "tv",
+        "fish",
+        "cat",
+        "dog",
+        "motorcycle",
+        "pencil_case",
+        "wallet",
+        "payment_card",
+        "fork",
+        "spoon",
+        "knife",
+        "pen",
+        "backpack",
+        "handbag",
+        "playing_card",
+        "adhesive_tape",
+        "screwdriver",
+        "paper_sheet",
+        "table",
+        "sofa",
+        "cap",
+        "sweatshirt",
+        "sneakers",
+        "wardrobe",
+        "pillow",
+        "keys",
+        "usb_drive",
+        "banknote"
+      ],
+      "images": {
+        "val": 105,
+        "test": 68,
+        "train": 420
+      },
+      "total_images": 593,
+      "annotations": 959,
+      "reviewed_annotations": 959,
+      "pending_annotations": 0,
+      "unreviewed_suggestions": 0,
+      "candidate_images": 1034,
+      "pending_candidates": 441,
+      "by_class": {
+        "person": 79,
+        "eyeglasses": 34,
+        "shirt": 34,
+        "nail_clipper": 0,
+        "cell_phone": 40,
+        "perfume_bottle": 21,
+        "potted_plant": 55,
+        "chair": 67,
+        "marker": 0,
+        "eraser": 0,
+        "tv": 33,
+        "fish": 61,
+        "cat": 32,
+        "dog": 35,
+        "motorcycle": 47,
+        "pencil_case": 8,
+        "wallet": 0,
+        "payment_card": 0,
+        "fork": 39,
+        "spoon": 47,
+        "knife": 43,
+        "pen": 41,
+        "backpack": 31,
+        "handbag": 53,
+        "playing_card": 0,
+        "adhesive_tape": 1,
+        "screwdriver": 2,
+        "paper_sheet": 0,
+        "table": 55,
+        "sofa": 37,
+        "cap": 0,
+        "sweatshirt": 0,
+        "sneakers": 0,
+        "wardrobe": 9,
+        "pillow": 55,
+        "keys": 0,
+        "usb_drive": 0,
+        "banknote": 0
+      },
+      "per_class": {
+        "person": {
+          "photos": 30,
+          "annotations": 79,
+          "reviewed": 79,
+          "pending": 0,
+          "suggestions": 0,
+          "target": 30,
+          "missing": 0,
+          "ready": false,
+          "complete_photos_by_split": {
+            "val": 10,
+            "test": 3,
+            "train": 17
+          }
+        },
+        "eyeglasses": {
+          "photos": 30,
+          "annotations": 34,
+          "reviewed": 34,
+          "pending": 0,
+          "suggestions": 0,
+          "target": 30,
+          "missing": 0,
+          "ready": false,
+          "complete_photos_by_split": {
+            "val": 3,
+            "test": 4,
+            "train": 23
+          }
+        },
+        "shirt": {
+          "photos": 30,
+          "annotations": 34,
+          "reviewed": 34,
+          "pending": 0,
+          "suggestions": 0,
+          "target": 30,
+          "missing": 0,
+          "ready": false,
+          "complete_photos_by_split": {
+            "val": 6,
+            "test": 2,
+            "train": 22
+          }
+        },
+        "nail_clipper": {
+          "photos": 0,
+          "annotations": 0,
+          "reviewed": 0,
+          "pending": 14,
+          "suggestions": 0,
+          "target": 30,
+          "missing": 30,
+          "ready": false,
+          "complete_photos_by_split": {
+            "val": 0,
+            "test": 0,
+            "train": 0
+          }
+        },
+        "cell_phone": {
+          "photos": 30,
+          "annotations": 40,
+          "reviewed": 40,
+          "pending": 0,
+          "suggestions": 0,
+          "target": 30,
+          "missing": 0,
+          "ready": false,
+          "complete_photos_by_split": {
+            "val": 4,
+            "test": 5,
+            "train": 21
+          }
+        },
+        "perfume_bottle": {
+          "photos": 11,
+          "annotations": 21,
+          "reviewed": 21,
+          "pending": 9,
+          "suggestions": 0,
+          "target": 30,
+          "missing": 9,
+          "ready": false,
+          "complete_photos_by_split": {
+            "val": 2,
+            "test": 0,
+            "train": 9
+          }
+        },
+        "potted_plant": {
+          "photos": 29,
+          "annotations": 55,
+          "reviewed": 55,
+          "pending": 0,
+          "suggestions": 0,
+          "target": 30,
+          "missing": 0,
+          "ready": false,
+          "complete_photos_by_split": {
+            "val": 2,
+            "test": 2,
+            "train": 25
+          }
+        },
+        "chair": {
+          "photos": 30,
+          "annotations": 67,
+          "reviewed": 67,
+          "pending": 0,
+          "suggestions": 0,
+          "target": 30,
+          "missing": 0,
+          "ready": false,
+          "complete_photos_by_split": {
+            "val": 4,
+            "test": 7,
+            "train": 19
+          }
+        },
+        "marker": {
+          "photos": 0,
+          "annotations": 0,
+          "reviewed": 0,
+          "pending": 28,
+          "suggestions": 0,
+          "target": 30,
+          "missing": 30,
+          "ready": false,
+          "complete_photos_by_split": {
+            "val": 0,
+            "test": 0,
+            "train": 0
+          }
+        },
+        "eraser": {
+          "photos": 0,
+          "annotations": 0,
+          "reviewed": 0,
+          "pending": 27,
+          "suggestions": 0,
+          "target": 30,
+          "missing": 30,
+          "ready": false,
+          "complete_photos_by_split": {
+            "val": 0,
+            "test": 0,
+            "train": 0
+          }
+        },
+        "tv": {
+          "photos": 30,
+          "annotations": 33,
+          "reviewed": 33,
+          "pending": 0,
+          "suggestions": 0,
+          "target": 30,
+          "missing": 0,
+          "ready": false,
+          "complete_photos_by_split": {
+            "val": 5,
+            "test": 4,
+            "train": 21
+          }
+        },
+        "fish": {
+          "photos": 30,
+          "annotations": 61,
+          "reviewed": 61,
+          "pending": 0,
+          "suggestions": 0,
+          "target": 30,
+          "missing": 0,
+          "ready": false,
+          "complete_photos_by_split": {
+            "val": 8,
+            "test": 1,
+            "train": 21
+          }
+        },
+        "cat": {
+          "photos": 30,
+          "annotations": 32,
+          "reviewed": 32,
+          "pending": 0,
+          "suggestions": 0,
+          "target": 30,
+          "missing": 0,
+          "ready": false,
+          "complete_photos_by_split": {
+            "val": 6,
+            "test": 6,
+            "train": 18
+          }
+        },
+        "dog": {
+          "photos": 30,
+          "annotations": 35,
+          "reviewed": 35,
+          "pending": 0,
+          "suggestions": 0,
+          "target": 30,
+          "missing": 0,
+          "ready": false,
+          "complete_photos_by_split": {
+            "val": 5,
+            "test": 5,
+            "train": 20
+          }
+        },
+        "motorcycle": {
+          "photos": 30,
+          "annotations": 47,
+          "reviewed": 47,
+          "pending": 0,
+          "suggestions": 0,
+          "target": 30,
+          "missing": 0,
+          "ready": false,
+          "complete_photos_by_split": {
+            "val": 7,
+            "test": 3,
+            "train": 20
+          }
+        },
+        "pencil_case": {
+          "photos": 3,
+          "annotations": 8,
+          "reviewed": 8,
+          "pending": 22,
+          "suggestions": 0,
+          "target": 30,
+          "missing": 22,
+          "ready": false,
+          "complete_photos_by_split": {
+            "val": 0,
+            "test": 0,
+            "train": 3
+          }
+        },
+        "wallet": {
+          "photos": 0,
+          "annotations": 0,
+          "reviewed": 0,
+          "pending": 30,
+          "suggestions": 0,
+          "target": 30,
+          "missing": 30,
+          "ready": false,
+          "complete_photos_by_split": {
+            "val": 0,
+            "test": 0,
+            "train": 0
+          }
+        },
+        "payment_card": {
+          "photos": 0,
+          "annotations": 0,
+          "reviewed": 0,
+          "pending": 18,
+          "suggestions": 0,
+          "target": 30,
+          "missing": 30,
+          "ready": false,
+          "complete_photos_by_split": {
+            "val": 0,
+            "test": 0,
+            "train": 0
+          }
+        },
+        "fork": {
+          "photos": 30,
+          "annotations": 39,
+          "reviewed": 39,
+          "pending": 0,
+          "suggestions": 0,
+          "target": 30,
+          "missing": 0,
+          "ready": false,
+          "complete_photos_by_split": {
+            "val": 6,
+            "test": 1,
+            "train": 23
+          }
+        },
+        "spoon": {
+          "photos": 30,
+          "annotations": 47,
+          "reviewed": 47,
+          "pending": 0,
+          "suggestions": 0,
+          "target": 30,
+          "missing": 0,
+          "ready": false,
+          "complete_photos_by_split": {
+            "val": 8,
+            "test": 2,
+            "train": 20
+          }
+        },
+        "knife": {
+          "photos": 30,
+          "annotations": 43,
+          "reviewed": 43,
+          "pending": 0,
+          "suggestions": 0,
+          "target": 30,
+          "missing": 0,
+          "ready": false,
+          "complete_photos_by_split": {
+            "val": 8,
+            "test": 4,
+            "train": 18
+          }
+        },
+        "pen": {
+          "photos": 30,
+          "annotations": 41,
+          "reviewed": 41,
+          "pending": 0,
+          "suggestions": 0,
+          "target": 30,
+          "missing": 0,
+          "ready": false,
+          "complete_photos_by_split": {
+            "val": 2,
+            "test": 4,
+            "train": 24
+          }
+        },
+        "backpack": {
+          "photos": 24,
+          "annotations": 31,
+          "reviewed": 31,
+          "pending": 6,
+          "suggestions": 0,
+          "target": 30,
+          "missing": 0,
+          "ready": false,
+          "complete_photos_by_split": {
+            "val": 5,
+            "test": 1,
+            "train": 18
+          }
+        },
+        "handbag": {
+          "photos": 30,
+          "annotations": 53,
+          "reviewed": 53,
+          "pending": 0,
+          "suggestions": 0,
+          "target": 30,
+          "missing": 0,
+          "ready": false,
+          "complete_photos_by_split": {
+            "val": 3,
+            "test": 4,
+            "train": 23
+          }
+        },
+        "playing_card": {
+          "photos": 0,
+          "annotations": 0,
+          "reviewed": 0,
+          "pending": 30,
+          "suggestions": 0,
+          "target": 30,
+          "missing": 30,
+          "ready": false,
+          "complete_photos_by_split": {
+            "val": 0,
+            "test": 0,
+            "train": 0
+          }
+        },
+        "adhesive_tape": {
+          "photos": 1,
+          "annotations": 1,
+          "reviewed": 1,
+          "pending": 29,
+          "suggestions": 0,
+          "target": 30,
+          "missing": 29,
+          "ready": false,
+          "complete_photos_by_split": {
+            "val": 0,
+            "test": 0,
+            "train": 1
+          }
+        },
+        "screwdriver": {
+          "photos": 2,
+          "annotations": 2,
+          "reviewed": 2,
+          "pending": 28,
+          "suggestions": 0,
+          "target": 30,
+          "missing": 28,
+          "ready": false,
+          "complete_photos_by_split": {
+            "val": 1,
+            "test": 0,
+            "train": 1
+          }
+        },
+        "paper_sheet": {
+          "photos": 0,
+          "annotations": 0,
+          "reviewed": 0,
+          "pending": 28,
+          "suggestions": 0,
+          "target": 30,
+          "missing": 30,
+          "ready": false,
+          "complete_photos_by_split": {
+            "val": 0,
+            "test": 0,
+            "train": 0
+          }
+        },
+        "table": {
+          "photos": 30,
+          "annotations": 55,
+          "reviewed": 55,
+          "pending": 0,
+          "suggestions": 0,
+          "target": 30,
+          "missing": 0,
+          "ready": false,
+          "complete_photos_by_split": {
+            "val": 6,
+            "test": 2,
+            "train": 22
+          }
+        },
+        "sofa": {
+          "photos": 30,
+          "annotations": 37,
+          "reviewed": 37,
+          "pending": 0,
+          "suggestions": 0,
+          "target": 30,
+          "missing": 0,
+          "ready": false,
+          "complete_photos_by_split": {
+            "val": 2,
+            "test": 5,
+            "train": 23
+          }
+        },
+        "cap": {
+          "photos": 0,
+          "annotations": 0,
+          "reviewed": 0,
+          "pending": 30,
+          "suggestions": 0,
+          "target": 30,
+          "missing": 30,
+          "ready": false,
+          "complete_photos_by_split": {
+            "val": 0,
+            "test": 0,
+            "train": 0
+          }
+        },
+        "sweatshirt": {
+          "photos": 0,
+          "annotations": 0,
+          "reviewed": 0,
+          "pending": 17,
+          "suggestions": 0,
+          "target": 30,
+          "missing": 30,
+          "ready": false,
+          "complete_photos_by_split": {
+            "val": 0,
+            "test": 0,
+            "train": 0
+          }
+        },
+        "sneakers": {
+          "photos": 0,
+          "annotations": 0,
+          "reviewed": 0,
+          "pending": 30,
+          "suggestions": 0,
+          "target": 30,
+          "missing": 30,
+          "ready": false,
+          "complete_photos_by_split": {
+            "val": 0,
+            "test": 0,
+            "train": 0
+          }
+        },
+        "wardrobe": {
+          "photos": 7,
+          "annotations": 9,
+          "reviewed": 9,
+          "pending": 21,
+          "suggestions": 0,
+          "target": 30,
+          "missing": 21,
+          "ready": false,
+          "complete_photos_by_split": {
+            "val": 0,
+            "test": 2,
+            "train": 5
+          }
+        },
+        "pillow": {
+          "photos": 30,
+          "annotations": 55,
+          "reviewed": 55,
+          "pending": 0,
+          "suggestions": 0,
+          "target": 30,
+          "missing": 0,
+          "ready": false,
+          "complete_photos_by_split": {
+            "val": 5,
+            "test": 1,
+            "train": 24
+          }
+        },
+        "keys": {
+          "photos": 0,
+          "annotations": 0,
+          "reviewed": 0,
+          "pending": 23,
+          "suggestions": 0,
+          "target": 30,
+          "missing": 30,
+          "ready": false,
+          "complete_photos_by_split": {
+            "val": 0,
+            "test": 0,
+            "train": 0
+          }
+        },
+        "usb_drive": {
+          "photos": 0,
+          "annotations": 0,
+          "reviewed": 0,
+          "pending": 28,
+          "suggestions": 0,
+          "target": 30,
+          "missing": 30,
+          "ready": false,
+          "complete_photos_by_split": {
+            "val": 0,
+            "test": 0,
+            "train": 0
+          }
+        },
+        "banknote": {
+          "photos": 0,
+          "annotations": 0,
+          "reviewed": 0,
+          "pending": 30,
+          "suggestions": 0,
+          "target": 30,
+          "missing": 30,
+          "ready": false,
+          "complete_photos_by_split": {
+            "val": 0,
+            "test": 0,
+            "train": 0
+          }
+        }
+      },
+      "reviewed_masks": 0,
+      "reviewed_detections": 959,
+      "ready_for_training": false,
+      "minimum_recommended_per_class": 30,
+      "required_annotations": 1140
+    }
+  },
+  "not_accepted": {
+    "reason": "No verified bounding box or source outside the explicitly accepted Open Images batch",
+    "remaining_pending_images": 441
+  }
+}

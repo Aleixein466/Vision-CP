@@ -33,6 +33,9 @@ class IntegrityTests(unittest.TestCase):
         self.assertEqual(self.studio.stats()['reviewed_annotations'],0)
         self.assertFalse(self.studio.is_reviewed({'reviewed':True,'annotation':'external_human_verified_rectangle'}))
         self.assertFalse(self.studio.is_reviewed({'annotation':'anything'}))
+        self.assertTrue(self.studio.is_reviewed({
+            'reviewed': True, 'annotation': 'batch_human_confirmed_openimages_rectangle'
+        }))
 
     def test_batch_rollback_and_multiple_objects(self):
         identity=self.candidate()
