@@ -1,0 +1,148 @@
+{
+  "cancel_request": {
+    "cancelled": true,
+    "status": "cancelling",
+    "detail": "Se detendrá después de guardar el epoch actual"
+  },
+  "cancelled": {
+    "status": "cancelled",
+    "started_at": "2026-10-26T18:05:57.206227+00:00",
+    "production_deployed": false,
+    "epoch": 2,
+    "last_checkpoint": "C:\\Users\\alexi\\Desktop\\vision\\VISIONAR-AI\\training\\experiments\\20261026-130553-f1d761be\\run\\weights\\last.pt",
+    "best_checkpoint": "C:\\Users\\alexi\\Desktop\\vision\\VISIONAR-AI\\training\\experiments\\20261026-130553-f1d761be\\run\\weights\\best.pt",
+    "recovery": "Resume from the last complete epoch checkpoint",
+    "resources": {
+      "peak_worker_rss_mb": 533.3,
+      "returncode": 0
+    },
+    "log_tail": " -1  1    249728  ultralytics.nn.modules.block.C2PSA           [256, 256, 1]                 \r\n 11                  -1  1         0  torch.nn.modules.upsampling.Upsample         [None, 2, 'nearest']          \r\n 12             [-1, 6]  1         0  ultralytics.nn.modules.conv.Concat           [1]                           \r\n 13                  -1  1    119808  ultralytics.nn.modules.block.C3k2            [384, 128, 1, True]           \r\n 14                  -1  1         0  torch.nn.modules.upsampling.Upsample         [None, 2, 'nearest']          \r\n 15             [-1, 4]  1         0  ultralytics.nn.modules.conv.Concat           [1]                           \r\n 16                  -1  1     34304  ultralytics.nn.modules.block.C3k2            [256, 64, 1, True]            \r\n 17                  -1  1     36992  ultralytics.nn.modules.conv.Conv             [64, 64, 3, 2]                \r\n 18            [-1, 13]  1         0  ultralytics.nn.modules.conv.Concat           [1]                           \r\n 19                  -1  1     95232  ultralytics.nn.modules.block.C3k2            [192, 128, 1, True]           \r\n 20                  -1  1    147712  ultralytics.nn.modules.conv.Conv             [128, 128, 3, 2]              \r\n 21            [-1, 10]  1         0  ultralytics.nn.modules.conv.Concat           [1]                           \r\n 22                  -1  1    463104  ultralytics.nn.modules.block.C3k2            [384, 256, 1, True, 0.5, True]\r\n 23        [16, 19, 22]  1    309656  ultralytics.nn.modules.head.Detect           [80, 1, True, [64, 128, 256]] \r\nYOLO26n summary: 260 layers, 2,572,280 parameters, 2,572,280 gradients, 6.2 GFLOPs\r\n\r\nTransferred 708/708 items from pretrained weights\r\n\u001b[34m\u001b[1mtrain: \u001b[0mFast image access  (ping: 0.1±0.0 ms, read: 313.3±146.4 MB/s, size: 50.0 KB)\r\n\r\u001b[K\u001b[34m\u001b[1mtrain: \u001b[0mScanning C:\\Users\\alexi\\Desktop\\vision\\VISIONAR-AI\\training\\experiments\\20261026-130553-f1d761be\\dataset\\labels\\train... 4 images, 0 backgrounds, 0 corrupt: 100% ━━━━━━━━━━━━ 4/4 568.4it/s 0.0s\r\n\u001b[34m\u001b[1mtrain: \u001b[0mNew cache created: C:\\Users\\alexi\\Desktop\\vision\\VISIONAR-AI\\training\\experiments\\20261026-130553-f1d761be\\dataset\\labels\\train.cache\r\n\u001b[34m\u001b[1mval: \u001b[0mFast image access  (ping: 0.1±0.0 ms, read: 298.1±36.7 MB/s, size: 39.7 KB)\r\n\r\u001b[K\u001b[34m\u001b[1mval: \u001b[0mScanning C:\\Users\\alexi\\Desktop\\vision\\VISIONAR-AI\\training\\experiments\\20261026-130553-f1d761be\\dataset\\labels\\val... 3 images, 0 backgrounds, 0 corrupt: 100% ━━━━━━━━━━━━ 3/3 1.3Kit/s 0.0s\r\n\u001b[34m\u001b[1mval: \u001b[0mNew cache created: C:\\Users\\alexi\\Desktop\\vision\\VISIONAR-AI\\training\\experiments\\20261026-130553-f1d761be\\dataset\\labels\\val.cache\r\n\u001b[34m\u001b[1moptimizer:\u001b[0m 'optimizer=auto' found, ignoring 'lr0=0.01' and determining best 'optimizer' and 'lr0' automatically... \r\n\u001b[34m\u001b[1moptimizer:\u001b[0m AdamW(lr=0.000119, momentum=0.9) with parameter groups 114 weight(decay=0.0), 126 weight(decay=0.0005), 126 bias(decay=0.0)\r\nUsing 4 train, 3 val images for fraction=1.0 at imgsz=320\r\nUsing 0 dataloader workers\r\nLogging results to \u001b[1mC:\\Users\\alexi\\Desktop\\vision\\VISIONAR-AI\\training\\experiments\\20261026-130553-f1d761be\\run\u001b[0m\r\nStarting training for 3 epochs...\r\nClosing dataloader mosaic\r\n\r\n      Epoch    GPU_mem   box_loss   cls_loss    l1_loss  Instances       Size\r\n\r\u001b[K        1/3         0G      3.748      6.878    0.03979          2        320: 0% ──────────── 0/4  0.4s\r\u001b[K        1/3         0G      2.319      6.104    0.02524          2        320: 25% ━━━───────── 1/4 1.2it/s 0.7s<2.5s\r\u001b[K        1/3         0G      2.288      5.672    0.03238          8        320: 50% ━━━━━━────── 2/4 2.1it/s 0.9s<1.0s\r\u001b[K        1/3         0G      1.956      5.119    0.03058          1        320: 75% ━━━━━━━━━─── 3/4 2.7it/s 1.2s<0.4s\r\u001b[K        1/3         0G      1.956      5.119    0.03058          1        320: 100% ━━━━━━━━━━━━ 4/4 3.4it/s 1.2s\r\n\r\u001b[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 50% ━━━━━━────── 1/2 1.8it/s 0.2s<0.6s\r\u001b[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100% ━━━━━━━━━━━━ 2/2 7.4it/s 0.3s\r\n                   all          3         12      0.818      0.628      0.838      0.654\r\n\r\n1 epochs completed in 0.001 hours.\r\nOptimizer stripped from C:\\Users\\alexi\\Desktop\\vision\\VISIONAR-AI\\training\\experiments\\20261026-130553-f1d761be\\run\\weights\\last.pt, 5.5MB\r\nOptimizer stripped from C:\\Users\\alexi\\Desktop\\vision\\VISIONAR-AI\\training\\experiments\\20261026-130553-f1d761be\\run\\weights\\best.pt, 5.5MB\r\n\r\nValidating C:\\Users\\alexi\\Desktop\\vision\\VISIONAR-AI\\training\\experiments\\20261026-130553-f1d761be\\run\\weights\\best.pt...\r\nUltralytics 8.4.189  Python-3.11.6 torch-2.14.1+cpu CPU (Intel Core i5-10210U 1.60GHz)\r\nYOLO26n summary (fused): 120 layers, 2,408,932 parameters, 0 gradients, 5.5 GFLOPs\r\n\r\u001b[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 50% ━━━━━━────── 1/2 2.8it/s 0.1s<0.4s\r\u001b[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100% ━━━━━━━━━━━━ 2/2 11.0it/s 0.2s\r\n                   all          3         12      0.817      0.628      0.838      0.654\r\n                person          2          7      0.474      0.143      0.212      0.152\r\n                   dog          1          1      0.931          1      0.995      0.697\r\n                 horse          1          2          1      0.998      0.995      0.531\r\n              umbrella          1          1      0.681          1      0.995      0.995\r\n          potted plant          1          1          1          0      0.995      0.895\r\nSpeed: 0.4ms preprocess, 55.8ms inference, 0.0ms loss, 0.9ms postprocess per image\r\n",
+    "running": false,
+    "pid": null,
+    "experiment": "20261026-130553-f1d761be",
+    "hardware": {
+      "device": "cpu",
+      "ram_available_mb": 3446
+    }
+  },
+  "resumed": {
+    "started": true,
+    "pid": 10588,
+    "experiment": "20261026-130553-f1d761be",
+    "config": {
+      "mode": "smoke",
+      "task": "detect",
+      "classes": null,
+      "model": "C:\\Users\\alexi\\Desktop\\vision\\VISIONAR-AI\\training\\checkpoints\\yolo26n.pt",
+      "data": "C:\\Users\\alexi\\Desktop\\vision\\VISIONAR-AI\\training\\experiments\\20261026-130553-f1d761be\\dataset\\data.yaml",
+      "epochs": 3,
+      "batch": 1,
+      "imgsz": 320,
+      "threads": 1,
+      "ram_limit_mb": 3000,
+      "purpose": "pipeline_validation_only",
+      "dataset_fingerprint": "59af568c1f3c13d194e5ef94f6884052b8bdfb01f43ab0244f314ba9990f8951",
+      "resume": "C:\\Users\\alexi\\Desktop\\vision\\VISIONAR-AI\\training\\experiments\\20261026-130553-f1d761be\\run\\weights\\epoch0.pt"
+    }
+  },
+  "final": {
+    "status": "completed",
+    "started_at": "2026-10-26T18:06:10.461703+00:00",
+    "production_deployed": false,
+    "epoch": 3,
+    "last_checkpoint": "C:\\Users\\alexi\\Desktop\\vision\\VISIONAR-AI\\training\\experiments\\20261026-130553-f1d761be\\run\\weights\\last.pt",
+    "best_checkpoint": "C:\\Users\\alexi\\Desktop\\vision\\VISIONAR-AI\\training\\experiments\\20261026-130553-f1d761be\\run\\weights\\best.pt",
+    "validation": {
+      "aggregate": {
+        "metrics/precision(B)": 0.7788128348483152,
+        "metrics/recall(B)": 0.6285714285714286,
+        "metrics/mAP50(B)": 0.8390254137115839,
+        "metrics/mAP50-95(B)": 0.6538241648679205,
+        "fitness": 0.6538241648679205
+      },
+      "per_class": [
+        {
+          "class_id": 0,
+          "name": "person",
+          "precision": 0.4157914542472644,
+          "recall": 0.14285714285714285,
+          "mAP50": 0.21512706855791963,
+          "mAP50_95": 0.15566249100626992
+        },
+        {
+          "class_id": 16,
+          "name": "dog",
+          "precision": 0.9194666261097338,
+          "recall": 1.0,
+          "mAP50": 0.995,
+          "mAP50_95": 0.6965
+        },
+        {
+          "class_id": 17,
+          "name": "horse",
+          "precision": 0.9076404876662603,
+          "recall": 1.0,
+          "mAP50": 0.995,
+          "mAP50_95": 0.5264583333333333
+        },
+        {
+          "class_id": 25,
+          "name": "umbrella",
+          "precision": 0.6511656062183175,
+          "recall": 1.0,
+          "mAP50": 0.995,
+          "mAP50_95": 0.9949999999999999
+        },
+        {
+          "class_id": 58,
+          "name": "potted plant",
+          "precision": 1.0,
+          "recall": 0.0,
+          "mAP50": 0.995,
+          "mAP50_95": 0.8955
+        }
+      ]
+    },
+    "independent_test": {
+      "aggregate": {
+        "metrics/precision(B)": 0.6954920146244075,
+        "metrics/recall(B)": 0.5833333333333333,
+        "metrics/mAP50(B)": 0.5800000000000001,
+        "metrics/mAP50-95(B)": 0.24,
+        "fitness": 0.24
+      },
+      "per_class": [
+        {
+          "class_id": 0,
+          "name": "person",
+          "precision": 0.5771211124082986,
+          "recall": 0.6666666666666666,
+          "mAP50": 0.665,
+          "mAP50_95": 0.1335
+        },
+        {
+          "class_id": 20,
+          "name": "elephant",
+          "precision": 0.8138629168405165,
+          "recall": 0.5,
+          "mAP50": 0.495,
+          "mAP50_95": 0.3465
+        }
+      ]
+    },
+    "promotable": false,
+    "finished_at": "2026-10-26T18:06:21.707020+00:00",
+    "resources": {
+      "peak_worker_rss_mb": 590.5,
+      "returncode": 0
+    },
+    "log_tail": "     2.288      5.672    0.03238          8        320: 50% ━━━━━━────── 2/4 2.2it/s 0.8s<0.9s\r\u001b[K        2/3         0G      1.956      5.119    0.03058          1        320: 75% ━━━━━━━━━─── 3/4 2.7it/s 1.0s<0.4s\r\u001b[K        2/3         0G      1.956      5.119    0.03058          1        320: 100% ━━━━━━━━━━━━ 4/4 3.8it/s 1.0s\r\n\r\u001b[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 50% ━━━━━━────── 1/2 1.8it/s 0.2s<0.6s\r\u001b[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100% ━━━━━━━━━━━━ 2/2 7.3it/s 0.3s\r\n                   all          3         12      0.817      0.628      0.838      0.654\r\n\r\n      Epoch    GPU_mem   box_loss   cls_loss    l1_loss  Instances       Size\r\n\r\u001b[K        3/3         0G      1.133       6.08     0.0173          2        320: 0% ──────────── 0/4  0.3s\r\u001b[K        3/3         0G     0.8112      4.713    0.01712          1        320: 25% ━━━───────── 1/4 1.1it/s 0.5s<2.7s\r\u001b[K        3/3         0G      1.625      4.974    0.03875          7        320: 50% ━━━━━━────── 2/4 2.0it/s 0.8s<1.0s\r\u001b[K        3/3         0G      1.669      5.985    0.03693          2        320: 75% ━━━━━━━━━─── 3/4 2.3it/s 1.1s<0.4s\r\u001b[K        3/3         0G      1.669      5.985    0.03693          2        320: 100% ━━━━━━━━━━━━ 4/4 3.6it/s 1.1s\r\n\r\u001b[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 50% ━━━━━━────── 1/2 1.6it/s 0.2s<0.6s\r\u001b[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100% ━━━━━━━━━━━━ 2/2 7.2it/s 0.3s\r\n                   all          3         12       0.83      0.604      0.838      0.611\r\n\r\n2 epochs completed in 0.001 hours.\r\nOptimizer stripped from C:\\Users\\alexi\\Desktop\\vision\\VISIONAR-AI\\training\\experiments\\20261026-130553-f1d761be\\run\\weights\\last.pt, 5.5MB\r\nOptimizer stripped from C:\\Users\\alexi\\Desktop\\vision\\VISIONAR-AI\\training\\experiments\\20261026-130553-f1d761be\\run\\weights\\best.pt, 5.5MB\r\n\r\nValidating C:\\Users\\alexi\\Desktop\\vision\\VISIONAR-AI\\training\\experiments\\20261026-130553-f1d761be\\run\\weights\\best.pt...\r\nUltralytics 8.4.189  Python-3.11.6 torch-2.14.1+cpu CPU (Intel Core i5-10210U 1.60GHz)\r\nYOLO26n summary (fused): 120 layers, 2,408,932 parameters, 0 gradients, 5.5 GFLOPs\r\n\r\u001b[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100% ━━━━━━━━━━━━ 2/2 11.8it/s 0.2s\r\n                   all          3         12      0.817      0.628      0.838      0.654\r\n                person          2          7      0.474      0.143      0.212      0.152\r\n                   dog          1          1      0.931          1      0.995      0.697\r\n                 horse          1          2          1      0.998      0.995      0.531\r\n              umbrella          1          1      0.681          1      0.995      0.995\r\n          potted plant          1          1          1          0      0.995      0.895\r\nSpeed: 0.4ms preprocess, 51.5ms inference, 0.0ms loss, 1.3ms postprocess per image\r\nUltralytics 8.4.189  Python-3.11.6 torch-2.14.1+cpu CPU (Intel Core i5-10210U 1.60GHz)\r\nYOLO26n summary (fused): 120 layers, 2,408,932 parameters, 0 gradients, 5.5 GFLOPs\r\n\u001b[34m\u001b[1mval: \u001b[0mFast image access  (ping: 0.1±0.0 ms, read: 300.9±69.0 MB/s, size: 39.7 KB)\r\n\r\u001b[K\u001b[34m\u001b[1mval: \u001b[0mScanning C:\\Users\\alexi\\Desktop\\vision\\VISIONAR-AI\\training\\experiments\\20261026-130553-f1d761be\\dataset\\labels\\val.cache... 3 images, 0 backgrounds, 0 corrupt: 100% ━━━━━━━━━━━━ 3/3  0.0s\r\n\r\u001b[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 66% ━━━━━━━━──── 2/3 5.4it/s 0.1s<0.2s\r\u001b[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100% ━━━━━━━━━━━━ 3/3 19.6it/s 0.2s\r\n                   all          3         12      0.779      0.629      0.839      0.654\r\n                person          2          7      0.416      0.143      0.215      0.156\r\n                   dog          1          1      0.919          1      0.995      0.697\r\n                 horse          1          2      0.908          1      0.995      0.526\r\n              umbrella          1          1      0.651          1      0.995      0.995\r\n          potted plant          1          1          1          0      0.995      0.895\r\nSpeed: 0.4ms preprocess, 45.9ms inference, 0.0ms loss, 1.0ms postprocess per image\r\nUltralytics 8.4.189  Python-3.11.6 torch-2.14.1+cpu CPU (Intel Core i5-10210U 1.60GHz)\r\nYOLO26n summary (fused): 120 layers, 2,408,932 parameters, 0 gradients, 5.5 GFLOPs\r\n\u001b[34m\u001b[1mval: \u001b[0mFast image access  (ping: 0.1±0.0 ms, read: 709.5±0.0 MB/s, size: 97.2 KB)\r\n\r\u001b[K\u001b[34m\u001b[1mval: \u001b[0mScanning C:\\Users\\alexi\\Desktop\\vision\\VISIONAR-AI\\training\\experiments\\20261026-130553-f1d761be\\dataset\\labels\\test... 1 images, 0 backgrounds, 0 corrupt: 100% ━━━━━━━━━━━━ 1/1 185.0it/s 0.0s\r\n\u001b[34m\u001b[1mval: \u001b[0mNew cache created: C:\\Users\\alexi\\Desktop\\vision\\VISIONAR-AI\\training\\experiments\\20261026-130553-f1d761be\\dataset\\labels\\test.cache\r\n\r\u001b[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100% ━━━━━━━━━━━━ 1/1 13.3it/s 0.1s\r\n                   all          1          5      0.695      0.583       0.58       0.24\r\n                person          1          3      0.577      0.667      0.665      0.134\r\n              elephant          1          2      0.814        0.5      0.495      0.346\r\nSpeed: 0.6ms preprocess, 67.5ms inference, 0.0ms loss, 1.1ms postprocess per image\r\n",
+    "running": false,
+    "pid": null,
+    "experiment": "20261026-130553-f1d761be",
+    "hardware": {
+      "device": "cpu",
+      "ram_available_mb": 3412
+    }
+  }
+}

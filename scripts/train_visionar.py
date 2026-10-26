@@ -1,96 +1,118 @@
-"""Audita y, solo con datos suficientes, entrena VisionAR Own Dataset v1."""
-from __future__ import annotations
-
+"""Isolated training worker; results never replace the active model."""
 import argparse
 import json
-import shutil
-from collections import Counter, defaultdict
-from datetime import datetime
+import os
+import hashlib
+from datetime import datetime, timezone
 from pathlib import Path
 
-try:
-    from runtime_limits import configure_runtime
-except ModuleNotFoundError:
-    from scripts.runtime_limits import configure_runtime
 
-configure_runtime()
-
-from ultralytics import YOLO
-import torch
-
-try:
-    from dataset_studio import CLASSES, DATASET_ROOT, DatasetStudio
-except ModuleNotFoundError:
-    from scripts.dataset_studio import CLASSES, DATASET_ROOT, DatasetStudio
-
-ROOT = Path(__file__).resolve().parents[1]
-REPORT = ROOT / "training" / "metrics" / "visionar_own_training_readiness.json"
+def write_json(path, data):
+    path = Path(path)
+    path.parent.mkdir(parents=True, exist_ok=True)
+    tmp = path.with_suffix('.tmp')
+    tmp.write_text(json.dumps(data, ensure_ascii=False, indent=2, allow_nan=False), encoding='utf-8')
+    os.replace(tmp, path)
 
 
-def audit(minimum_per_class: int) -> dict:
-    studio = DatasetStudio()
-    stats = studio.stats()
-    records = studio._records()
-    hashes_by_split = defaultdict(set)
-    for record in records:
-        hashes_by_split[record["sha256"]].add(record["split"])
-    cross_split = sorted(digest for digest, splits in hashes_by_split.items() if len(splits) > 1)
-    qualities = Counter(record["annotation"] for record in records)
-    insufficient = {name: stats["by_class"][name] for name in CLASSES if stats["by_class"][name] < minimum_per_class}
-    integrity = studio.audit(minimum_per_class)
-    report = {
-        "audited_at": datetime.now().astimezone().isoformat(), "dataset": stats,
-        "minimum_per_class": minimum_per_class, "insufficient_classes": insufficient,
-        "cross_split_duplicate_hashes": cross_split, "annotation_quality": dict(qualities),
-        "unreviewed_annotations": sum(count for quality, count in qualities.items() if "unreviewed" in quality),
-        "integrity_issues": integrity["issues"],
-        "ready": not insufficient and not cross_split and not integrity["issues"] and stats["total_images"] > 0,
-    }
-    REPORT.parent.mkdir(parents=True, exist_ok=True)
-    REPORT.write_text(json.dumps(report, ensure_ascii=False, indent=2), encoding="utf-8")
-    return report
+def run(experiment):
+    experiment = Path(experiment).resolve()
+    cfg = json.loads((experiment/'config.json').read_text(encoding='utf-8'))
+    for key in ('OMP_NUM_THREADS','MKL_NUM_THREADS','OPENBLAS_NUM_THREADS','NUMEXPR_NUM_THREADS'):
+        os.environ[key] = str(cfg['threads'])
+    import torch
+    import yaml
+    from ultralytics import YOLO
+    torch.set_num_threads(cfg['threads'])
+    state = {'status':'running','started_at':datetime.now(timezone.utc).isoformat(), 'production_deployed':False}
+    def persist(**changes):
+        state.update(changes)
+        write_json(experiment/'result.json',state)
+    def checkpoint(trainer):
+        persist(epoch=min(trainer.epoch+1,trainer.epochs), last_checkpoint=str(trainer.last), best_checkpoint=str(trainer.best))
+        if (experiment/'cancel.request').exists():
+            trainer.stop = True
+    try:
+        persist()
+        model = YOLO(cfg.get('resume') or cfg['model'])
+        if model.task != cfg['task']:
+            raise ValueError('La tarea del checkpoint no coincide con las anotaciones')
+        model.add_callback('on_fit_epoch_end',checkpoint)
+        model.train(data=cfg['data'], epochs=cfg['epochs'], imgsz=cfg['imgsz'], batch=cfg['batch'],
+                    device='cpu', workers=0, cache=False, plots=False, patience=10,
+                    save=True, save_period=1, seed=42, deterministic=True,
+                    project=str(experiment), name='run', exist_ok=True, resume=bool(cfg.get('resume')))
+        if (experiment/'cancel.request').exists():
+            persist(status='cancelled', recovery='Resume from the last complete epoch checkpoint')
+            return
+        best = experiment/'run'/'weights'/'best.pt'
+        evaluator=YOLO(str(best))
+        def evaluate(split):
+            return evaluator.val(data=cfg['data'], split=split, imgsz=cfg['imgsz'], batch=1,
+                                 device='cpu',workers=0,plots=False,project=str(experiment),name=split)
+        validation=evaluate('val')
+        config=yaml.safe_load(Path(cfg['data']).read_text(encoding='utf-8'))
+        independent=evaluate('test') if config.get('test') else None
+        def metrics(result):
+            import math
+            def finite(v):
+                value=float(v)
+                return value if math.isfinite(value) else None
+            per_class=[]
+            for i, class_id in enumerate(result.box.ap_class_index):
+                p,r,ap50,ap=result.box.class_result(i)
+                per_class.append({'class_id':int(class_id),'name':evaluator.names[int(class_id)],
+                                  'precision':finite(p),'recall':finite(r),'mAP50':finite(ap50),'mAP50_95':finite(ap)})
+                if cfg['task']=='segment':
+                    mp,mr,ma50,ma=result.seg.class_result(i)
+                    per_class[-1]['mask']={'precision':finite(mp),'recall':finite(mr),'mAP50':finite(ma50),'mAP50_95':finite(ma)}
+            return {'aggregate':{k:finite(v) for k,v in result.results_dict.items()},'per_class':per_class}
+        persist(status='completed', best_checkpoint=str(best), validation=metrics(validation),
+                checkpoint_sha256=hashlib.sha256(best.read_bytes()).hexdigest(),
+                independent_test=metrics(independent) if independent is not None else None,
+                promotable=cfg['mode']!='smoke' and independent is not None,
+                finished_at=datetime.now(timezone.utc).isoformat())
+    except BaseException as exc:
+        persist(status='failed',error=str(exc),finished_at=datetime.now(timezone.utc).isoformat())
+        raise
 
 
-def main() -> None:
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--execute", action="store_true", help="Entrena si la auditoría es satisfactoria")
-    parser.add_argument("--minimum-per-class", type=int, default=30)
-    parser.add_argument("--allow-unreviewed", action="store_true")
-    parser.add_argument("--model", default="training/checkpoints/yolo26n-objv1-seg.pt")
-    parser.add_argument("--epochs", type=int, default=40)
-    args = parser.parse_args()
-    report = audit(args.minimum_per_class)
-    print(json.dumps(report, ensure_ascii=False, indent=2))
-    if not args.execute:
-        return
-    blockers = []
-    if not report["ready"]:
-        blockers.append("faltan imágenes por clase o existen duplicados entre splits")
-    if report["unreviewed_annotations"] and not args.allow_unreviewed:
-        blockers.append("hay máscaras automáticas sin revisión")
-    if blockers:
-        raise SystemExit("ENTRENAMIENTO_BLOQUEADO: " + "; ".join(blockers))
-    device = 0 if torch.cuda.is_available() else "cpu"
-    model = YOLO(str(ROOT / args.model))
-    results = model.train(
-        data=str(DATASET_ROOT / "data.yaml"), epochs=args.epochs, imgsz=512,
-        batch=2, device=device, workers=0, patience=10, cache=False,
-        project=str(ROOT / "training" / "runs"), name="visionar_own_seg",
-    )
-    save_dir = Path(results.save_dir)
-    best = save_dir / "weights" / "best.pt"
-    deploy = ROOT / "training" / "checkpoints" / "visionar_38_best.pt"
-    if best.exists():
-        deploy.parent.mkdir(parents=True, exist_ok=True)
-        shutil.copy2(best, deploy)
-    summary = {"finished_at": datetime.now().astimezone().isoformat(), "device": str(device),
-               "save_dir": str(save_dir), "best_checkpoint": str(best), "deployed_checkpoint": str(deploy),
-               "metrics": {key: float(value) for key, value in getattr(results, "results_dict", {}).items()
-                           if isinstance(value, (int, float))}}
-    (ROOT / "training" / "metrics" / "visionar_own_result.json").write_text(
-        json.dumps(summary, ensure_ascii=False, indent=2), encoding="utf-8")
-    print(json.dumps(summary, ensure_ascii=False, indent=2))
+def main():
+    parser=argparse.ArgumentParser()
+    parser.add_argument('--experiment',type=Path)
+    parser.add_argument('--execute',action='store_true')
+    parser.add_argument('--mode',choices=['smoke','partial','full'],default='full')
+    parser.add_argument('--epochs',type=int,default=40)
+    parser.add_argument('--task',choices=['detect','segment'],default='detect')
+    parser.add_argument('--classes',nargs='+')
+    parser.add_argument('--model',default='training/checkpoints/yolo26n.pt')
+    parser.add_argument('--batch',type=int,default=1)
+    parser.add_argument('--imgsz',type=int,default=320)
+    parser.add_argument('--threads',type=int,default=1)
+    parser.add_argument('--ram-limit-mb',type=int,default=2400)
+    args=parser.parse_args()
+    if args.experiment:
+        run(args.experiment)
+    else:
+        from dataset_studio import DatasetStudio
+        studio=DatasetStudio()
+        if not args.execute:
+            print(json.dumps(studio.training_audit(args.classes,args.task,2 if args.mode=='partial' else 30),ensure_ascii=False,indent=2))
+        else:
+            from training_manager import TrainingManager
+            import time
+            manager=TrainingManager(studio)
+            result=manager.start(epochs=args.epochs,model=args.model,mode=args.mode,classes=args.classes,task=args.task,
+                                 batch=args.batch,imgsz=args.imgsz,threads=args.threads,ram_limit_mb=args.ram_limit_mb)
+            print(json.dumps(result,ensure_ascii=False,indent=2),flush=True)
+            if not result.get('started'):
+                raise SystemExit(2)
+            while manager.status()['running']:
+                time.sleep(1)
+            print(json.dumps(manager.status(),ensure_ascii=False,indent=2))
+            if manager.status().get('status')!='completed':
+                raise SystemExit(1)
 
 
-if __name__ == "__main__":
+if __name__=='__main__':
     main()

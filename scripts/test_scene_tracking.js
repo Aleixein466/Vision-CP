@@ -19,3 +19,14 @@ tracker.update({ detections: [wallet] }, 3000);
 result = tracker.update({ detections: [wallet] }, 3200);
 assert.deepEqual(result.events.map((event) => event.type), ['enter']);
 console.log('SCENE_TRACKING_OK');
+
+const individual = new SceneTracker({confirmFrames:1,exitFrames:2,exitMilliseconds:100});
+const a={...wallet,box:{x:.1,y:.2,w:.1,h:.1}},b={...wallet,box:{x:.7,y:.2,w:.1,h:.1}};
+const first=individual.update({detections:[a,b]},0);
+const reordered=individual.update({detections:[b,a]},10);
+assert.equal(first.detections[0].id,reordered.detections.find(d=>d.box.x<.5).id);
+individual.update({detections:[a]},100);
+const lost=individual.update({detections:[a]},200);
+assert.equal(lost.detections.length,1);
+assert.equal(lost.events.filter(e=>e.type==='exit').length,1);
+console.log('INDIVIDUAL_TRACKING_OK');

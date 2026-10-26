@@ -1,0 +1,13 @@
+{
+  "real_inference": {
+    "status": 200,
+    "detections": 2,
+    "latency_ms": 3888.99
+  },
+  "security_and_training_blockers": "passed",
+  "browser_import_review": "passed; temporary fixture only",
+  "viewport_390": "passed",
+  "viewport_768": "passed",
+  "viewport_1440": "passed",
+  "browser_errors": []
+}

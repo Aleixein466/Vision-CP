@@ -1,0 +1,1139 @@
+{
+  "dataset": {
+    "reconciled_at": "2026-10-26T13:01:56.034846-05:00",
+    "candidates": 1034,
+    "physical_files": 1034,
+    "states": {
+      "pending": 1034
+    },
+    "duplicates": [],
+    "near_duplicate_groups": [],
+    "issues": [],
+    "traceable_provenance": 798,
+    "stats": {
+      "name": "VisionAR Own Dataset v1",
+      "root": "datasets\\visionar_own_v1",
+      "classes": [
+        "person",
+        "eyeglasses",
+        "shirt",
+        "nail_clipper",
+        "cell_phone",
+        "perfume_bottle",
+        "potted_plant",
+        "chair",
+        "marker",
+        "eraser",
+        "tv",
+        "fish",
+        "cat",
+        "dog",
+        "motorcycle",
+        "pencil_case",
+        "wallet",
+        "payment_card",
+        "fork",
+        "spoon",
+        "knife",
+        "pen",
+        "backpack",
+        "handbag",
+        "playing_card",
+        "adhesive_tape",
+        "screwdriver",
+        "paper_sheet",
+        "table",
+        "sofa",
+        "cap",
+        "sweatshirt",
+        "sneakers",
+        "wardrobe",
+        "pillow",
+        "keys",
+        "usb_drive",
+        "banknote"
+      ],
+      "images": {
+        "test": 0,
+        "train": 0,
+        "val": 0
+      },
+      "total_images": 0,
+      "annotations": 0,
+      "reviewed_annotations": 0,
+      "pending_annotations": 1411,
+      "candidate_images": 1034,
+      "pending_candidates": 1034,
+      "by_class": {
+        "person": 0,
+        "eyeglasses": 0,
+        "shirt": 0,
+        "nail_clipper": 0,
+        "cell_phone": 0,
+        "perfume_bottle": 0,
+        "potted_plant": 0,
+        "chair": 0,
+        "marker": 0,
+        "eraser": 0,
+        "tv": 0,
+        "fish": 0,
+        "cat": 0,
+        "dog": 0,
+        "motorcycle": 0,
+        "pencil_case": 0,
+        "wallet": 0,
+        "payment_card": 0,
+        "fork": 0,
+        "spoon": 0,
+        "knife": 0,
+        "pen": 0,
+        "backpack": 0,
+        "handbag": 0,
+        "playing_card": 0,
+        "adhesive_tape": 0,
+        "screwdriver": 0,
+        "paper_sheet": 0,
+        "table": 0,
+        "sofa": 0,
+        "cap": 0,
+        "sweatshirt": 0,
+        "sneakers": 0,
+        "wardrobe": 0,
+        "pillow": 0,
+        "keys": 0,
+        "usb_drive": 0,
+        "banknote": 0
+      },
+      "per_class": {
+        "person": {
+          "photos": 0,
+          "annotations": 0,
+          "reviewed": 0,
+          "pending": 79,
+          "target": 30,
+          "missing": 30,
+          "ready": false,
+          "complete_photos_by_split": {
+            "test": 0,
+            "train": 0,
+            "val": 0
+          }
+        },
+        "eyeglasses": {
+          "photos": 0,
+          "annotations": 0,
+          "reviewed": 0,
+          "pending": 34,
+          "target": 30,
+          "missing": 30,
+          "ready": false,
+          "complete_photos_by_split": {
+            "test": 0,
+            "train": 0,
+            "val": 0
+          }
+        },
+        "shirt": {
+          "photos": 0,
+          "annotations": 0,
+          "reviewed": 0,
+          "pending": 34,
+          "target": 30,
+          "missing": 30,
+          "ready": false,
+          "complete_photos_by_split": {
+            "test": 0,
+            "train": 0,
+            "val": 0
+          }
+        },
+        "nail_clipper": {
+          "photos": 0,
+          "annotations": 0,
+          "reviewed": 0,
+          "pending": 14,
+          "target": 30,
+          "missing": 30,
+          "ready": false,
+          "complete_photos_by_split": {
+            "test": 0,
+            "train": 0,
+            "val": 0
+          }
+        },
+        "cell_phone": {
+          "photos": 0,
+          "annotations": 0,
+          "reviewed": 0,
+          "pending": 40,
+          "target": 30,
+          "missing": 30,
+          "ready": false,
+          "complete_photos_by_split": {
+            "test": 0,
+            "train": 0,
+            "val": 0
+          }
+        },
+        "perfume_bottle": {
+          "photos": 0,
+          "annotations": 0,
+          "reviewed": 0,
+          "pending": 30,
+          "target": 30,
+          "missing": 30,
+          "ready": false,
+          "complete_photos_by_split": {
+            "test": 0,
+            "train": 0,
+            "val": 0
+          }
+        },
+        "potted_plant": {
+          "photos": 0,
+          "annotations": 0,
+          "reviewed": 0,
+          "pending": 55,
+          "target": 30,
+          "missing": 30,
+          "ready": false,
+          "complete_photos_by_split": {
+            "test": 0,
+            "train": 0,
+            "val": 0
+          }
+        },
+        "chair": {
+          "photos": 0,
+          "annotations": 0,
+          "reviewed": 0,
+          "pending": 67,
+          "target": 30,
+          "missing": 30,
+          "ready": false,
+          "complete_photos_by_split": {
+            "test": 0,
+            "train": 0,
+            "val": 0
+          }
+        },
+        "marker": {
+          "photos": 0,
+          "annotations": 0,
+          "reviewed": 0,
+          "pending": 30,
+          "target": 30,
+          "missing": 30,
+          "ready": false,
+          "complete_photos_by_split": {
+            "test": 0,
+            "train": 0,
+            "val": 0
+          }
+        },
+        "eraser": {
+          "photos": 0,
+          "annotations": 0,
+          "reviewed": 0,
+          "pending": 27,
+          "target": 30,
+          "missing": 30,
+          "ready": false,
+          "complete_photos_by_split": {
+            "test": 0,
+            "train": 0,
+            "val": 0
+          }
+        },
+        "tv": {
+          "photos": 0,
+          "annotations": 0,
+          "reviewed": 0,
+          "pending": 33,
+          "target": 30,
+          "missing": 30,
+          "ready": false,
+          "complete_photos_by_split": {
+            "test": 0,
+            "train": 0,
+            "val": 0
+          }
+        },
+        "fish": {
+          "photos": 0,
+          "annotations": 0,
+          "reviewed": 0,
+          "pending": 61,
+          "target": 30,
+          "missing": 30,
+          "ready": false,
+          "complete_photos_by_split": {
+            "test": 0,
+            "train": 0,
+            "val": 0
+          }
+        },
+        "cat": {
+          "photos": 0,
+          "annotations": 0,
+          "reviewed": 0,
+          "pending": 32,
+          "target": 30,
+          "missing": 30,
+          "ready": false,
+          "complete_photos_by_split": {
+            "test": 0,
+            "train": 0,
+            "val": 0
+          }
+        },
+        "dog": {
+          "photos": 0,
+          "annotations": 0,
+          "reviewed": 0,
+          "pending": 35,
+          "target": 30,
+          "missing": 30,
+          "ready": false,
+          "complete_photos_by_split": {
+            "test": 0,
+            "train": 0,
+            "val": 0
+          }
+        },
+        "motorcycle": {
+          "photos": 0,
+          "annotations": 0,
+          "reviewed": 0,
+          "pending": 47,
+          "target": 30,
+          "missing": 30,
+          "ready": false,
+          "complete_photos_by_split": {
+            "test": 0,
+            "train": 0,
+            "val": 0
+          }
+        },
+        "pencil_case": {
+          "photos": 0,
+          "annotations": 0,
+          "reviewed": 0,
+          "pending": 30,
+          "target": 30,
+          "missing": 30,
+          "ready": false,
+          "complete_photos_by_split": {
+            "test": 0,
+            "train": 0,
+            "val": 0
+          }
+        },
+        "wallet": {
+          "photos": 0,
+          "annotations": 0,
+          "reviewed": 0,
+          "pending": 30,
+          "target": 30,
+          "missing": 30,
+          "ready": false,
+          "complete_photos_by_split": {
+            "test": 0,
+            "train": 0,
+            "val": 0
+          }
+        },
+        "payment_card": {
+          "photos": 0,
+          "annotations": 0,
+          "reviewed": 0,
+          "pending": 18,
+          "target": 30,
+          "missing": 30,
+          "ready": false,
+          "complete_photos_by_split": {
+            "test": 0,
+            "train": 0,
+            "val": 0
+          }
+        },
+        "fork": {
+          "photos": 0,
+          "annotations": 0,
+          "reviewed": 0,
+          "pending": 39,
+          "target": 30,
+          "missing": 30,
+          "ready": false,
+          "complete_photos_by_split": {
+            "test": 0,
+            "train": 0,
+            "val": 0
+          }
+        },
+        "spoon": {
+          "photos": 0,
+          "annotations": 0,
+          "reviewed": 0,
+          "pending": 47,
+          "target": 30,
+          "missing": 30,
+          "ready": false,
+          "complete_photos_by_split": {
+            "test": 0,
+            "train": 0,
+            "val": 0
+          }
+        },
+        "knife": {
+          "photos": 0,
+          "annotations": 0,
+          "reviewed": 0,
+          "pending": 43,
+          "target": 30,
+          "missing": 30,
+          "ready": false,
+          "complete_photos_by_split": {
+            "test": 0,
+            "train": 0,
+            "val": 0
+          }
+        },
+        "pen": {
+          "photos": 0,
+          "annotations": 0,
+          "reviewed": 0,
+          "pending": 41,
+          "target": 30,
+          "missing": 30,
+          "ready": false,
+          "complete_photos_by_split": {
+            "test": 0,
+            "train": 0,
+            "val": 0
+          }
+        },
+        "backpack": {
+          "photos": 0,
+          "annotations": 0,
+          "reviewed": 0,
+          "pending": 37,
+          "target": 30,
+          "missing": 30,
+          "ready": false,
+          "complete_photos_by_split": {
+            "test": 0,
+            "train": 0,
+            "val": 0
+          }
+        },
+        "handbag": {
+          "photos": 0,
+          "annotations": 0,
+          "reviewed": 0,
+          "pending": 53,
+          "target": 30,
+          "missing": 30,
+          "ready": false,
+          "complete_photos_by_split": {
+            "test": 0,
+            "train": 0,
+            "val": 0
+          }
+        },
+        "playing_card": {
+          "photos": 0,
+          "annotations": 0,
+          "reviewed": 0,
+          "pending": 30,
+          "target": 30,
+          "missing": 30,
+          "ready": false,
+          "complete_photos_by_split": {
+            "test": 0,
+            "train": 0,
+            "val": 0
+          }
+        },
+        "adhesive_tape": {
+          "photos": 0,
+          "annotations": 0,
+          "reviewed": 0,
+          "pending": 30,
+          "target": 30,
+          "missing": 30,
+          "ready": false,
+          "complete_photos_by_split": {
+            "test": 0,
+            "train": 0,
+            "val": 0
+          }
+        },
+        "screwdriver": {
+          "photos": 0,
+          "annotations": 0,
+          "reviewed": 0,
+          "pending": 30,
+          "target": 30,
+          "missing": 30,
+          "ready": false,
+          "complete_photos_by_split": {
+            "test": 0,
+            "train": 0,
+            "val": 0
+          }
+        },
+        "paper_sheet": {
+          "photos": 0,
+          "annotations": 0,
+          "reviewed": 0,
+          "pending": 30,
+          "target": 30,
+          "missing": 30,
+          "ready": false,
+          "complete_photos_by_split": {
+            "test": 0,
+            "train": 0,
+            "val": 0
+          }
+        },
+        "table": {
+          "photos": 0,
+          "annotations": 0,
+          "reviewed": 0,
+          "pending": 55,
+          "target": 30,
+          "missing": 30,
+          "ready": false,
+          "complete_photos_by_split": {
+            "test": 0,
+            "train": 0,
+            "val": 0
+          }
+        },
+        "sofa": {
+          "photos": 0,
+          "annotations": 0,
+          "reviewed": 0,
+          "pending": 37,
+          "target": 30,
+          "missing": 30,
+          "ready": false,
+          "complete_photos_by_split": {
+            "test": 0,
+            "train": 0,
+            "val": 0
+          }
+        },
+        "cap": {
+          "photos": 0,
+          "annotations": 0,
+          "reviewed": 0,
+          "pending": 30,
+          "target": 30,
+          "missing": 30,
+          "ready": false,
+          "complete_photos_by_split": {
+            "test": 0,
+            "train": 0,
+            "val": 0
+          }
+        },
+        "sweatshirt": {
+          "photos": 0,
+          "annotations": 0,
+          "reviewed": 0,
+          "pending": 17,
+          "target": 30,
+          "missing": 30,
+          "ready": false,
+          "complete_photos_by_split": {
+            "test": 0,
+            "train": 0,
+            "val": 0
+          }
+        },
+        "sneakers": {
+          "photos": 0,
+          "annotations": 0,
+          "reviewed": 0,
+          "pending": 30,
+          "target": 30,
+          "missing": 30,
+          "ready": false,
+          "complete_photos_by_split": {
+            "test": 0,
+            "train": 0,
+            "val": 0
+          }
+        },
+        "wardrobe": {
+          "photos": 0,
+          "annotations": 0,
+          "reviewed": 0,
+          "pending": 30,
+          "target": 30,
+          "missing": 30,
+          "ready": false,
+          "complete_photos_by_split": {
+            "test": 0,
+            "train": 0,
+            "val": 0
+          }
+        },
+        "pillow": {
+          "photos": 0,
+          "annotations": 0,
+          "reviewed": 0,
+          "pending": 55,
+          "target": 30,
+          "missing": 30,
+          "ready": false,
+          "complete_photos_by_split": {
+            "test": 0,
+            "train": 0,
+            "val": 0
+          }
+        },
+        "keys": {
+          "photos": 0,
+          "annotations": 0,
+          "reviewed": 0,
+          "pending": 23,
+          "target": 30,
+          "missing": 30,
+          "ready": false,
+          "complete_photos_by_split": {
+            "test": 0,
+            "train": 0,
+            "val": 0
+          }
+        },
+        "usb_drive": {
+          "photos": 0,
+          "annotations": 0,
+          "reviewed": 0,
+          "pending": 28,
+          "target": 30,
+          "missing": 30,
+          "ready": false,
+          "complete_photos_by_split": {
+            "test": 0,
+            "train": 0,
+            "val": 0
+          }
+        },
+        "banknote": {
+          "photos": 0,
+          "annotations": 0,
+          "reviewed": 0,
+          "pending": 30,
+          "target": 30,
+          "missing": 30,
+          "ready": false,
+          "complete_photos_by_split": {
+            "test": 0,
+            "train": 0,
+            "val": 0
+          }
+        }
+      },
+      "reviewed_masks": 0,
+      "reviewed_detections": 0,
+      "ready_for_training": false,
+      "minimum_recommended_per_class": 30,
+      "required_annotations": 1140
+    }
+  },
+  "inference": {
+    "detections": [
+      {
+        "id": "obj-1",
+        "class_id": 0,
+        "class": "person",
+        "label": "persona",
+        "confidence": 0.9558,
+        "uncertainty": "detector_evidence",
+        "occlusion": "unknown",
+        "description": null,
+        "box": {
+          "x": 0.36595,
+          "y": 0.24538,
+          "w": 0.6181,
+          "h": 0.75307
+        },
+        "polygon": null
+      },
+      {
+        "id": "obj-2",
+        "class_id": 31,
+        "class": "umbrella",
+        "label": "paraguas",
+        "confidence": 0.9257,
+        "uncertainty": "detector_evidence",
+        "occlusion": "unknown",
+        "description": null,
+        "box": {
+          "x": 0.01208,
+          "y": 0.09065,
+          "w": 0.93444,
+          "h": 0.65164
+        },
+        "polygon": null
+      }
+    ],
+    "counts": {
+      "persona": 1,
+      "paraguas": 1
+    },
+    "image": {
+      "width": 481,
+      "height": 640
+    },
+    "latency_ms": 2766.81,
+    "fps_equivalent": 0.36,
+    "model": "yolo26n-objv1-150.pt",
+    "scale": "n",
+    "task": "detect",
+    "confidence_threshold": 0.25,
+    "imgsz": 320,
+    "mode": "general"
+  },
+  "roi_inference": {
+    "detections": [
+      {
+        "id": "obj-1",
+        "class_id": 0,
+        "class": "person",
+        "label": "persona",
+        "confidence": 0.9189,
+        "uncertainty": "detector_evidence",
+        "occlusion": "unknown",
+        "description": null,
+        "box": {
+          "x": 0.366441,
+          "y": 0.24748299999999998,
+          "w": 0.431823,
+          "h": 0.5525169999999999
+        },
+        "polygon": null
+      },
+      {
+        "id": "obj-2",
+        "class_id": 121,
+        "class": "tent",
+        "label": "tent",
+        "confidence": 0.3071,
+        "uncertainty": "tentative",
+        "occlusion": "unknown",
+        "description": null,
+        "box": {
+          "x": 0.10215600000000001,
+          "y": 0.100917,
+          "w": 0.6974239999999999,
+          "h": 0.652799
+        },
+        "polygon": null
+      }
+    ],
+    "counts": {
+      "persona": 1,
+      "tent": 1
+    },
+    "image": {
+      "width": 336,
+      "height": 447
+    },
+    "latency_ms": 162.25,
+    "fps_equivalent": 6.16,
+    "model": "yolo26n-objv1-150.pt",
+    "scale": "n",
+    "task": "detect",
+    "confidence_threshold": 0.25,
+    "imgsz": 640,
+    "mode": "general",
+    "focus_used": true
+  },
+  "training": {
+    "status": "completed",
+    "started_at": "2026-10-26T18:02:03.459721+00:00",
+    "production_deployed": false,
+    "epoch": 1,
+    "last_checkpoint": "C:\\Users\\alexi\\Desktop\\vision\\VISIONAR-AI\\training\\experiments\\20261026-130159-4e3d66fb\\run\\weights\\last.pt",
+    "best_checkpoint": "C:\\Users\\alexi\\Desktop\\vision\\VISIONAR-AI\\training\\experiments\\20261026-130159-4e3d66fb\\run\\weights\\best.pt",
+    "validation": {
+      "aggregate": {
+        "metrics/precision(B)": 0.7413058212027385,
+        "metrics/recall(B)": 0.6285714285714286,
+        "metrics/mAP50(B)": 0.837575074775673,
+        "metrics/mAP50-95(B)": 0.6336273226474423,
+        "fitness": 0.6336273226474423
+      },
+      "per_class": [
+        {
+          "class_id": 0,
+          "name": "person",
+          "precision": 0.38897355314923837,
+          "recall": 0.14285714285714285,
+          "mAP50": 0.20787537387836488,
+          "mAP50_95": 0.15046994657054477
+        },
+        {
+          "class_id": 16,
+          "name": "dog",
+          "precision": 0.9157965980229892,
+          "recall": 1.0,
+          "mAP50": 0.995,
+          "mAP50_95": 0.6965
+        },
+        {
+          "class_id": 17,
+          "name": "horse",
+          "precision": 0.7570447210994947,
+          "recall": 1.0,
+          "mAP50": 0.995,
+          "mAP50_95": 0.6296666666666666
+        },
+        {
+          "class_id": 25,
+          "name": "umbrella",
+          "precision": 0.6447142337419699,
+          "recall": 1.0,
+          "mAP50": 0.995,
+          "mAP50_95": 0.9949999999999999
+        },
+        {
+          "class_id": 58,
+          "name": "potted plant",
+          "precision": 1.0,
+          "recall": 0.0,
+          "mAP50": 0.995,
+          "mAP50_95": 0.6965
+        }
+      ]
+    },
+    "independent_test": {
+      "aggregate": {
+        "metrics/precision(B)": 0.7989036241467717,
+        "metrics/recall(B)": 0.5833333333333333,
+        "metrics/mAP50(B)": 0.5800000000000001,
+        "metrics/mAP50-95(B)": 0.264875,
+        "fitness": 0.264875
+      },
+      "per_class": [
+        {
+          "class_id": 0,
+          "name": "person",
+          "precision": 0.7271039880326914,
+          "recall": 0.6666666666666666,
+          "mAP50": 0.665,
+          "mAP50_95": 0.18325
+        },
+        {
+          "class_id": 20,
+          "name": "elephant",
+          "precision": 0.870703260260852,
+          "recall": 0.5,
+          "mAP50": 0.495,
+          "mAP50_95": 0.3465
+        }
+      ]
+    },
+    "promotable": false,
+    "finished_at": "2026-10-26T18:02:15.368146+00:00",
+    "log_tail": "gnoring 'lr0=0.01' and determining best 'optimizer' and 'lr0' automatically... \r\n\u001b[34m\u001b[1moptimizer:\u001b[0m AdamW(lr=0.000119, momentum=0.9) with parameter groups 114 weight(decay=0.0), 126 weight(decay=0.0005), 126 bias(decay=0.0)\r\nUsing 4 train, 3 val images for fraction=1.0 at imgsz=320\r\nUsing 0 dataloader workers\r\nLogging results to \u001b[1mC:\\Users\\alexi\\Desktop\\vision\\VISIONAR-AI\\training\\experiments\\20261026-130159-4e3d66fb\\run\u001b[0m\r\nStarting training for 1 epochs...\r\nClosing dataloader mosaic\r\n\r\n      Epoch    GPU_mem   box_loss   cls_loss    l1_loss  Instances       Size\r\n\r\u001b[K        1/1         0G      3.748      6.878    0.03979          2        320: 0% ──────────── 0/4  0.5s\r\u001b[K        1/1         0G      2.319      6.104    0.02524          2        320: 25% ━━━───────── 1/4 1.2s/it 0.8s<3.6s\r\u001b[K        1/1         0G      2.288      5.672    0.03238          8        320: 50% ━━━━━━────── 2/4 1.5it/s 1.2s<1.4s\r\u001b[K        1/1         0G      1.956      5.119    0.03058          1        320: 75% ━━━━━━━━━─── 3/4 1.7it/s 1.6s<0.6s\r\u001b[K        1/1         0G      1.956      5.119    0.03058          1        320: 100% ━━━━━━━━━━━━ 4/4 2.5it/s 1.6s\r\n\r\u001b[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 50% ━━━━━━────── 1/2 1.2it/s 0.2s<0.8s\r\u001b[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100% ━━━━━━━━━━━━ 2/2 5.2it/s 0.4s\r\n                   all          3         12        0.8      0.629      0.837      0.657\r\n\r\n1 epochs completed in 0.001 hours.\r\nOptimizer stripped from C:\\Users\\alexi\\Desktop\\vision\\VISIONAR-AI\\training\\experiments\\20261026-130159-4e3d66fb\\run\\weights\\last.pt, 5.5MB\r\nOptimizer stripped from C:\\Users\\alexi\\Desktop\\vision\\VISIONAR-AI\\training\\experiments\\20261026-130159-4e3d66fb\\run\\weights\\best.pt, 5.5MB\r\n\r\nValidating C:\\Users\\alexi\\Desktop\\vision\\VISIONAR-AI\\training\\experiments\\20261026-130159-4e3d66fb\\run\\weights\\best.pt...\r\nUltralytics 8.4.189  Python-3.11.6 torch-2.14.1+cpu CPU (Intel Core i5-10210U 1.60GHz)\r\nYOLO26n summary (fused): 120 layers, 2,408,932 parameters, 0 gradients, 5.5 GFLOPs\r\n\r\u001b[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 50% ━━━━━━────── 1/2 2.2it/s 0.1s<0.5s\r\u001b[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100% ━━━━━━━━━━━━ 2/2 9.3it/s 0.2s\r\n                   all          3         12      0.801      0.629      0.837      0.657\r\n                person          2          7      0.453      0.143      0.204       0.15\r\n                   dog          1          1      0.932          1      0.995      0.796\r\n                 horse          1          2      0.937          1      0.995      0.646\r\n              umbrella          1          1      0.683          1      0.995      0.995\r\n          potted plant          1          1          1          0      0.995      0.697\r\nSpeed: 0.4ms preprocess, 65.0ms inference, 0.0ms loss, 1.0ms postprocess per image\r\nUltralytics 8.4.189  Python-3.11.6 torch-2.14.1+cpu CPU (Intel Core i5-10210U 1.60GHz)\r\nYOLO26n summary (fused): 120 layers, 2,408,932 parameters, 0 gradients, 5.5 GFLOPs\r\n\u001b[34m\u001b[1mval: \u001b[0mFast image access  (ping: 0.1±0.0 ms, read: 337.0±55.8 MB/s, size: 39.7 KB)\r\n\r\u001b[K\u001b[34m\u001b[1mval: \u001b[0mScanning C:\\Users\\alexi\\Desktop\\vision\\VISIONAR-AI\\training\\experiments\\20261026-130159-4e3d66fb\\dataset\\labels\\val.cache... 3 images, 0 backgrounds, 0 corrupt: 100% ━━━━━━━━━━━━ 3/3  0.0s\r\n\r\u001b[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 66% ━━━━━━━━──── 2/3 5.0it/s 0.1s<0.2s\r\u001b[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100% ━━━━━━━━━━━━ 3/3 18.6it/s 0.2s\r\n                   all          3         12      0.741      0.629      0.838      0.634\r\n                person          2          7      0.389      0.143      0.208       0.15\r\n                   dog          1          1      0.916          1      0.995      0.697\r\n                 horse          1          2      0.757          1      0.995       0.63\r\n              umbrella          1          1      0.645          1      0.995      0.995\r\n          potted plant          1          1          1          0      0.995      0.697\r\nSpeed: 0.3ms preprocess, 51.1ms inference, 0.0ms loss, 1.0ms postprocess per image\r\nUltralytics 8.4.189  Python-3.11.6 torch-2.14.1+cpu CPU (Intel Core i5-10210U 1.60GHz)\r\nYOLO26n summary (fused): 120 layers, 2,408,932 parameters, 0 gradients, 5.5 GFLOPs\r\nWARNING \u001b[34m\u001b[1mval: \u001b[0mSlow image access detected (ping: 0.1±0.0 ms, read: 14.3±0.0 MB/s, size: 97.2 KB). Use local storage instead of remote/mounted storage for better performance. See https://docs.ultralytics.com/guides/model-training-tips\r\n\r\u001b[K\u001b[34m\u001b[1mval: \u001b[0mScanning C:\\Users\\alexi\\Desktop\\vision\\VISIONAR-AI\\training\\experiments\\20261026-130159-4e3d66fb\\dataset\\labels\\test... 1 images, 0 backgrounds, 0 corrupt: 100% ━━━━━━━━━━━━ 1/1 500.0it/s 0.0s\r\n\u001b[34m\u001b[1mval: \u001b[0mNew cache created: C:\\Users\\alexi\\Desktop\\vision\\VISIONAR-AI\\training\\experiments\\20261026-130159-4e3d66fb\\dataset\\labels\\test.cache\r\n\r\u001b[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100% ━━━━━━━━━━━━ 1/1 14.5it/s 0.1s\r\n                   all          1          5      0.799      0.583       0.58      0.265\r\n                person          1          3      0.727      0.667      0.665      0.183\r\n              elephant          1          2      0.871        0.5      0.495      0.346\r\nSpeed: 0.7ms preprocess, 68.3ms inference, 0.0ms loss, 1.1ms postprocess per image\r\n",
+    "running": false,
+    "pid": null,
+    "experiment": "20261026-130159-4e3d66fb",
+    "hardware": {
+      "device": "cpu",
+      "ram_available_mb": 3318
+    }
+  },
+  "experiments": [
+    {
+      "id": "20261026-130159-4e3d66fb",
+      "config": {
+        "mode": "smoke",
+        "task": "detect",
+        "classes": null,
+        "model": "C:\\Users\\alexi\\Desktop\\vision\\VISIONAR-AI\\training\\checkpoints\\yolo26n.pt",
+        "data": "C:\\Users\\alexi\\Desktop\\vision\\VISIONAR-AI\\training\\experiments\\20261026-130159-4e3d66fb\\dataset\\data.yaml",
+        "epochs": 1,
+        "batch": 1,
+        "imgsz": 320,
+        "threads": 1,
+        "ram_limit_mb": 2400,
+        "purpose": "pipeline_validation_only"
+      },
+      "result": {
+        "status": "completed",
+        "started_at": "2026-10-26T18:02:03.459721+00:00",
+        "production_deployed": false,
+        "epoch": 1,
+        "last_checkpoint": "C:\\Users\\alexi\\Desktop\\vision\\VISIONAR-AI\\training\\experiments\\20261026-130159-4e3d66fb\\run\\weights\\last.pt",
+        "best_checkpoint": "C:\\Users\\alexi\\Desktop\\vision\\VISIONAR-AI\\training\\experiments\\20261026-130159-4e3d66fb\\run\\weights\\best.pt",
+        "validation": {
+          "aggregate": {
+            "metrics/precision(B)": 0.7413058212027385,
+            "metrics/recall(B)": 0.6285714285714286,
+            "metrics/mAP50(B)": 0.837575074775673,
+            "metrics/mAP50-95(B)": 0.6336273226474423,
+            "fitness": 0.6336273226474423
+          },
+          "per_class": [
+            {
+              "class_id": 0,
+              "name": "person",
+              "precision": 0.38897355314923837,
+              "recall": 0.14285714285714285,
+              "mAP50": 0.20787537387836488,
+              "mAP50_95": 0.15046994657054477
+            },
+            {
+              "class_id": 16,
+              "name": "dog",
+              "precision": 0.9157965980229892,
+              "recall": 1.0,
+              "mAP50": 0.995,
+              "mAP50_95": 0.6965
+            },
+            {
+              "class_id": 17,
+              "name": "horse",
+              "precision": 0.7570447210994947,
+              "recall": 1.0,
+              "mAP50": 0.995,
+              "mAP50_95": 0.6296666666666666
+            },
+            {
+              "class_id": 25,
+              "name": "umbrella",
+              "precision": 0.6447142337419699,
+              "recall": 1.0,
+              "mAP50": 0.995,
+              "mAP50_95": 0.9949999999999999
+            },
+            {
+              "class_id": 58,
+              "name": "potted plant",
+              "precision": 1.0,
+              "recall": 0.0,
+              "mAP50": 0.995,
+              "mAP50_95": 0.6965
+            }
+          ]
+        },
+        "independent_test": {
+          "aggregate": {
+            "metrics/precision(B)": 0.7989036241467717,
+            "metrics/recall(B)": 0.5833333333333333,
+            "metrics/mAP50(B)": 0.5800000000000001,
+            "metrics/mAP50-95(B)": 0.264875,
+            "fitness": 0.264875
+          },
+          "per_class": [
+            {
+              "class_id": 0,
+              "name": "person",
+              "precision": 0.7271039880326914,
+              "recall": 0.6666666666666666,
+              "mAP50": 0.665,
+              "mAP50_95": 0.18325
+            },
+            {
+              "class_id": 20,
+              "name": "elephant",
+              "precision": 0.870703260260852,
+              "recall": 0.5,
+              "mAP50": 0.495,
+              "mAP50_95": 0.3465
+            }
+          ]
+        },
+        "promotable": false,
+        "finished_at": "2026-10-26T18:02:15.368146+00:00"
+      },
+      "recoverable": true
+    },
+    {
+      "id": "20261026-125554-a2f88817",
+      "config": {
+        "mode": "smoke",
+        "task": "detect",
+        "classes": null,
+        "model": "C:\\Users\\alexi\\Desktop\\vision\\VISIONAR-AI\\training\\checkpoints\\yolo26n.pt",
+        "data": "C:\\Users\\alexi\\Desktop\\vision\\VISIONAR-AI\\training\\experiments\\20261026-125554-a2f88817\\dataset\\data.yaml",
+        "epochs": 3,
+        "batch": 1,
+        "imgsz": 320,
+        "threads": 1,
+        "ram_limit_mb": 3000,
+        "purpose": "pipeline_validation_only",
+        "resume": "C:\\Users\\alexi\\Desktop\\vision\\VISIONAR-AI\\training\\experiments\\20261026-125554-a2f88817\\run\\weights\\epoch0.pt"
+      },
+      "result": {
+        "status": "completed",
+        "started_at": "2026-10-26T17:56:18.127074+00:00",
+        "production_deployed": false,
+        "epoch": 3,
+        "last_checkpoint": "C:\\Users\\alexi\\Desktop\\vision\\VISIONAR-AI\\training\\experiments\\20261026-125554-a2f88817\\run\\weights\\last.pt",
+        "best_checkpoint": "C:\\Users\\alexi\\Desktop\\vision\\VISIONAR-AI\\training\\experiments\\20261026-125554-a2f88817\\run\\weights\\best.pt",
+        "validation": {
+          "aggregate": {
+            "metrics/precision(B)": 0.6746624826047137,
+            "metrics/recall(B)": 0.6333333333333333,
+            "metrics/mAP50(B)": 0.8049537037037037,
+            "metrics/mAP50-95(B)": 0.5665034086284086,
+            "fitness": 0.5665034086284086
+          },
+          "per_class": [
+            {
+              "class_id": 0,
+              "name": "person",
+              "precision": 0.44959720321963176,
+              "recall": 0.3,
+              "mAP50": 0.3547222222222222,
+              "mAP50_95": 0.14227045177045178
+            },
+            {
+              "class_id": 16,
+              "name": "dog",
+              "precision": 0.6387522833392747,
+              "recall": 1.0,
+              "mAP50": 0.995,
+              "mAP50_95": 0.6965
+            },
+            {
+              "class_id": 17,
+              "name": "horse",
+              "precision": 0.5755834308773222,
+              "recall": 1.0,
+              "mAP50": 0.995,
+              "mAP50_95": 0.6217499999999999
+            },
+            {
+              "class_id": 20,
+              "name": "elephant",
+              "precision": 0.8096001751217662,
+              "recall": 0.5,
+              "mAP50": 0.495,
+              "mAP50_95": 0.3465
+            },
+            {
+              "class_id": 25,
+              "name": "umbrella",
+              "precision": 0.5744418030702882,
+              "recall": 1.0,
+              "mAP50": 0.995,
+              "mAP50_95": 0.9949999999999999
+            },
+            {
+              "class_id": 58,
+              "name": "potted plant",
+              "precision": 1.0,
+              "recall": 0.0,
+              "mAP50": 0.995,
+              "mAP50_95": 0.597
+            }
+          ]
+        },
+        "independent_test": null,
+        "promotable": false,
+        "finished_at": "2026-10-26T17:56:28.369360+00:00"
+      },
+      "recoverable": true
+    },
+    {
+      "id": "20261026-125257-1e85c8ba",
+      "config": {
+        "mode": "smoke",
+        "task": "detect",
+        "classes": null,
+        "model": "C:\\Users\\alexi\\Desktop\\vision\\VISIONAR-AI\\training\\checkpoints\\yolo26n.pt",
+        "data": "C:\\Users\\alexi\\Desktop\\vision\\VISIONAR-AI\\training\\experiments\\20261026-125257-1e85c8ba\\dataset\\data.yaml",
+        "epochs": 1,
+        "batch": 1,
+        "imgsz": 320,
+        "threads": 1,
+        "ram_limit_mb": 2400,
+        "purpose": "pipeline_validation_only"
+      },
+      "result": {
+        "status": "completed",
+        "started_at": "2026-10-26T17:53:01.563272+00:00",
+        "production_deployed": false,
+        "epoch": 2,
+        "last_checkpoint": "C:\\Users\\alexi\\Desktop\\vision\\VISIONAR-AI\\training\\experiments\\20261026-125257-1e85c8ba\\run\\weights\\last.pt",
+        "best_checkpoint": "C:\\Users\\alexi\\Desktop\\vision\\VISIONAR-AI\\training\\experiments\\20261026-125257-1e85c8ba\\run\\weights\\best.pt",
+        "validation": {
+          "aggregate": {
+            "metrics/precision(B)": 0.6821280166519973,
+            "metrics/recall(B)": 0.6333333333333333,
+            "metrics/mAP50(B)": 0.8127266519913579,
+            "metrics/mAP50-95(B)": 0.5695314983686125,
+            "fitness": 0.5695314983686125
+          },
+          "per_class": [
+            {
+              "class_id": 0,
+              "name": "person",
+              "precision": 0.37903953337867663,
+              "recall": 0.3,
+              "mAP50": 0.3613599119481473,
+              "mAP50_95": 0.15570565687834179
+            },
+            {
+              "class_id": 16,
+              "name": "dog",
+              "precision": 0.6428928126777569,
+              "recall": 1.0,
+              "mAP50": 0.995,
+              "mAP50_95": 0.6965
+            },
+            {
+              "class_id": 17,
+              "name": "horse",
+              "precision": 0.6990073963231804,
+              "recall": 1.0,
+              "mAP50": 0.995,
+              "mAP50_95": 0.5189833333333332
+            },
+            {
+              "class_id": 20,
+              "name": "elephant",
+              "precision": 0.8024998949318655,
+              "recall": 0.5,
+              "mAP50": 0.535,
+              "mAP50_95": 0.3545
+            },
+            {
+              "class_id": 25,
+              "name": "umbrella",
+              "precision": 0.5693284626005045,
+              "recall": 1.0,
+              "mAP50": 0.995,
+              "mAP50_95": 0.9949999999999999
+            },
+            {
+              "class_id": 58,
+              "name": "potted plant",
+              "precision": 1.0,
+              "recall": 0.0,
+              "mAP50": 0.995,
+              "mAP50_95": 0.6965
+            }
+          ]
+        },
+        "independent_test": null,
+        "promotable": false,
+        "finished_at": "2026-10-26T17:53:11.680099+00:00"
+      },
+      "recoverable": true
+    }
+  ],
+  "limitations": [
+    "COCO8 smoke validates the pipeline, not 38-class performance",
+    "No pending production annotation was approved automatically"
+  ]
+}

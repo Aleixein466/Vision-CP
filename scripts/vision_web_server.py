@@ -10,6 +10,7 @@ import traceback
 import urllib.error
 import urllib.request
 import uuid
+import psutil
 from collections import deque
 from datetime import datetime
 from http import HTTPStatus
@@ -20,11 +21,11 @@ from urllib.parse import parse_qs, urlparse
 try:
     from visual_fusion import VisualFusionEngine, crop_image_data_url
     from dataset_studio import DatasetStudio
-    from training_manager import TrainingManager
+    from training_manager import TrainingManager, active_checkpoint
 except ModuleNotFoundError:
     from scripts.visual_fusion import VisualFusionEngine, crop_image_data_url
     from scripts.dataset_studio import DatasetStudio
-    from scripts.training_manager import TrainingManager
+    from scripts.training_manager import TrainingManager, active_checkpoint
 
 ROOT = Path(__file__).resolve().parents[1]
 WEB = ROOT / "web"
@@ -35,7 +36,10 @@ Separa hechos visibles de interpretaciones y expresa incertidumbre cuando corres
 modelos, texto ilegible, identidades o detalles ocultos. No infieras género, etnia, salud, emoción interna ni
 intenciones por la apariencia. Describe a las personas con lenguaje neutral: ropa, postura, accesorios y acciones
 directamente observables. Las detecciones YOLO son evidencia orientativa, no verdad absoluta. Para conteos,
-compáralas con la imagen. Si discrepan, dilo claramente."""
+compáralas con la imagen. Si discrepan, dilo claramente.
+La fotografía adjunta es la única evidencia del estado actual. El historial puede describir otros fotogramas.
+Un objeto no detectado o parcialmente oculto no puede darse por identificado: declara 'no puedo confirmarlo'.
+No deduzcas contenidos ocultos a partir del tipo de recipiente ni completes texto o números ilegibles."""
 
 
 def llama_request(
@@ -77,12 +81,19 @@ def llama_request(
     return {"answer": answer.strip(), "usage": raw.get("usage", {}), "model": raw.get("model", model)}
 
 
-def make_handler(llama_url: str, api_key: str | None = None, model_manager=None):
-    deployed_model = ROOT / "training" / "checkpoints" / "visionar_38_best.pt"
-    fusion = VisualFusionEngine(deployed_model if deployed_model.exists() else None)
-    dataset = DatasetStudio()
-    training = TrainingManager(dataset)
-    threading.Thread(target=fusion.warmup, name="visionar-yolo-warmup", daemon=True).start()
+def make_handler(llama_url: str, api_key: str | None = None, model_manager=None, dataset_root=None, warmup=True, experiments_root=None):
+    fusion = VisualFusionEngine(active_checkpoint())
+    dataset = DatasetStudio(dataset_root) if dataset_root else DatasetStudio()
+    def pause_engines():
+        if model_manager and model_manager.external and model_manager.ready():
+            raise ValueError('Cierra el VLM externo antes de entrenar; este proceso no es administrado por VisionAR')
+        if model_manager:
+            model_manager.stop()
+        fusion.unload()
+    training = TrainingManager(dataset,root=experiments_root,pause=pause_engines)
+    if warmup:
+        threading.Thread(target=fusion.warmup, name="visionar-yolo-warmup", daemon=True).start()
+    operation_lock = threading.Lock()
     history: deque[dict] = deque(maxlen=30)
     history_lock = threading.Lock()
     vlm_lock = threading.Lock()
@@ -103,7 +114,7 @@ def make_handler(llama_url: str, api_key: str | None = None, model_manager=None)
             try:
                 self.end_headers()
                 self.wfile.write(data)
-            except (BrokenPipeError, ConnectionResetError):
+            except (BrokenPipeError, ConnectionResetError, ConnectionAbortedError):
                 # El navegador puede cancelar un fotograma obsoleto; no es un fallo del modelo.
                 return
 
@@ -129,20 +140,42 @@ def make_handler(llama_url: str, api_key: str | None = None, model_manager=None)
                 return json.loads(response.read().decode("utf-8"))
 
         def do_GET(self):
+            try:
+                if not self._local_request():
+                    return
+                self._get()
+            except (ValueError, KeyError, FileNotFoundError) as exc:
+                self._json(HTTPStatus.BAD_REQUEST, {'error':str(exc)})
+
+        def _local_request(self):
+            host=self.headers.get('Host','')
+            if urlparse('http://'+host).hostname not in {'127.0.0.1','localhost','::1'}:
+                self._json(HTTPStatus.FORBIDDEN,{'error':'Solo se permite acceso local'})
+                return False
+            origin=self.headers.get('Origin')
+            if origin and origin != 'http://'+host:
+                self._json(HTTPStatus.FORBIDDEN,{'error':'Origen no autorizado'})
+                return False
+            return True
+
+        def _get(self):
             parsed = urlparse(self.path)
             route = parsed.path
             query = parse_qs(parsed.query)
             if route == "/api/status":
+                llama_ready=False
                 try:
-                    payload = {
-                        "ready": True, "llama": self._health(), "yolo": "ready" if fusion.ready else "warming",
-                        "yolo_model": {"scale": fusion.selected_scale, "task": fusion.selected_task},
-                    }
-                    if model_manager:
-                        payload.update({"active_model": model_manager.selected, "metrics": model_manager.metrics()})
-                    self._json(HTTPStatus.OK, payload)
-                except Exception as exc:
-                    self._json(HTTPStatus.SERVICE_UNAVAILABLE, {"ready": False, "error": str(exc)})
+                    llama_ready=self._health().get('status') in {'ok','no slot available'}
+                except Exception:
+                    pass
+                payload={'ready':fusion.ready,'vlm_ready':llama_ready,'training':training.status()['running'],
+                         'yolo':'ready' if fusion.ready else 'idle',
+                         'yolo_model':{'scale':fusion.selected_scale,'task':fusion.selected_task},
+                         'metrics':{'cpu_percent':psutil.cpu_percent(), 'ram_percent':psutil.virtual_memory().percent,
+                                    'ram_available_mb':round(psutil.virtual_memory().available/2**20)}}
+                if model_manager:
+                    payload.update(active_model=model_manager.selected)
+                self._json(HTTPStatus.OK,payload)
                 return
             if route == "/api/models":
                 models = model_manager.catalog() if model_manager else []
@@ -163,7 +196,12 @@ def make_handler(llama_url: str, api_key: str | None = None, model_manager=None)
                 self._json(HTTPStatus.OK, dataset.stats())
                 return
             if route == "/api/dataset/candidates":
-                self._json(HTTPStatus.OK, {"items": dataset.list_candidates(query.get("status", [None])[0])})
+                items=dataset.list_candidates(query.get('status',[None])[0])
+                class_name=query.get('class',[''])[0]
+                if class_name:
+                    items=[c for c in items if class_name in c.get('intended_classes',[]) or any(s.get('class_name')==class_name for s in c.get('suggestions',[]))]
+                offset=max(0,int(query.get('offset',[0])[0])); limit=max(1,min(100,int(query.get('limit',[40])[0])))
+                self._json(HTTPStatus.OK, {'items':items[offset:offset+limit],'total':len(items),'offset':offset})
                 return
             if route == "/api/dataset/candidate":
                 self._json(HTTPStatus.OK, dataset.candidate(query.get("id", [""])[0], include_image=True))
@@ -174,12 +212,67 @@ def make_handler(llama_url: str, api_key: str | None = None, model_manager=None)
             if route == "/api/training/status":
                 self._json(HTTPStatus.OK, training.status())
                 return
+            if route == '/api/training/experiments':
+                self._json(HTTPStatus.OK,{'items':training.experiments()})
+                return
+            if route == '/api/training/compare':
+                self._json(HTTPStatus.OK,training.compare(query.get('left',[''])[0],query.get('right',[''])[0]))
+                return
             if route == "/":
                 self.path = "/index.html"
             return super().do_GET()
 
         def do_POST(self):
+            if not self._local_request():
+                return
+            if not self.headers.get('Content-Type','').startswith('application/json'):
+                self._json(HTTPStatus.UNSUPPORTED_MEDIA_TYPE,{'error':'Se requiere application/json'})
+                return
+            if not operation_lock.acquire(blocking=False):
+                self._json(HTTPStatus.TOO_MANY_REQUESTS,{'error':'Hay una operación activa; reintenta al terminar'})
+                return
             try:
+                if training.status()['running'] and self.path in {'/api/detect','/api/analyze','/api/yolo/select','/api/models/select','/api/dataset/suggest','/api/dataset/presegment'}:
+                    self._json(HTTPStatus.CONFLICT,{'error':'Motores pausados durante el entrenamiento'})
+                    return
+                self._post()
+            finally:
+                operation_lock.release()
+
+        def _post(self):
+            try:
+                if self.path == '/api/dataset/withdraw':
+                    request=self._request_json()
+                    self._json(HTTPStatus.OK,dataset.withdraw_annotation(str(request.get('annotation_id',''))))
+                    return
+                if self.path == '/api/dataset/reconcile':
+                    self._request_json()
+                    self._json(HTTPStatus.OK,dataset.reconcile())
+                    return
+                if self.path == '/api/dataset/backup':
+                    self._request_json()
+                    self._json(HTTPStatus.OK,{'backup':str(dataset.store.backup())})
+                    return
+                if self.path == '/api/dataset/approve-batch':
+                    request=self._request_json()
+                    items=request.get('items',[])
+                    if not isinstance(items,list) or not 1<=len(items)<=40:
+                        raise ValueError('Lote de 1 a 40 fotografías')
+                    with dataset.lock, dataset.store.transaction():
+                        results=[dataset.approve_objects(item['candidate_id'],item['objects'],item['split'],item.get('complete',False)) for item in items]
+                    self._json(HTTPStatus.OK,{'items':results,'stats':dataset.stats()})
+                    return
+                if self.path == '/api/dataset/presegment':
+                    request=self._request_json()
+                    candidate=dataset.candidate(request.get('candidate_id',''),True)
+                    self._json(HTTPStatus.OK,fusion.presegment(candidate['image'],request.get('box')))
+                    return
+                if self.path in {'/api/training/resume','/api/training/promote','/api/training/rollback'}:
+                    request=self._request_json()
+                    action=self.path.rsplit('/',1)[1]
+                    result=training.rollback() if action=='rollback' else getattr(training,action)(str(request.get('experiment','')))
+                    self._json(HTTPStatus.OK,result)
+                    return
                 if self.path == "/api/detect":
                     if analysis_active.is_set():
                         self._json(HTTPStatus.TOO_MANY_REQUESTS, {"error": "YOLO en vivo está pausado mientras responde el VLM"})
@@ -191,7 +284,7 @@ def make_handler(llama_url: str, api_key: str | None = None, model_manager=None)
                     try:
                         result = fusion.detect(
                             request.get("image", ""), request.get("confidence", 0.30), request.get("imgsz", 480),
-                            "general", request.get("scale"), request.get("task"),
+                            str(request.get('mode','general')), request.get("scale"), request.get("task"), request.get('focus'),
                         )
                     finally:
                         detect_gate.release()
@@ -218,7 +311,7 @@ def make_handler(llama_url: str, api_key: str | None = None, model_manager=None)
                 if self.path == "/api/dataset/import":
                     request = self._request_json()
                     result = dataset.import_candidate(request.get("image", ""), str(request.get("filename", "image.jpg")),
-                                                      str(request.get("source", "")), str(request.get("license", "")))
+                                                      str(request.get("source", "")), str(request.get("license", "")), group_id=str(request.get('group_id','')))
                     self._json(HTTPStatus.CREATED if result["imported"] else HTTPStatus.OK,
                                {"result": result, "stats": dataset.stats()})
                     return
@@ -234,7 +327,13 @@ def make_handler(llama_url: str, api_key: str | None = None, model_manager=None)
                     if parsed_url.scheme != "https" or not public_dataset_host(parsed_url.hostname):
                         raise ValueError("URL no autorizada; usa HTTPS de Hugging Face, Roboflow o GitHub Raw")
                     remote_request = urllib.request.Request(url, headers={"User-Agent": "VisionAR-Dataset-Studio/1.0"})
-                    with urllib.request.urlopen(remote_request, timeout=30) as response:
+                    class SafeRedirect(urllib.request.HTTPRedirectHandler):
+                        def redirect_request(self, req, fp, code, msg, headers, newurl):
+                            target=urlparse(newurl)
+                            if target.scheme!='https' or not public_dataset_host(target.hostname):
+                                raise ValueError('Redirección fuera de los dominios autorizados')
+                            return super().redirect_request(req,fp,code,msg,headers,newurl)
+                    with urllib.request.build_opener(SafeRedirect()).open(remote_request, timeout=30) as response:
                         final_host = urlparse(response.geturl()).hostname
                         if not public_dataset_host(final_host):
                             raise ValueError("La descarga redirigió a un dominio no autorizado")
@@ -275,7 +374,7 @@ def make_handler(llama_url: str, api_key: str | None = None, model_manager=None)
                     return
                 if self.path == "/api/training/start":
                     request = self._request_json()
-                    result = training.start(request.get("epochs", 40), str(request.get("model", "training/checkpoints/yolo26n-objv1-seg.pt")))
+                    result = training.start(**{k:v for k,v in request.items() if k in {'epochs','model','mode','classes','task','batch','imgsz','threads','ram_limit_mb'}})
                     self._json(HTTPStatus.ACCEPTED if result.get("started") else HTTPStatus.CONFLICT, result)
                     return
                 if self.path == "/api/training/cancel":
@@ -306,14 +405,14 @@ def make_handler(llama_url: str, api_key: str | None = None, model_manager=None)
                 try:
                     analysis_active.set()
                     started = time.perf_counter()
-                    mode = "general"
+                    mode = str(request.get('mode','general'))
+                    focus = request.get('focus')
+                    vlm_image = crop_image_data_url(image_url, focus, padding=0)
                     with detect_gate:
                         detection = fusion.detect(
-                            image_url, request.get("confidence", 0.30), request.get("imgsz", 480), mode,
+                            vlm_image, request.get("confidence", 0.30), request.get("imgsz", 480), mode,
                             request.get("scale"), request.get("task"),
                         )
-                    focus = request.get("focus")
-                    vlm_image = crop_image_data_url(image_url, focus)
                     if focus:
                         prompt = (
                             "Analiza prioritariamente el recorte seleccionado por el usuario. Identifica el objeto pequeño "
@@ -333,11 +432,16 @@ def make_handler(llama_url: str, api_key: str | None = None, model_manager=None)
                             "identidad, banco, números ni datos privados que no sean legibles y necesarios. " + prompt
                         )
                     active_key = model_manager.api_key if model_manager else api_key
+                    if model_manager and not model_manager.ready():
+                        model_manager.start()
+                        active_key=model_manager.api_key
                     model_name = model_manager.selected if model_manager else "Qwen2-VL-2B-Instruct-GGUF"
                     response = llama_request(
                         llama_url, vlm_image, prompt, active_key, fusion.prompt_context(detection),
                         request.get("history", []), model_name,
                     )
+                    if focus:
+                        detection=fusion.map_region(detection,focus)
                     response.update({
                         "request_id": str(uuid.uuid4()), "frame_id": str(request.get("frame_id") or uuid.uuid4()),
                         "detections": detection["detections"], "counts": detection["counts"],

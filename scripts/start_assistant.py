@@ -30,7 +30,10 @@ def main() -> None:
 
     engine = VLMEngine(port=args.llama_port, selected=args.model)
     print(f"Cargando {MODEL_SPECS[args.model]['name']} en CPU...")
-    engine.start()
+    try:
+        engine.start(wait_seconds=90)
+    except Exception as exc:
+        print(f'VLM no disponible: {exc}. El dashboard y YOLO siguen disponibles.')
     if engine.external:
         print("Reutilizando llama-server externo; VisionAR no lo cerrará ni cambiará su modelo")
 

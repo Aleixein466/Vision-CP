@@ -1,6 +1,6 @@
-model: training/checkpoints/yolo26n-objv1-seg.pt
+model: training/checkpoints/yolo26n-objv1-150.pt
 data: datasets/visionar_own_v1/data.yaml
-task: segment
+task: detect
 device: cpu
 epochs: 40
 imgsz: 512
@@ -10,4 +10,6 @@ patience: 10
 cache: false
 minimum_annotations_per_class: 30
 recommended_images_per_class: 100-200
-requires_reviewed_masks: true
+requires_explicit_human_review: true
+requires_complete_image_review: true
+automatic_model_promotion: false

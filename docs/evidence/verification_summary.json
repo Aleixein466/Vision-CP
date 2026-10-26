@@ -1,0 +1,654 @@
+{
+  "collected_at": "2026-10-26T23:25:48.801665+00:00",
+  "checks": [
+    {
+      "command": [
+        "C:\\Users\\alexi\\AppData\\Local\\hermes\\hermes-agent\\venv\\Scripts\\python.exe",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "exit_code": 0,
+      "output": "test_cpu_runtime_is_bounded (test_pipeline.PilotFormatTests.test_cpu_runtime_is_bounded) ... ok\ntest_iou_identity_and_disjoint (test_pipeline.PilotFormatTests.test_iou_identity_and_disjoint) ... ok\ntest_own_dataset_studio_initializes_without_fake_samples (test_pipeline.PilotFormatTests.test_own_dataset_studio_initializes_without_fake_samples) ... ok\ntest_phase1_configuration_has_requested_classes (test_pipeline.PilotFormatTests.test_phase1_configuration_has_requested_classes) ... ok\ntest_pillow_verifies_generated_jpeg (test_pipeline.PilotFormatTests.test_pillow_verifies_generated_jpeg) ... ok\ntest_spanish_speech_phrases (test_pipeline.PilotFormatTests.test_spanish_speech_phrases) ... ok\ntest_visual_fusion_decodes_real_image_bytes (test_pipeline.PilotFormatTests.test_visual_fusion_decodes_real_image_bytes) ... ok\ntest_vlm_catalog_reports_installed_visual_models (test_pipeline.PilotFormatTests.test_vlm_catalog_reports_installed_visual_models) ... ok\ntest_web_assistant_assets_and_launcher (test_pipeline.PilotFormatTests.test_web_assistant_assets_and_launcher) ... ok\ntest_yolo_catalog_exposes_five_scales_and_segmentation (test_pipeline.PilotFormatTests.test_yolo_catalog_exposes_five_scales_and_segmentation) ... ok\ntest_yolo_coordinate_contract (test_pipeline.PilotFormatTests.test_yolo_coordinate_contract) ... ok\ntest_batch_rollback_and_multiple_objects (test_studio_integrity.IntegrityTests.test_batch_rollback_and_multiple_objects) ... ok\ntest_concurrent_import_idempotent (test_studio_integrity.IntegrityTests.test_concurrent_import_idempotent) ... ok\ntest_detection_export_five_fields_and_snapshot (test_studio_integrity.IntegrityTests.test_detection_export_five_fields_and_snapshot) ... ok\ntest_exact_and_near_leakage (test_studio_integrity.IntegrityTests.test_exact_and_near_leakage) ... ok\ntest_malformed_legacy_is_preserved_and_reported (test_studio_integrity.IntegrityTests.test_malformed_legacy_is_preserved_and_reported) ... ok\ntest_polygon_validation_and_separate_record (test_studio_integrity.IntegrityTests.test_polygon_validation_and_separate_record) ... ok\ntest_reconcile_detects_orphan_and_preserves_files (test_studio_integrity.IntegrityTests.test_reconcile_detects_orphan_and_preserves_files) ... ok\ntest_segmentation_export_is_real_polygon (test_studio_integrity.IntegrityTests.test_segmentation_export_is_real_polygon) ... ok\ntest_session_cannot_cross_splits (test_studio_integrity.IntegrityTests.test_session_cannot_cross_splits) ... ok\ntest_suggestions_never_reviewed (test_studio_integrity.IntegrityTests.test_suggestions_never_reviewed) ... ok\ntest_traversal_rejected (test_studio_integrity.IntegrityTests.test_traversal_rejected) ... ok\ntest_withdraw_preserves_history_and_excludes_export (test_studio_integrity.IntegrityTests.test_withdraw_preserves_history_and_excludes_export) ... ok\ntest_configuration_bounds (test_training_safety.TrainingSafetyTests.test_configuration_bounds) ... ok\ntest_full_training_refuses_empty_reviewed_dataset (test_training_safety.TrainingSafetyTests.test_full_training_refuses_empty_reviewed_dataset) ... ok\ntest_no_unvalidated_promotion (test_training_safety.TrainingSafetyTests.test_no_unvalidated_promotion) ... ok\ntest_resume_traversal_rejected (test_training_safety.TrainingSafetyTests.test_resume_traversal_rejected) ... ok\n\n----------------------------------------------------------------------\nRan 27 tests in 2.379s\n\nOK\n"
+    },
+    {
+      "command": [
+        "node",
+        "scripts/test_scene_tracking.js"
+      ],
+      "exit_code": 0,
+      "output": "SCENE_TRACKING_OK\nINDIVIDUAL_TRACKING_OK\n"
+    },
+    {
+      "command": [
+        "node",
+        "--check",
+        "web/app.js"
+      ],
+      "exit_code": 0,
+      "output": ""
+    },
+    {
+      "command": [
+        "node",
+        "--check",
+        "web/dashboard.js"
+      ],
+      "exit_code": 0,
+      "output": ""
+    }
+  ],
+  "experiments": [
+    {
+      "id": "20261026-125257-1e85c8ba",
+      "config": {
+        "mode": "smoke",
+        "task": "detect",
+        "classes": null,
+        "model": "C:\\Users\\alexi\\Desktop\\vision\\VISIONAR-AI\\training\\checkpoints\\yolo26n.pt",
+        "data": "C:\\Users\\alexi\\Desktop\\vision\\VISIONAR-AI\\training\\experiments\\20261026-125257-1e85c8ba\\dataset\\data.yaml",
+        "epochs": 1,
+        "batch": 1,
+        "imgsz": 320,
+        "threads": 1,
+        "ram_limit_mb": 2400,
+        "purpose": "pipeline_validation_only"
+      },
+      "result": {
+        "status": "completed",
+        "started_at": "2026-10-26T17:53:01.563272+00:00",
+        "production_deployed": false,
+        "epoch": 2,
+        "last_checkpoint": "C:\\Users\\alexi\\Desktop\\vision\\VISIONAR-AI\\training\\experiments\\20261026-125257-1e85c8ba\\run\\weights\\last.pt",
+        "best_checkpoint": "C:\\Users\\alexi\\Desktop\\vision\\VISIONAR-AI\\training\\experiments\\20261026-125257-1e85c8ba\\run\\weights\\best.pt",
+        "validation": {
+          "aggregate": {
+            "metrics/precision(B)": 0.6821280166519973,
+            "metrics/recall(B)": 0.6333333333333333,
+            "metrics/mAP50(B)": 0.8127266519913579,
+            "metrics/mAP50-95(B)": 0.5695314983686125,
+            "fitness": 0.5695314983686125
+          },
+          "per_class": [
+            {
+              "class_id": 0,
+              "name": "person",
+              "precision": 0.37903953337867663,
+              "recall": 0.3,
+              "mAP50": 0.3613599119481473,
+              "mAP50_95": 0.15570565687834179
+            },
+            {
+              "class_id": 16,
+              "name": "dog",
+              "precision": 0.6428928126777569,
+              "recall": 1.0,
+              "mAP50": 0.995,
+              "mAP50_95": 0.6965
+            },
+            {
+              "class_id": 17,
+              "name": "horse",
+              "precision": 0.6990073963231804,
+              "recall": 1.0,
+              "mAP50": 0.995,
+              "mAP50_95": 0.5189833333333332
+            },
+            {
+              "class_id": 20,
+              "name": "elephant",
+              "precision": 0.8024998949318655,
+              "recall": 0.5,
+              "mAP50": 0.535,
+              "mAP50_95": 0.3545
+            },
+            {
+              "class_id": 25,
+              "name": "umbrella",
+              "precision": 0.5693284626005045,
+              "recall": 1.0,
+              "mAP50": 0.995,
+              "mAP50_95": 0.9949999999999999
+            },
+            {
+              "class_id": 58,
+              "name": "potted plant",
+              "precision": 1.0,
+              "recall": 0.0,
+              "mAP50": 0.995,
+              "mAP50_95": 0.6965
+            }
+          ]
+        },
+        "independent_test": null,
+        "promotable": false,
+        "finished_at": "2026-10-26T17:53:11.680099+00:00"
+      },
+      "resources": {
+        "peak_worker_rss_mb": 4.1,
+        "returncode": 0
+      }
+    },
+    {
+      "id": "20261026-125554-a2f88817",
+      "config": {
+        "mode": "smoke",
+        "task": "detect",
+        "classes": null,
+        "model": "C:\\Users\\alexi\\Desktop\\vision\\VISIONAR-AI\\training\\checkpoints\\yolo26n.pt",
+        "data": "C:\\Users\\alexi\\Desktop\\vision\\VISIONAR-AI\\training\\experiments\\20261026-125554-a2f88817\\dataset\\data.yaml",
+        "epochs": 3,
+        "batch": 1,
+        "imgsz": 320,
+        "threads": 1,
+        "ram_limit_mb": 3000,
+        "purpose": "pipeline_validation_only",
+        "resume": "C:\\Users\\alexi\\Desktop\\vision\\VISIONAR-AI\\training\\experiments\\20261026-125554-a2f88817\\run\\weights\\epoch0.pt"
+      },
+      "result": {
+        "status": "completed",
+        "started_at": "2026-10-26T17:56:18.127074+00:00",
+        "production_deployed": false,
+        "epoch": 3,
+        "last_checkpoint": "C:\\Users\\alexi\\Desktop\\vision\\VISIONAR-AI\\training\\experiments\\20261026-125554-a2f88817\\run\\weights\\last.pt",
+        "best_checkpoint": "C:\\Users\\alexi\\Desktop\\vision\\VISIONAR-AI\\training\\experiments\\20261026-125554-a2f88817\\run\\weights\\best.pt",
+        "validation": {
+          "aggregate": {
+            "metrics/precision(B)": 0.6746624826047137,
+            "metrics/recall(B)": 0.6333333333333333,
+            "metrics/mAP50(B)": 0.8049537037037037,
+            "metrics/mAP50-95(B)": 0.5665034086284086,
+            "fitness": 0.5665034086284086
+          },
+          "per_class": [
+            {
+              "class_id": 0,
+              "name": "person",
+              "precision": 0.44959720321963176,
+              "recall": 0.3,
+              "mAP50": 0.3547222222222222,
+              "mAP50_95": 0.14227045177045178
+            },
+            {
+              "class_id": 16,
+              "name": "dog",
+              "precision": 0.6387522833392747,
+              "recall": 1.0,
+              "mAP50": 0.995,
+              "mAP50_95": 0.6965
+            },
+            {
+              "class_id": 17,
+              "name": "horse",
+              "precision": 0.5755834308773222,
+              "recall": 1.0,
+              "mAP50": 0.995,
+              "mAP50_95": 0.6217499999999999
+            },
+            {
+              "class_id": 20,
+              "name": "elephant",
+              "precision": 0.8096001751217662,
+              "recall": 0.5,
+              "mAP50": 0.495,
+              "mAP50_95": 0.3465
+            },
+            {
+              "class_id": 25,
+              "name": "umbrella",
+              "precision": 0.5744418030702882,
+              "recall": 1.0,
+              "mAP50": 0.995,
+              "mAP50_95": 0.9949999999999999
+            },
+            {
+              "class_id": 58,
+              "name": "potted plant",
+              "precision": 1.0,
+              "recall": 0.0,
+              "mAP50": 0.995,
+              "mAP50_95": 0.597
+            }
+          ]
+        },
+        "independent_test": null,
+        "promotable": false,
+        "finished_at": "2026-10-26T17:56:28.369360+00:00"
+      },
+      "resources": {
+        "peak_worker_rss_mb": 554.1,
+        "returncode": 0
+      }
+    },
+    {
+      "id": "20261026-130159-4e3d66fb",
+      "config": {
+        "mode": "smoke",
+        "task": "detect",
+        "classes": null,
+        "model": "C:\\Users\\alexi\\Desktop\\vision\\VISIONAR-AI\\training\\checkpoints\\yolo26n.pt",
+        "data": "C:\\Users\\alexi\\Desktop\\vision\\VISIONAR-AI\\training\\experiments\\20261026-130159-4e3d66fb\\dataset\\data.yaml",
+        "epochs": 1,
+        "batch": 1,
+        "imgsz": 320,
+        "threads": 1,
+        "ram_limit_mb": 2400,
+        "purpose": "pipeline_validation_only"
+      },
+      "result": {
+        "status": "completed",
+        "started_at": "2026-10-26T18:02:03.459721+00:00",
+        "production_deployed": false,
+        "epoch": 1,
+        "last_checkpoint": "C:\\Users\\alexi\\Desktop\\vision\\VISIONAR-AI\\training\\experiments\\20261026-130159-4e3d66fb\\run\\weights\\last.pt",
+        "best_checkpoint": "C:\\Users\\alexi\\Desktop\\vision\\VISIONAR-AI\\training\\experiments\\20261026-130159-4e3d66fb\\run\\weights\\best.pt",
+        "validation": {
+          "aggregate": {
+            "metrics/precision(B)": 0.7413058212027385,
+            "metrics/recall(B)": 0.6285714285714286,
+            "metrics/mAP50(B)": 0.837575074775673,
+            "metrics/mAP50-95(B)": 0.6336273226474423,
+            "fitness": 0.6336273226474423
+          },
+          "per_class": [
+            {
+              "class_id": 0,
+              "name": "person",
+              "precision": 0.38897355314923837,
+              "recall": 0.14285714285714285,
+              "mAP50": 0.20787537387836488,
+              "mAP50_95": 0.15046994657054477
+            },
+            {
+              "class_id": 16,
+              "name": "dog",
+              "precision": 0.9157965980229892,
+              "recall": 1.0,
+              "mAP50": 0.995,
+              "mAP50_95": 0.6965
+            },
+            {
+              "class_id": 17,
+              "name": "horse",
+              "precision": 0.7570447210994947,
+              "recall": 1.0,
+              "mAP50": 0.995,
+              "mAP50_95": 0.6296666666666666
+            },
+            {
+              "class_id": 25,
+              "name": "umbrella",
+              "precision": 0.6447142337419699,
+              "recall": 1.0,
+              "mAP50": 0.995,
+              "mAP50_95": 0.9949999999999999
+            },
+            {
+              "class_id": 58,
+              "name": "potted plant",
+              "precision": 1.0,
+              "recall": 0.0,
+              "mAP50": 0.995,
+              "mAP50_95": 0.6965
+            }
+          ]
+        },
+        "independent_test": {
+          "aggregate": {
+            "metrics/precision(B)": 0.7989036241467717,
+            "metrics/recall(B)": 0.5833333333333333,
+            "metrics/mAP50(B)": 0.5800000000000001,
+            "metrics/mAP50-95(B)": 0.264875,
+            "fitness": 0.264875
+          },
+          "per_class": [
+            {
+              "class_id": 0,
+              "name": "person",
+              "precision": 0.7271039880326914,
+              "recall": 0.6666666666666666,
+              "mAP50": 0.665,
+              "mAP50_95": 0.18325
+            },
+            {
+              "class_id": 20,
+              "name": "elephant",
+              "precision": 0.870703260260852,
+              "recall": 0.5,
+              "mAP50": 0.495,
+              "mAP50_95": 0.3465
+            }
+          ]
+        },
+        "promotable": false,
+        "finished_at": "2026-10-26T18:02:15.368146+00:00"
+      },
+      "resources": {
+        "peak_worker_rss_mb": 539.8,
+        "returncode": 0
+      }
+    },
+    {
+      "id": "20261026-130553-f1d761be",
+      "config": {
+        "mode": "smoke",
+        "task": "detect",
+        "classes": null,
+        "model": "C:\\Users\\alexi\\Desktop\\vision\\VISIONAR-AI\\training\\checkpoints\\yolo26n.pt",
+        "data": "C:\\Users\\alexi\\Desktop\\vision\\VISIONAR-AI\\training\\experiments\\20261026-130553-f1d761be\\dataset\\data.yaml",
+        "epochs": 3,
+        "batch": 1,
+        "imgsz": 320,
+        "threads": 1,
+        "ram_limit_mb": 3000,
+        "purpose": "pipeline_validation_only",
+        "dataset_fingerprint": "59af568c1f3c13d194e5ef94f6884052b8bdfb01f43ab0244f314ba9990f8951",
+        "resume": "C:\\Users\\alexi\\Desktop\\vision\\VISIONAR-AI\\training\\experiments\\20261026-130553-f1d761be\\run\\weights\\epoch0.pt"
+      },
+      "result": {
+        "status": "completed",
+        "started_at": "2026-10-26T18:06:10.461703+00:00",
+        "production_deployed": false,
+        "epoch": 3,
+        "last_checkpoint": "C:\\Users\\alexi\\Desktop\\vision\\VISIONAR-AI\\training\\experiments\\20261026-130553-f1d761be\\run\\weights\\last.pt",
+        "best_checkpoint": "C:\\Users\\alexi\\Desktop\\vision\\VISIONAR-AI\\training\\experiments\\20261026-130553-f1d761be\\run\\weights\\best.pt",
+        "validation": {
+          "aggregate": {
+            "metrics/precision(B)": 0.7788128348483152,
+            "metrics/recall(B)": 0.6285714285714286,
+            "metrics/mAP50(B)": 0.8390254137115839,
+            "metrics/mAP50-95(B)": 0.6538241648679205,
+            "fitness": 0.6538241648679205
+          },
+          "per_class": [
+            {
+              "class_id": 0,
+              "name": "person",
+              "precision": 0.4157914542472644,
+              "recall": 0.14285714285714285,
+              "mAP50": 0.21512706855791963,
+              "mAP50_95": 0.15566249100626992
+            },
+            {
+              "class_id": 16,
+              "name": "dog",
+              "precision": 0.9194666261097338,
+              "recall": 1.0,
+              "mAP50": 0.995,
+              "mAP50_95": 0.6965
+            },
+            {
+              "class_id": 17,
+              "name": "horse",
+              "precision": 0.9076404876662603,
+              "recall": 1.0,
+              "mAP50": 0.995,
+              "mAP50_95": 0.5264583333333333
+            },
+            {
+              "class_id": 25,
+              "name": "umbrella",
+              "precision": 0.6511656062183175,
+              "recall": 1.0,
+              "mAP50": 0.995,
+              "mAP50_95": 0.9949999999999999
+            },
+            {
+              "class_id": 58,
+              "name": "potted plant",
+              "precision": 1.0,
+              "recall": 0.0,
+              "mAP50": 0.995,
+              "mAP50_95": 0.8955
+            }
+          ]
+        },
+        "independent_test": {
+          "aggregate": {
+            "metrics/precision(B)": 0.6954920146244075,
+            "metrics/recall(B)": 0.5833333333333333,
+            "metrics/mAP50(B)": 0.5800000000000001,
+            "metrics/mAP50-95(B)": 0.24,
+            "fitness": 0.24
+          },
+          "per_class": [
+            {
+              "class_id": 0,
+              "name": "person",
+              "precision": 0.5771211124082986,
+              "recall": 0.6666666666666666,
+              "mAP50": 0.665,
+              "mAP50_95": 0.1335
+            },
+            {
+              "class_id": 20,
+              "name": "elephant",
+              "precision": 0.8138629168405165,
+              "recall": 0.5,
+              "mAP50": 0.495,
+              "mAP50_95": 0.3465
+            }
+          ]
+        },
+        "promotable": false,
+        "finished_at": "2026-10-26T18:06:21.707020+00:00"
+      },
+      "resources": {
+        "peak_worker_rss_mb": 590.5,
+        "returncode": 0
+      }
+    },
+    {
+      "id": "20261026-130935-a8827f3a",
+      "config": {
+        "mode": "smoke",
+        "task": "segment",
+        "classes": null,
+        "model": "C:\\Users\\alexi\\Desktop\\vision\\VISIONAR-AI\\training\\checkpoints\\yolo26n-seg.pt",
+        "data": "C:\\Users\\alexi\\Desktop\\vision\\VISIONAR-AI\\training\\experiments\\20261026-130935-a8827f3a\\dataset\\data.yaml",
+        "epochs": 1,
+        "batch": 1,
+        "imgsz": 320,
+        "threads": 1,
+        "ram_limit_mb": 2400,
+        "purpose": "pipeline_validation_only",
+        "dataset_fingerprint": "f5952f08eb75a6ec27e82f749ab319574cf897b411fe04d184f9627e0a7136d2"
+      },
+      "result": {
+        "status": "completed",
+        "started_at": "2026-10-26T18:09:41.096983+00:00",
+        "production_deployed": false,
+        "epoch": 1,
+        "last_checkpoint": "C:\\Users\\alexi\\Desktop\\vision\\VISIONAR-AI\\training\\experiments\\20261026-130935-a8827f3a\\run\\weights\\last.pt",
+        "best_checkpoint": "C:\\Users\\alexi\\Desktop\\vision\\VISIONAR-AI\\training\\experiments\\20261026-130935-a8827f3a\\run\\weights\\best.pt",
+        "validation": {
+          "aggregate": {
+            "metrics/precision(B)": 0.5643659148210254,
+            "metrics/recall(B)": 0.6857142857142857,
+            "metrics/mAP50(B)": 0.8840588235294117,
+            "metrics/mAP50-95(B)": 0.669023076923077,
+            "metrics/precision(M)": 0.5643659148210254,
+            "metrics/recall(M)": 0.6857142857142857,
+            "metrics/mAP50(M)": 0.782,
+            "metrics/mAP50-95(M)": 0.5980666666666667,
+            "fitness": 1.267089743589744
+          },
+          "per_class": [
+            {
+              "class_id": 0,
+              "name": "person",
+              "precision": 0.30911387286706393,
+              "recall": 0.42857142857142855,
+              "mAP50": 0.44029411764705884,
+              "mAP50_95": 0.18611538461538463,
+              "mask": {
+                "precision": 0.30911387286706393,
+                "recall": 0.42857142857142855,
+                "mAP50": 0.4275,
+                "mAP50_95": 0.2540833333333333
+              }
+            },
+            {
+              "class_id": 16,
+              "name": "dog",
+              "precision": 0.6253804359950881,
+              "recall": 1.0,
+              "mAP50": 0.995,
+              "mAP50_95": 0.796,
+              "mask": {
+                "precision": 0.6253804359950881,
+                "recall": 1.0,
+                "mAP50": 0.995,
+                "mAP50_95": 0.8955
+              }
+            },
+            {
+              "class_id": 17,
+              "name": "horse",
+              "precision": 0.3642200179798632,
+              "recall": 1.0,
+              "mAP50": 0.995,
+              "mAP50_95": 0.47250000000000003,
+              "mask": {
+                "precision": 0.3642200179798632,
+                "recall": 1.0,
+                "mAP50": 0.4975,
+                "mAP50_95": 0.14925
+              }
+            },
+            {
+              "class_id": 25,
+              "name": "umbrella",
+              "precision": 0.5231152472631122,
+              "recall": 1.0,
+              "mAP50": 0.995,
+              "mAP50_95": 0.9949999999999999,
+              "mask": {
+                "precision": 0.5231152472631122,
+                "recall": 1.0,
+                "mAP50": 0.995,
+                "mAP50_95": 0.8955
+              }
+            },
+            {
+              "class_id": 58,
+              "name": "potted plant",
+              "precision": 1.0,
+              "recall": 0.0,
+              "mAP50": 0.995,
+              "mAP50_95": 0.8955,
+              "mask": {
+                "precision": 1.0,
+                "recall": 0.0,
+                "mAP50": 0.995,
+                "mAP50_95": 0.796
+              }
+            }
+          ]
+        },
+        "independent_test": {
+          "aggregate": {
+            "metrics/precision(B)": 0.7568454628300142,
+            "metrics/recall(B)": 0.41666666666666663,
+            "metrics/mAP50(B)": 0.515,
+            "metrics/mAP50-95(B)": 0.24225000000000002,
+            "metrics/precision(M)": 0.967783691117246,
+            "metrics/recall(M)": 0.25,
+            "metrics/mAP50(M)": 0.2475,
+            "metrics/mAP50-95(M)": 0.1485,
+            "fitness": 0.39075000000000004
+          },
+          "per_class": [
+            {
+              "class_id": 0,
+              "name": "person",
+              "precision": 0.7813301578489682,
+              "recall": 0.3333333333333333,
+              "mAP50": 0.335,
+              "mAP50_95": 0.1675,
+              "mask": {
+                "precision": 1.0,
+                "recall": 0.0,
+                "mAP50": 0.0,
+                "mAP50_95": 0.0
+              }
+            },
+            {
+              "class_id": 20,
+              "name": "elephant",
+              "precision": 0.7323607678110602,
+              "recall": 0.5,
+              "mAP50": 0.695,
+              "mAP50_95": 0.317,
+              "mask": {
+                "precision": 0.9355673822344921,
+                "recall": 0.5,
+                "mAP50": 0.495,
+                "mAP50_95": 0.297
+              }
+            }
+          ]
+        },
+        "promotable": false,
+        "finished_at": "2026-10-26T18:09:53.379049+00:00"
+      },
+      "resources": {
+        "peak_worker_rss_mb": 584.8,
+        "returncode": 0
+      }
+    }
+  ],
+  "code_sha256": {
+    "scripts\\approve_openimages_boxes.py": "2ac2e051f8a4ca6efbde3efbb578d45ffdd9d784e11b0932bcb3207e0884fb62",
+    "scripts\\audit_dataset.py": "8827cb3bf811928f90eb4cff43c51383071d8a398c5c50cf6f5bf4aff4b583ad",
+    "scripts\\audit_general_coverage.py": "5039455a95b50167de9e9de63c69063d1983daeacc1e36ff998097b86af175e5",
+    "scripts\\audit_phase1.py": "f4dbb534ef0d84fe7d7c04307898e2e9632b1cb988d203c2906fe140f70c8efa",
+    "scripts\\build_pilot.py": "c74b9871f50df65afd2d75d216b83773a09be04c4b7538fb71636fe8ce959149",
+    "scripts\\camera_detector.py": "75036fdc4fd7de13e27e9c44dfc1a96801e85296c8e938d96b8e0962c5383053",
+    "scripts\\collect_verification.py": "6fdba32340ccecff08b1620340380c3dbea682e11c5616ce1b3b2d69af165874",
+    "scripts\\dataset_store.py": "f56bc99a62fc8cb2d44486cf02f3fd34b856aedeeae1f107942e406d1c7af479",
+    "scripts\\dataset_studio.py": "becf97c964728f4b9c98380506c27a300301f9f78286760ace5d1ae9716ed790",
+    "scripts\\download_with_integrity.py": "7c5cf6663443aad35b73eaa0b8d1c2031a06ebd5502b269460d777e97abcbb30",
+    "scripts\\evaluate_baseline.py": "03a0b47d4aee20f0acc69de75e46ea40426781992e300d77e97cc42b59f3f08d",
+    "scripts\\evaluate_phase1.py": "d7c7edaf11afb70d33c2d9ede30734dee8bd025c6812ec1ee2f494930a01d431",
+    "scripts\\extract_archive.py": "fe4c3f059e1721cab68cc8ee26a4e12f3cf09d308f36ddeb70c0d09ac94a5b4f",
+    "scripts\\import_openimages_train_rare.py": "130b5a9369de9c24d5544da460d004d4b7e250ded24831991c0808f722c41487",
+    "scripts\\import_openimages_visionar.py": "63910615dd4a30ddbe11676c42cf5140e24f3c1126e81d8f7eac3e1632dec87d",
+    "scripts\\import_wikimedia_rare.py": "588f47e7aff6a046e225153c24141e7595ffb565e4f41238b8385df63246f5f3",
+    "scripts\\prepare_phase1_dataset.py": "0de5e56e8146ba70777ef28ab38dfdee7baaca2fe69aa4a9c473b7825202717a",
+    "scripts\\recognize_image.py": "49972dc48762cfbf15ecf3aee2c942697cc8d28b6472bf487d40e83aceb393a6",
+    "scripts\\runtime_limits.py": "736c74ea6c7ef4911187eed5426a49e1020e2dc32309a2ba0864bf791e6c1be2",
+    "scripts\\speech_announcer.py": "9c97b3568dd75f78b8afaa68dabfe0430489ec9d2a502477debf238ef114bd70",
+    "scripts\\start_assistant.py": "e5e532f9b3df2ec8f9390dd2240eec393fa1e6be5fd1cc97f3b8f43c961abd80",
+    "scripts\\test_dataset_workflow.py": "78fe5854751af94153e8c4f2693b7ff10de661d96ba387fc24b45b74597878a0",
+    "scripts\\test_focus_api.py": "a6e30c940c9f3010a76625231a6206fde7df9882eda74e3f3410b90623b9142b",
+    "scripts\\test_phase2_api.py": "20812db2b6b944d060d1ab7b0210edc247e9a4edb2a5e45f94e5ec7a618a0ee5",
+    "scripts\\test_resource_stability.py": "7210735bdf3c98eafad513d7d9996aa6c21bffb1fc92882d182e6c3906d85042",
+    "scripts\\test_specialized_modes.py": "6b5dacded360ef9e1a631822188185cd0e0a51c0d1208b3f90cffa6dfa72e1bc",
+    "scripts\\test_video_pipeline.py": "c0d8845900139a6c8e652fa3556a1670c919afdfbe89b24678ae1463f1264467",
+    "scripts\\test_vlm.py": "bdbe35bf496f3382ab08c861441edc7ae207aecd7aec55bd4b2c8a502be7cc60",
+    "scripts\\test_web_api.py": "4a9f74eda1ec2250f893fea15ea0e24849344acaedacb12147045fb36770297a",
+    "scripts\\training_manager.py": "6a164749aad4a7b0a514c5d521e51d4f6e54a7dd4bdb78d45afb61f3a69f8a8d",
+    "scripts\\train_smoke.py": "33f66fba5131679767694eaf6846d1a54f65546987c4acde562ccfcdcfbf5897",
+    "scripts\\train_visionar.py": "ba132b00f409a8acd154bd7650053c6b8bfd3c3ea7e3bb6b7cd6e01bee1a7581",
+    "scripts\\verify_dashboard.py": "103543ba38151aa151a3b6c68d92c4feabad0704aee7cca294ea9548230009d7",
+    "scripts\\verify_multimodal.py": "4f9d587743ef9f4a237796f06a907d0b3353ca9c4a0105f187bbaa8cf98725b1",
+    "scripts\\verify_recovery.py": "5ca0508390d93cc80603d59b7f4656207efa90fecf2395f5f207c00db12d7dee",
+    "scripts\\verify_reengineering.py": "77cb305590058be81636210bbb03627819a3701f432ed1c2224bc38e041b4323",
+    "scripts\\vision_web_server.py": "a9effc0f315e2be565c538003d63ce62ebc129ebea7b55bf9dd7c4ffa03db6a4",
+    "scripts\\visual_fusion.py": "309c2a1348b1559d618d1d6904acea01786ce24d0c962dd5c961d171ba0dc5a4",
+    "scripts\\vlm_engine.py": "31db7daef7ff9727cb71af468c9fc231905e41369a2a81e88873daae45e8f9ab",
+    "web\\app.js": "6ab2fa2e3801397752fadb0d2560d729080856d7a54d52856e90ace60fff2141",
+    "web\\dashboard.css": "36f0276c4f775a8ba87676e72474b8f069c5624a43e13f72d61853c682afdad0",
+    "web\\dashboard.js": "488ddb73c46aaa6d5379607dd1cac043ef043434d99124424dbc9180b68f1a93",
+    "web\\enhancements.css": "50a15d808a7c2550708a87ae01318e1f38d0e2c4ef5c8f9bf6ea08db7097dfac",
+    "web\\index.html": "4efc42ede6c7477fb956d3b5e1c79833d60ddb1436c6a13b07b772c6537e594c",
+    "web\\scene-tracker.js": "6f46153f3d75ae5c3c740d4c4528443e5b0bbb211376951eca4ca32e1cbbfc35",
+    "web\\styles.css": "15196ca1b0ef40108f3ab9da98bb5f80f0556eed555954379e162c07a3d2e3f7"
+  },
+  "production_photographs_changed": false,
+  "production_model_promoted": false
+}

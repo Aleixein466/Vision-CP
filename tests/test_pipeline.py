@@ -60,7 +60,7 @@ class PilotFormatTests(unittest.TestCase):
         self.assertEqual(package["scripts"]["tracking:test"], "node scripts/test_scene_tracking.js")
         self.assertEqual(package["scripts"]["train:own"], "python scripts/train_visionar.py --execute")
         self.assertIn("renderObjects(data, !imageMode)", app)
-        self.assertIn("imageMode ? 0.18 : 0.32", app)
+        self.assertIn("visionar.confidence", app)
 
     def test_visual_fusion_decodes_real_image_bytes(self):
         from scripts.visual_fusion import crop_image_data_url, decode_image_data_url

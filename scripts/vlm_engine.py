@@ -66,6 +66,9 @@ class VLMEngine:
                 return
             if not LLAMA_EXE.exists():
                 raise FileNotFoundError(f"Falta {LLAMA_EXE}")
+            required_mb=2200 if self.selected=='qwen2-vl-2b' else 900
+            if psutil.virtual_memory().available < required_mb*2**20:
+                raise RuntimeError(f'RAM insuficiente para iniciar el VLM; se requieren {required_mb} MB disponibles')
             self.external = False
             self.api_key = secrets.token_urlsafe(32)
             LOG_PATH.parent.mkdir(parents=True, exist_ok=True)
@@ -73,13 +76,19 @@ class VLMEngine:
             spec = MODEL_SPECS[self.selected]
             command = [
                 str(LLAMA_EXE), "-hf", spec["hf"], "--host", "127.0.0.1", "--port", str(self.port),
-                "--ctx-size", "4096", "--parallel", "1", "--threads", "2", "--threads-batch", "2",
+                "--ctx-size", "4096", "--parallel", "1", "--threads", "1", "--threads-batch", "1",
                 "--no-mmproj-offload", "--api-key", self.api_key,
             ]
             flags = subprocess.CREATE_NO_WINDOW if sys.platform == "win32" else 0
-            self.process = subprocess.Popen(
-                command, cwd=LLAMA_DIR, stdout=self._log_handle, stderr=subprocess.STDOUT, creationflags=flags
-            )
+            try:
+                self.process = subprocess.Popen(
+                    command, cwd=LLAMA_DIR, stdout=self._log_handle, stderr=subprocess.STDOUT, creationflags=flags
+                )
+            except Exception:
+                self._log_handle.close()
+                self._log_handle=None
+                self.api_key=None
+                raise
             self.started_at = time.time()
         for _ in range(wait_seconds):
             if self.ready():

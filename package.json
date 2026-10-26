@@ -27,6 +27,10 @@
     "train:smoke": "python scripts/train_smoke.py",
     "train:own": "python scripts/train_visionar.py --execute",
     "dataset:e2e": "python scripts/test_dataset_workflow.py",
-    "test": "python -m unittest discover -s tests -v"
+    "test": "python -m unittest discover -s tests -v",
+    "verify:runtime": "python scripts/verify_reengineering.py --train",
+    "verify:dashboard": "python scripts/verify_dashboard.py",
+    "verify:recovery": "python scripts/verify_recovery.py",
+    "verify:multimodal": "python scripts/verify_multimodal.py"
   }
 }

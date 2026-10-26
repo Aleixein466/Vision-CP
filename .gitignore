@@ -31,4 +31,16 @@ dist/
 build/
 tools/llama-*/
 !*/.gitkeep
+# Private runtime records, snapshots and future captures (existing files preserved).
+*.sqlite3*
+datasets/visionar_own_v1/backups/
+datasets/visionar_own_v1/exports/
+datasets/visionar_own_v1/candidates/
+datasets/visionar_own_v1/images/
+datasets/visionar_own_v1/labels/
+datasets/visionar_own_v1/manifest.jsonl
+datasets/visionar_own_v1/candidates.jsonl
+training/experiments/
+training/model_registry.json
+training/configs/*.runtime.yaml
 

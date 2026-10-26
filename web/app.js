@@ -24,6 +24,7 @@ let yoloCatalog = [];
 let selectingRegion = false;
 let focusRegion = null;
 let dragStart = null;
+let captureGroup = crypto.randomUUID();
 
 function escapeText(value) {
   const element = document.createElement('span');
@@ -63,10 +64,10 @@ async function refreshStatus() {
   try {
     const response = await fetch('/api/status', { cache: 'no-store' });
     const data = await response.json();
-    setReady(data.ready, data.ready ? 'Sistemas listos' : 'Modelo no disponible');
+    setReady(data.ready, data.training ? 'Entrenamiento activo' : data.ready ? (data.vlm_ready ? 'Sistemas listos' : 'YOLO listo · VLM inactivo') : 'YOLO en espera');
     const yoloName = data.yolo_model ? `YOLO26${data.yolo_model.scale}${data.yolo_model.task === 'segment' ? '-seg' : ''}` : 'YOLO26';
     $('#activeModel').textContent = `${yoloName} + ${data.active_model || 'VLM externo'}`;
-    $('#vlmMetric').textContent = data.active_model === 'smolvlm-500m' ? 'SmolVLM 500M' : 'Qwen2-VL 2B';
+    $('#vlmMetric').textContent = !data.vlm_ready ? 'Inactivo' : data.active_model === 'smolvlm-500m' ? 'SmolVLM 500M' : data.active_model === 'qwen2-vl-2b' ? 'Qwen2-VL 2B' : 'Servidor externo';
     if (data.metrics) {
       $('#cpuMetric').textContent = `${Number(data.metrics.cpu_percent).toFixed(0)}%`;
       $('#ramMetric').textContent = `${Number(data.metrics.ram_percent).toFixed(0)}%`;
@@ -104,6 +105,7 @@ async function listCameras() {
 }
 
 async function startCamera() {
+  captureGroup = crypto.randomUUID();
   stopCamera();
   clearVideoFile();
   sceneTracker.clear();
@@ -188,6 +190,7 @@ function loadImageFile(file) {
 }
 
 function loadVideoFile(file) {
+  captureGroup = crypto.randomUUID();
   if (!file || !file.type.startsWith('video/')) throw new Error('Use un archivo de video compatible con el navegador');
   if (file.size > 1024 * 1024 * 1024) throw new Error('El video supera el límite local de 1 GB');
   stopCamera();
@@ -402,13 +405,14 @@ async function detectFrame() {
   liveBusy = true;
   try {
     const image = captureFrame(imageMode ? 960 : 512);
-    const confidence = imageMode ? 0.18 : 0.32;
+    const confidence = imageMode ? 0.18 : Number(localStorage.getItem('visionar.confidence') || 0.32);
     const imgsz = imageMode ? 640 : 320;
     const response = await fetch('/api/detect', {
       method: 'POST', headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         image, confidence, imgsz, mode: $('#visionMode').value,
         scale: $('#yoloScale').value, task: $('#yoloTask').value,
+        focus: focusRegion,
       }),
     });
     const data = await response.json();
@@ -432,7 +436,7 @@ function toggleLiveDetection(enabled) {
       if (!String(error.message).includes('429')) console.warn('Detección continua:', error);
     });
     if (imageMode) return;
-    const delay = $('#visionMode').value === 'general' ? 60 : 350;
+    const delay = Math.max(100,Number(localStorage.getItem('visionar.interval') || 250));
     if (generation === liveGeneration && $('#liveDetection').checked) liveTimer = setTimeout(run, delay);
   };
   run();
@@ -658,7 +662,7 @@ let candidateDrag = null;
 async function apiJson(url, options = {}) {
   const response = await fetch(url, options);
   const data = await response.json();
-  if (!response.ok) throw new Error(data.error || data.reason || `Error HTTP ${response.status}`);
+  if (!response.ok) throw new Error(data.audit ? `Dataset no apto: ${JSON.stringify(data.audit.issues)}` : data.error || data.reason || `Error HTTP ${response.status}`);
   return data;
 }
 
@@ -711,7 +715,7 @@ async function importCurrentFrame() {
   const source = stream ? 'web_camera' : videoFileMode ? 'local_video_frame' : 'local_image';
   $('#datasetSource').value = source;
   const data = await apiJson('/api/dataset/import', { method: 'POST', headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ image: currentFrame, filename: `${source}-${Date.now()}.jpg`, source, license: $('#datasetLicense').value.trim() }) });
+    body: JSON.stringify({ image: currentFrame, filename: `${source}-${Date.now()}.jpg`, source, license: $('#datasetLicense').value.trim(), group_id: stream || videoFileMode ? captureGroup : '' }) });
   $('#datasetImportProgress').textContent = data.result.imported ? 'Fotograma añadido a revisión.' : 'El fotograma ya existía y no se duplicó.';
   await Promise.all([loadDatasetStats(), loadCandidateQueue()]);
 }
@@ -820,10 +824,10 @@ async function loadDatasetStats() {
   Object.entries(data.per_class).forEach(([name, values]) => {
     const row = document.createElement('div'); row.className = 'dataset-class-row';
     const progress = Math.min(100, (values.reviewed / values.target) * 100);
-    row.innerHTML = `<div><span>${escapeText(name)} · ${values.photos} fotos</span><b>${values.reviewed}/${values.target}${values.pending ? ` · ${values.pending} pendientes` : ''}</b></div><i><em style="width:${progress}%"></em></i>`;
+    row.innerHTML = `<div><span>${escapeText(name)} · ${values.photos} fotos aprobadas</span><b>${values.reviewed}/${values.target}${values.pending ? ` · ${values.pending} fotos pendientes` : ''}</b></div><i><em style="width:${progress}%"></em></i>`;
     container.append(row);
   });
-  $('#startTraining').disabled = !data.ready_for_training;
+  $('#startTraining').disabled = false;
 }
 
 async function auditDataset() {
@@ -851,7 +855,8 @@ function showSection(name) {
   document.querySelectorAll('.section').forEach((section) => section.classList.remove('active-section'));
   document.querySelectorAll('.nav-item').forEach((button) => button.classList.toggle('active', button.dataset.section === name));
   $(`#${name}Section`).classList.add('active-section');
-  $('#pageTitle').textContent = name === 'live' ? 'Live Vision' : name === 'models' ? 'Modelos IA' : name === 'dataset' ? 'Dataset Studio' : 'Historial';
+  $('#pageTitle').textContent = ({live:'Live Vision',models:'Modelos IA',dataset:'Dataset Studio',history:'Historial y resultados',training:'Entrenamiento',settings:'Configuración y rendimiento'})[name];
+  if (name === 'training') { loadDatasetStats().then(() => loadExperiments()).catch(showSystemMessage); }
   if (name === 'models') loadModels();
   if (name === 'history') loadHistory();
   if (name === 'dataset') Promise.all([loadDatasetStats(), loadCandidateQueue(), trainingStatus()]).catch((error) => { $('#datasetMessage').textContent = error.message; });
@@ -937,7 +942,7 @@ overlay.addEventListener('pointerup', () => {
   finishRegionSelection();
 });
 $('#stopSpeech').addEventListener('click', () => speechSynthesis?.cancel());
-const datasetAction = (action) => action().catch((error) => { $('#datasetMessage').textContent = error.message; $('#datasetMessage').className = 'dataset-message error'; });
+const datasetAction = (action) => Promise.resolve().then(action).catch((error) => { $('#datasetMessage').textContent = error.message; $('#datasetMessage').className = 'dataset-message error'; if ($('#trainingSection').classList.contains('active-section')) $('#trainingStatus').textContent = error.message; });
 $('#datasetFiles').addEventListener('change', (event) => datasetAction(() => importDatasetFiles(event.target.files)));
 $('#datasetMobile').addEventListener('change', (event) => datasetAction(() => importDatasetFiles(event.target.files)));
 $('#datasetFolder').addEventListener('change', (event) => datasetAction(() => importDatasetFiles(event.target.files)));
@@ -950,7 +955,7 @@ $('#rejectCandidate').addEventListener('click', () => datasetAction(rejectCandid
 $('#auditDataset').addEventListener('click', () => datasetAction(auditDataset));
 $('#startTraining').addEventListener('click', () => datasetAction(startTraining));
 $('#cancelTraining').addEventListener('click', () => datasetAction(cancelTraining));
-$('#candidateCanvas').addEventListener('pointerdown', (event) => { if (!activeCandidate) return; candidateDrag = candidatePoint(event); });
+$('#candidateCanvas').addEventListener('pointerdown', (event) => { if (!activeCandidate || $('#annotationTask').value === 'segment') return; candidateDrag = candidatePoint(event); event.target.setPointerCapture(event.pointerId); });
 $('#candidateCanvas').addEventListener('pointermove', (event) => {
   if (!candidateDrag) return; const point = candidatePoint(event);
   candidateBox = { x: Math.min(candidateDrag.x, point.x), y: Math.min(candidateDrag.y, point.y), w: Math.abs(point.x - candidateDrag.x), h: Math.abs(point.y - candidateDrag.y) };

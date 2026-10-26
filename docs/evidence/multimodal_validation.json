@@ -1,0 +1,50 @@
+{
+  "camera": {
+    "status": "passed",
+    "frames": [
+      {
+        "width": 640,
+        "height": 480,
+        "detections": 0,
+        "latency_ms": 2605.01
+      },
+      {
+        "width": 640,
+        "height": 480,
+        "detections": 0,
+        "latency_ms": 45.3
+      },
+      {
+        "width": 640,
+        "height": 480,
+        "detections": 2,
+        "latency_ms": 35.73
+      }
+    ],
+    "photos_saved": false
+  },
+  "segmentation": {
+    "masks": 2,
+    "model": "yolo26n-objv1-seg.pt"
+  },
+  "presegmentation": {
+    "method": "grabcut",
+    "points": 37,
+    "reviewed": false
+  },
+  "vlm": {
+    "answer": "The girl is wearing a colorful swimsuit and is holding an umbrella.",
+    "usage": {
+      "completion_tokens": 16,
+      "prompt_tokens": 667,
+      "total_tokens": 683,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      }
+    },
+    "model": "ggml-org/SmolVLM-500M-Instruct-GGUF",
+    "wall_seconds": 26.96,
+    "automatically_fact_checked": false
+  },
+  "ram_available_mb": 3375
+}

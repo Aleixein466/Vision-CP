@@ -6,6 +6,7 @@
   <title>VisionAR AI 2.0 · Live Vision</title>
   <link rel="stylesheet" href="/styles.css?v=2.7.0">
   <link rel="stylesheet" href="/enhancements.css?v=2.5.0">
+  <link rel="stylesheet" href="/dashboard.css?v=3">
 </head>
 <body>
   <div class="app-shell">
@@ -16,9 +17,8 @@
         <button class="nav-item" data-section="models"><span>◇</span><b>Modelos IA</b></button>
         <button class="nav-item" data-section="history"><span>↺</span><b>Historial</b></button>
         <button class="nav-item" data-section="dataset"><span>▦</span><b>Dataset Studio</b></button>
-        <p class="nav-label">Próximas fases</p>
-        <button class="nav-item disabled" disabled><span>△</span><b>Biblioteca 3D</b></button>
-        <button class="nav-item disabled" disabled><span>⌁</span><b>Realidad aumentada</b></button>
+        <button class="nav-item" data-section="training"><span>↗</span><b>Entrenamiento</b></button>
+        <button class="nav-item" data-section="settings"><span>⚙</span><b>Configuración</b></button>
       </nav>
       <div class="privacy"><span>●</span><div><strong>Privado y local</strong><small>Las imágenes no salen del equipo</small></div></div>
     </aside>
@@ -135,7 +135,9 @@
             <button id="importPublicUrl" class="button secondary">Importar URL con licencia declarada</button>
             <div id="datasetImportProgress" class="dataset-message"></div>
             <h3>2. Cola de revisión</h3>
-            <select id="candidateList"><option value="">Sin candidatos pendientes</option></select>
+            <div class="review-toolbar"><label>Estado<select id="reviewFilter"><option value="pending">Pendientes</option><option value="reviewed">Revisadas</option><option value="rejected">Rechazadas</option><option value="">Todas</option></select></label><button id="previousBatch" class="button secondary">Anterior</button><button id="nextBatch" class="button secondary">Siguiente lote</button><span id="queuePosition" role="status"></span></div>
+            <div id="reviewGrid" class="review-grid" aria-label="Bandeja de fotografías"></div>
+            <select id="candidateList" aria-label="Fotografía candidata"><option value="">Sin candidatos pendientes</option></select>
             <button id="loadCandidate" class="button secondary">Abrir candidato</button>
             <div id="datasetEditor" class="dataset-editor">
               <img id="candidateImage" alt="Candidato para anotar">
@@ -147,7 +149,13 @@
             <div class="dataset-actions"><button id="suggestCandidate" class="button secondary">Sugerir con YOLO</button><button id="rejectCandidate" class="button danger">Rechazar imagen</button></div>
             <h3>3. Corregir y aprobar</h3>
             <label>Clase<select id="datasetClass"><option value="">Cargando clases…</option></select></label>
+            <label>Anotación<select id="annotationTask"><option value="detect">Detección: caja</option><option value="segment">Segmentación: contorno real</option></select></label>
+            <div id="polygonTools" hidden><p>Marca vértices en la imagen o presegmenta a partir de una caja. Revisa y edita el contorno: es una propuesta, no una máscara precisa garantizada.</p><button id="presegment" class="button secondary">Presegmentar caja</button><button id="undoVertex" class="button secondary">Deshacer vértice</button><label>Vértices normalizados (editable)<textarea id="polygonPoints" rows="4" aria-label="Vértices del contorno">[]</textarea></label></div>
             <label>Conjunto<select id="datasetSplit"><option value="train">Entrenamiento</option><option value="val">Validación</option><option value="test">Prueba</option></select></label>
+            <button id="addReviewObject" class="button secondary">Añadir objeto al lote revisado</button>
+            <label><input id="completeReview" type="checkbox"> Revisé todos los objetos de las clases del dataset presentes en esta foto</label>
+            <div id="reviewDrafts" role="status"></div>
+            <button id="saveReviewBatch" class="button secondary">Guardar lote revisado</button>
             <button id="approveCandidate" class="button primary">Aprobar anotación revisada</button>
             <div id="datasetMessage" class="dataset-message"></div>
           </article>
@@ -155,15 +163,47 @@
             <div class="panel-heading"><strong>Estado del dataset</strong><button id="refreshDataset" class="text-button">Actualizar</button></div>
             <div id="datasetStats" class="stats-grid">Cargando estadísticas…</div>
             <div class="training-controls"><h3>Auditoría y entrenamiento</h3><div class="dataset-actions"><button id="auditDataset" class="button secondary">Auditar dataset</button><button id="startTraining" class="button primary">Iniciar entrenamiento</button><button id="cancelTraining" class="button danger">Cancelar</button></div><pre id="trainingStatus">Esperando auditoría.</pre></div>
-            <p class="dataset-note">Objetivo inicial: mínimo 30 anotaciones revisadas por clase. El entrenamiento autorizado se iniciará solo cuando el auditor confirme cobertura, máscaras revisadas y ausencia de duplicados entre conjuntos.</p>
+            <p class="dataset-note">Las propuestas no cuentan como revisión. Entrenamiento completo: 30 fotos de entrenamiento por clase, más validación y prueba independientes. Las cajas y los contornos se exportan por separado.</p>
           </article>
         </div>
       </section>
 
-      <footer><span>VisionAR AI 2.0 · CPU local</span><span>Verifica información importante: YOLO y el VLM pueden equivocarse.</span></footer>
+      <section id="trainingSection" class="section">
+        <div class="section-intro"><div><p class="eyebrow">EXPERIMENTOS REPRODUCIBLES</p><h2>Entrenamiento</h2></div><p>Prueba la tubería, entrena clases concretas o prepara el conjunto completo. Cada ejecución conserva su configuración y checkpoints.</p></div>
+        <div class="panel training-form">
+          <label>Modalidad<select id="trainMode"><option value="smoke">Prueba · COCO8, sin despliegue</option><option value="partial">Parcial · clases seleccionadas</option><option value="full">Completo · 38 clases</option></select></label>
+          <label>Tarea<select id="trainTask"><option value="detect">Detección</option><option value="segment">Segmentación</option></select></label>
+          <label>Epochs<input id="trainEpochs" type="number" min="1" max="300" value="1"></label>
+          <label>Batch<input id="trainBatch" type="number" min="1" max="4" value="1"></label>
+          <label>Resolución<input id="trainImgsz" type="number" min="320" max="960" step="32" value="320"></label>
+          <label>Hilos CPU<input id="trainThreads" type="number" min="1" max="4" value="1"></label>
+          <label>Límite RAM (MB)<input id="trainRam" type="number" min="800" max="8192" value="2400"></label>
+          <label>Clases (selección múltiple)<select id="trainClasses" multiple size="6" aria-label="Clases de entrenamiento parcial"></select></label>
+          <p>La prueba usa fotos COCO8 existentes y no acredita precisión de las 38 clases. Cancelar guarda el epoch en curso; un límite de memoria puede detener antes y conserva los checkpoints anteriores.</p>
+          <div id="trainingActions"></div>
+        </div>
+        <div class="section-intro"><h2>Experimentos y resultados</h2><button id="refreshExperiments" class="button secondary">Actualizar</button></div>
+        <div id="experimentsList" class="experiment-list"></div>
+        <div class="panel training-form"><label>Experimento A<select id="compareLeft"></select></label><label>Experimento B<select id="compareRight"></select></label><button id="compareModels" class="button secondary">Comparar evaluación</button><pre id="comparisonResult" role="status"></pre></div>
+        <button id="rollbackModel" class="button secondary">Volver al modelo anterior</button>
+      </section>
+      <section id="settingsSection" class="section">
+        <div class="section-intro"><div><p class="eyebrow">LOCAL · CPU</p><h2>Configuración y rendimiento</h2></div></div>
+        <article class="panel training-form">
+          <label>Intervalo mínimo entre frames (ms)<input id="frameInterval" type="number" min="100" max="5000" value="250"></label>
+          <label>Umbral de confianza<input id="confidenceSetting" type="range" min="0.1" max="0.9" step="0.01" value="0.32"><output id="confidenceOutput">0.32</output></label>
+          <button id="saveSettings" class="button primary">Guardar preferencias locales</button>
+          <button id="backupDataset" class="button secondary">Crear backup de registros</button>
+          <button id="reconcileDataset" class="button secondary">Reconciliar registros y fotografías</button>
+          <pre id="settingsResult" role="status"></pre>
+          <p>Las nuevas capturas y los registros SQLite permanecen locales. El backup de registros referencia las fotos originales: conserva también la carpeta del dataset. Las fotografías que ya estaban publicadas en Git conservan su historial.</p>
+        </article>
+      </section>
+      <footer><span>VisionAR AI · CPU local</span><span>Verifica información importante: YOLO y el VLM pueden equivocarse.</span></footer>
     </main>
   </div>
   <script src="/scene-tracker.js?v=2.6.0"></script>
   <script src="/app.js?v=2.7.0"></script>
+  <script src="/dashboard.js?v=3"></script>
 </body>
 </html>
