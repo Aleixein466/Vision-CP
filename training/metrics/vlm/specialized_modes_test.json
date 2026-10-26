@@ -1,0 +1,64 @@
+{
+  "source": "datasets\\processed\\phase1_coco_val\\images\\test\\000000248631.jpg",
+  "results": {
+    "general": {
+      "detections": [
+        {
+          "id": "obj-1",
+          "class_id": 63,
+          "class": "laptop",
+          "label": "computador portátil",
+          "confidence": 0.9508,
+          "box": {
+            "x": 0.00397,
+            "y": 0.19295,
+            "w": 0.66,
+            "h": 0.71966
+          }
+        },
+        {
+          "id": "obj-2",
+          "class_id": 64,
+          "class": "mouse",
+          "label": "ratón de computador",
+          "confidence": 0.8005,
+          "box": {
+            "x": 0.71963,
+            "y": 0.59372,
+            "w": 0.25083,
+            "h": 0.31441
+          }
+        }
+      ],
+      "latency_ms": 2582.46,
+      "wall_seconds": 2.587,
+      "model": "yolo26n.pt"
+    },
+    "small": {
+      "detections": [
+        {
+          "id": "obj-2",
+          "class_id": 2729,
+          "class": "mouse",
+          "label": "ratón de computador",
+          "confidence": 0.8985,
+          "box": {
+            "x": 0.72357,
+            "y": 0.60096,
+            "w": 0.2442,
+            "h": 0.30064
+          }
+        }
+      ],
+      "latency_ms": 1074.64,
+      "wall_seconds": 1.115,
+      "model": "yoloe-26n-seg-pf.pt"
+    }
+  },
+  "selected_crop": {
+    "height": 188,
+    "width": 199
+  },
+  "aquarium_validation": "pending_real_user_frame",
+  "note": "La imagen disponible valida selección y detector abierto; no contiene llaves, USB ni acuario."
+}

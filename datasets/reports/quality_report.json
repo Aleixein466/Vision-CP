@@ -1,0 +1,31 @@
+{
+  "images_checked": 21,
+  "annotations_per_class_id": {
+    "56": 35,
+    "39": 18,
+    "67": 8,
+    "63": 3,
+    "1": 6
+  },
+  "resolution_counts": {
+    "640x480": 5,
+    "416x640": 1,
+    "480x640": 2,
+    "640x427": 2,
+    "640x491": 1,
+    "446x640": 1,
+    "448x336": 1,
+    "460x312": 1,
+    "520x640": 1,
+    "375x500": 1,
+    "640x428": 1,
+    "500x375": 1,
+    "428x640": 1,
+    "640x426": 1,
+    "640x580": 1
+  },
+  "exact_duplicate_groups": [],
+  "issue_count": 0,
+  "issues": [],
+  "action": "No se movi\u00f3 ni elimin\u00f3 ning\u00fan archivo; revisar antes de poblar quarantine/."
+}

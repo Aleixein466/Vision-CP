@@ -1,0 +1,34 @@
+project_root: ../..
+model: training/checkpoints/yolo26n.pt
+dataset: training/configs/phase1_coco_val.yaml
+target_classes:
+  2: car
+  39: bottle
+  63: laptop
+  67: cell phone
+  73: book
+evaluation:
+  confidence: 0.25
+  iou_match: 0.50
+  imgsz: 640
+  batch: 1
+  device: cpu
+  workers: 0
+camera:
+  confidence: 0.35
+  imgsz: 480
+  resolution: [1280, 720]
+  frame_skip: 1
+  max_camera_index: 5
+  show_labels: true
+  speech:
+    enabled: true
+    language: es
+    rate: 165
+    volume: 1.0
+    stable_frames: 3
+    absent_frames_to_reset: 8
+    cooldown_seconds: 8
+    min_confidence: 0.45
+
+

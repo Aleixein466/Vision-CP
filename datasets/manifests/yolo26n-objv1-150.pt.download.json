@@ -1,0 +1,9 @@
+{
+  "retrieved_at": "2026-10-25T20:00:00-05:00",
+  "source": "https://github.com/ultralytics/assets/releases/download/v8.4.0/yolo26n-objv1-150.pt",
+  "destination": "training/checkpoints/yolo26n-objv1-150.pt",
+  "bytes": 5975045,
+  "sha256": "fab6114e4c91cac560c849ac732c0756e0575c9195e2a7fedfa4a8d92c6253b3",
+  "pretraining_dataset": "Objects365v1",
+  "classes": 365
+}

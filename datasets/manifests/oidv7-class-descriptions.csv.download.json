@@ -1,0 +1,8 @@
+{
+  "url": "https://storage.googleapis.com/openimages/v7/oidv7-class-descriptions.csv",
+  "path": "datasets\\raw\\oidv7-class-descriptions.csv",
+  "bytes": 501178,
+  "sha256": "84a4373a0efb7fd6d93fe19b0e7ceb6c1b855c233d13b9b78a9a33655c9fdce3",
+  "downloaded_at_utc": "2026-10-26T03:23:59.240347+00:00",
+  "expected_sha256": null
+}

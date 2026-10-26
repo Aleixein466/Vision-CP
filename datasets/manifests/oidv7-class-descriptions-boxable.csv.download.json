@@ -1,0 +1,8 @@
+{
+  "url": "https://storage.googleapis.com/openimages/v7/oidv7-class-descriptions-boxable.csv",
+  "path": "datasets\\raw\\oidv7-class-descriptions-boxable.csv",
+  "bytes": 12064,
+  "sha256": "1839e0e7e84130ae281f7f67413768601b031581c0c42e7fc17527b8e2a99aa9",
+  "downloaded_at_utc": "2026-10-26T03:23:34.045626+00:00",
+  "expected_sha256": null
+}

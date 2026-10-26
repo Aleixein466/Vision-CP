@@ -1,0 +1,742 @@
+{
+  "generated_at": "2026-10-25T22:40:45.569197-05:00",
+  "source": "Wikimedia Commons MediaWiki API",
+  "api": "https://commons.wikimedia.org/w/api.php",
+  "deficits_before": {
+    "nail_clipper": 30,
+    "payment_card": 30,
+    "keys": 30,
+    "eraser": 5,
+    "sweatshirt": 26,
+    "usb_drive": 8
+  },
+  "licensed_results_found": {
+    "nail_clipper": 40,
+    "payment_card": 40,
+    "keys": 40,
+    "eraser": 15,
+    "sweatshirt": 36,
+    "usb_drive": 18
+  },
+  "accepted_by_class": {
+    "nail_clipper": 14,
+    "payment_card": 18,
+    "keys": 23,
+    "eraser": 2,
+    "sweatshirt": 13,
+    "usb_drive": 6
+  },
+  "result": {
+    "imported": 76,
+    "errors": 53
+  },
+  "errors": [
+    {
+      "class": "nail_clipper",
+      "title": "File:Palanca cortaunyas.jpg",
+      "error": "HTTP Error 429: Too many requests - please contact noc@wikimedia.org to discuss a less disruptive approach or instead use thumbnail images in sizes listed on https://w.wiki/GHai. (0c640b1)"
+    },
+    {
+      "class": "nail_clipper",
+      "title": "File:Fingernail Clippers.jpg",
+      "error": "HTTP Error 429: Too many requests - please contact noc@wikimedia.org to discuss a less disruptive approach or instead use thumbnail images in sizes listed on https://w.wiki/GHai. (0c640b1)"
+    },
+    {
+      "class": "nail_clipper",
+      "title": "File:Nailclippers3.jpg",
+      "error": "HTTP Error 429: Too many requests - please contact noc@wikimedia.org to discuss a less disruptive approach or instead use thumbnail images in sizes listed on https://w.wiki/GHai. (0c640b1)"
+    },
+    {
+      "class": "nail_clipper",
+      "title": "File:Coupe ongle.jpg",
+      "error": "HTTP Error 429: Too many requests - please contact noc@wikimedia.org to discuss a less disruptive approach or instead use thumbnail images in sizes listed on https://w.wiki/GHai. (0c640b1)"
+    },
+    {
+      "class": "nail_clipper",
+      "title": "File:Nail Clippers.jpg",
+      "error": "HTTP Error 429: Too many requests - please contact noc@wikimedia.org to discuss a less disruptive approach or instead use thumbnail images in sizes listed on https://w.wiki/GHai. (0c640b1)"
+    },
+    {
+      "class": "nail_clipper",
+      "title": "File:Klipeze plain chain e.jpg",
+      "error": "HTTP Error 429: Too many requests - please contact noc@wikimedia.org to discuss a less disruptive approach or instead use thumbnail images in sizes listed on https://w.wiki/GHai. (0c640b1)"
+    },
+    {
+      "class": "nail_clipper",
+      "title": "File:Beautiful Nail Studio in Cosham High Street - geograph.org.uk - 783878.jpg",
+      "error": "HTTP Error 429: Too many requests - please contact noc@wikimedia.org to discuss a less disruptive approach or instead use thumbnail images in sizes listed on https://w.wiki/GHai. (0c640b1)"
+    },
+    {
+      "class": "nail_clipper",
+      "title": "File:Korean nail-cutter.jpg",
+      "error": "HTTP Error 429: Too many requests - please contact noc@wikimedia.org to discuss a less disruptive approach or instead use thumbnail images in sizes listed on https://w.wiki/GHai. (0c640b1)"
+    },
+    {
+      "class": "nail_clipper",
+      "title": "File:Korean nail-cutter (View from above).jpg",
+      "error": "HTTP Error 429: Too many requests - please contact noc@wikimedia.org to discuss a less disruptive approach or instead use thumbnail images in sizes listed on https://w.wiki/GHai. (0c640b1)"
+    },
+    {
+      "class": "nail_clipper",
+      "title": "File:Korean nail-cutter part - dirt remover.jpg",
+      "error": "HTTP Error 429: Too many requests - please contact noc@wikimedia.org to discuss a less disruptive approach or instead use thumbnail images in sizes listed on https://w.wiki/GHai. (0c640b1)"
+    },
+    {
+      "class": "nail_clipper",
+      "title": "File:Korean nail-cutter part - dirt remover (blunt).jpg",
+      "error": "HTTP Error 429: Too many requests - please contact noc@wikimedia.org to discuss a less disruptive approach or instead use thumbnail images in sizes listed on https://w.wiki/GHai. (0c640b1)"
+    },
+    {
+      "class": "nail_clipper",
+      "title": "File:Silver Nail Clippers.JPG",
+      "error": "HTTP Error 429: Too many requests - please contact noc@wikimedia.org to discuss a less disruptive approach or instead use thumbnail images in sizes listed on https://w.wiki/GHai. (0c640b1)"
+    },
+    {
+      "class": "nail_clipper",
+      "title": "File:Tırnak makası.jpg",
+      "error": "HTTP Error 429: Too many requests - please contact noc@wikimedia.org to discuss a less disruptive approach or instead use thumbnail images in sizes listed on https://w.wiki/GHai. (0c640b1)"
+    },
+    {
+      "class": "nail_clipper",
+      "title": "File:Working closeup, nail clipper file, 1 16\" square balsa (5702862094).jpg",
+      "error": "HTTP Error 429: Too many requests - please contact noc@wikimedia.org to discuss a less disruptive approach or instead use thumbnail images in sizes listed on https://w.wiki/GHai. (0c640b1)"
+    },
+    {
+      "class": "nail_clipper",
+      "title": "File:Roman nailclipper.jpg",
+      "error": "HTTP Error 429: Too many requests - please contact noc@wikimedia.org to discuss a less disruptive approach or instead use thumbnail images in sizes listed on https://w.wiki/GHai. (0c640b1)"
+    },
+    {
+      "class": "nail_clipper",
+      "title": "File:Nail cutter image.jpg",
+      "error": "HTTP Error 429: Too many requests - please contact noc@wikimedia.org to discuss a less disruptive approach or instead use thumbnail images in sizes listed on https://w.wiki/GHai. (0c640b1)"
+    },
+    {
+      "class": "payment_card",
+      "title": "File:Credit card sized objects.jpg",
+      "error": "HTTP Error 429: Too many requests - please contact noc@wikimedia.org to discuss a less disruptive approach or instead use thumbnail images in sizes listed on https://w.wiki/GHai. (0c640b1)"
+    },
+    {
+      "class": "payment_card",
+      "title": "File:ClientCardSample.png",
+      "error": "HTTP Error 429: Too many requests - please contact noc@wikimedia.org to discuss a less disruptive approach or instead use thumbnail images in sizes listed on https://w.wiki/GHai. (0c640b1)"
+    },
+    {
+      "class": "payment_card",
+      "title": "File:Credit card samp.jpg",
+      "error": "HTTP Error 429: Too many requests - please contact noc@wikimedia.org to discuss a less disruptive approach or instead use thumbnail images in sizes listed on https://w.wiki/GHai. (0c640b1)"
+    },
+    {
+      "class": "payment_card",
+      "title": "File:More Credit Card Samples.jpg",
+      "error": "HTTP Error 429: Too many requests - please contact noc@wikimedia.org to discuss a less disruptive approach or instead use thumbnail images in sizes listed on https://w.wiki/GHai. (0c640b1)"
+    },
+    {
+      "class": "payment_card",
+      "title": "File:Credit Card Thumbnails 2.jpg",
+      "error": "HTTP Error 429: Too many requests - please contact noc@wikimedia.org to discuss a less disruptive approach or instead use thumbnail images in sizes listed on https://w.wiki/GHai. (0c640b1)"
+    },
+    {
+      "class": "payment_card",
+      "title": "File:Credit Card Slip DCC.png",
+      "error": "HTTP Error 429: Too many requests - please contact noc@wikimedia.org to discuss a less disruptive approach or instead use thumbnail images in sizes listed on https://w.wiki/GHai. (0c640b1)"
+    },
+    {
+      "class": "payment_card",
+      "title": "File:Credit card knife discovered at the Albuquerque International Sunport.jpg",
+      "error": "HTTP Error 429: Too many requests - please contact noc@wikimedia.org to discuss a less disruptive approach or instead use thumbnail images in sizes listed on https://w.wiki/GHai. (0c640b1)"
+    },
+    {
+      "class": "payment_card",
+      "title": "File:Credit card knife discovered at the Albuquerque International Sunport (unfolded).jpg",
+      "error": "HTTP Error 429: Too many requests - please contact noc@wikimedia.org to discuss a less disruptive approach or instead use thumbnail images in sizes listed on https://w.wiki/GHai. (0c640b1)"
+    },
+    {
+      "class": "payment_card",
+      "title": "File:Stainless steel credit card knife.jpg",
+      "error": "HTTP Error 429: Too many requests - please contact noc@wikimedia.org to discuss a less disruptive approach or instead use thumbnail images in sizes listed on https://w.wiki/GHai. (0c640b1)"
+    },
+    {
+      "class": "payment_card",
+      "title": "File:Stainless steel credit card knife dimensions.jpg",
+      "error": "HTTP Error 429: Too many requests - please contact noc@wikimedia.org to discuss a less disruptive approach or instead use thumbnail images in sizes listed on https://w.wiki/GHai. (0c640b1)"
+    },
+    {
+      "class": "payment_card",
+      "title": "File:Stainless steel credit card knife on a plate.jpg",
+      "error": "HTTP Error 429: Too many requests - please contact noc@wikimedia.org to discuss a less disruptive approach or instead use thumbnail images in sizes listed on https://w.wiki/GHai. (0c640b1)"
+    },
+    {
+      "class": "payment_card",
+      "title": "File:Credit Card Debt in the US.png",
+      "error": "HTTP Error 429: Too many requests - please contact noc@wikimedia.org to discuss a less disruptive approach or instead use thumbnail images in sizes listed on https://w.wiki/GHai. (0c640b1)"
+    },
+    {
+      "class": "keys",
+      "title": "File:Metal Sculpture at Eden Villa Park, Portadown. - geograph.org.uk - 568425.jpg",
+      "error": "HTTP Error 429: Too many requests - please contact noc@wikimedia.org to discuss a less disruptive approach or instead use thumbnail images in sizes listed on https://w.wiki/GHai. (0c640b1)"
+    },
+    {
+      "class": "keys",
+      "title": "File:Metal sculpture of conch shell- Key West, Florida (7970338548).jpg",
+      "error": "HTTP Error 429: Too many requests - please contact noc@wikimedia.org to discuss a less disruptive approach or instead use thumbnail images in sizes listed on https://w.wiki/GHai. (0c640b1)"
+    },
+    {
+      "class": "keys",
+      "title": "File:Modern vice key or button hook (FindID 235955).jpg",
+      "error": "HTTP Error 429: Too many requests - please contact noc@wikimedia.org to discuss a less disruptive approach or instead use thumbnail images in sizes listed on https://w.wiki/GHai. (0c640b1)"
+    },
+    {
+      "class": "keys",
+      "title": "File:Roman key (locking) - ring-key (FindID 572681).jpg",
+      "error": "HTTP Error 429: Too many requests - please contact noc@wikimedia.org to discuss a less disruptive approach or instead use thumbnail images in sizes listed on https://w.wiki/GHai. (0c640b1)"
+    },
+    {
+      "class": "keys",
+      "title": "File:Christ Presenting the Keys to Saint Peter MET temp29551.jpg",
+      "error": "HTTP Error 429: Too many requests - please contact noc@wikimedia.org to discuss a less disruptive approach or instead use thumbnail images in sizes listed on https://w.wiki/GHai. (0c640b1)"
+    },
+    {
+      "class": "keys",
+      "title": "File:Christ Presenting the Keys to Saint Peter MET temp29552.jpg",
+      "error": "HTTP Error 429: Too many requests - please contact noc@wikimedia.org to discuss a less disruptive approach or instead use thumbnail images in sizes listed on https://w.wiki/GHai. (0c640b1)"
+    },
+    {
+      "class": "keys",
+      "title": "File:Lada 110 keys.jpg",
+      "error": "HTTP Error 429: Too many requests - please contact noc@wikimedia.org to discuss a less disruptive approach or instead use thumbnail images in sizes listed on https://w.wiki/GHai. (0c640b1)"
+    },
+    {
+      "class": "eraser",
+      "title": "File:KOKUYO Kadokeshi Petit.jpg",
+      "error": "HTTP Error 429: Too many requests - please contact noc@wikimedia.org to discuss a less disruptive approach or instead use thumbnail images in sizes listed on https://w.wiki/GHai. (0c640b1)"
+    },
+    {
+      "class": "eraser",
+      "title": "File:Pentel Borrador 3pcs 20081022.jpg",
+      "error": "HTTP Error 429: Too many requests - please contact noc@wikimedia.org to discuss a less disruptive approach or instead use thumbnail images in sizes listed on https://w.wiki/GHai. (0c640b1)"
+    },
+    {
+      "class": "sweatshirt",
+      "title": "File:Sweater wiki.jpg",
+      "error": "HTTP Error 429: Too many requests - please contact noc@wikimedia.org to discuss a less disruptive approach or instead use thumbnail images in sizes listed on https://w.wiki/GHai. (0c640b1)"
+    },
+    {
+      "class": "eraser",
+      "title": "File:Eraser (Software).jpg",
+      "error": "HTTP Error 429: Too many requests - please contact noc@wikimedia.org to discuss a less disruptive approach or instead use thumbnail images in sizes listed on https://w.wiki/GHai. (0c640b1)"
+    },
+    {
+      "class": "sweatshirt",
+      "title": "File:Abbindebatik-Sweatshirt-zweifarbig.jpg",
+      "error": "HTTP Error 429: Too many requests - please contact noc@wikimedia.org to discuss a less disruptive approach or instead use thumbnail images in sizes listed on https://w.wiki/GHai. (0c640b1)"
+    },
+    {
+      "class": "sweatshirt",
+      "title": "File:Cost analysis of a $40 retail sweatshirt.JPG",
+      "error": "HTTP Error 429: Too many requests - please contact noc@wikimedia.org to discuss a less disruptive approach or instead use thumbnail images in sizes listed on https://w.wiki/GHai. (0c640b1)"
+    },
+    {
+      "class": "sweatshirt",
+      "title": "File:Brainstorm Sweatshirt.jpg",
+      "error": "HTTP Error 429: Too many requests - please contact noc@wikimedia.org to discuss a less disruptive approach or instead use thumbnail images in sizes listed on https://w.wiki/GHai. (0c640b1)"
+    },
+    {
+      "class": "sweatshirt",
+      "title": "File:Ski jumper silhouette Sapporo.jpg",
+      "error": "HTTP Error 429: Too many requests - please contact noc@wikimedia.org to discuss a less disruptive approach or instead use thumbnail images in sizes listed on https://w.wiki/GHai. (0c640b1)"
+    },
+    {
+      "class": "sweatshirt",
+      "title": "File:Women's Land Army Training at Cannington Farm, Somerset, England, C 1940 D118.jpg",
+      "error": "HTTP Error 429: Too many requests - please contact noc@wikimedia.org to discuss a less disruptive approach or instead use thumbnail images in sizes listed on https://w.wiki/GHai. (0c640b1)"
+    },
+    {
+      "class": "sweatshirt",
+      "title": "File:Certificate of Authenticity as issued by The Aran Sweater Market.jpg",
+      "error": "HTTP Error 429: Too many requests - please contact noc@wikimedia.org to discuss a less disruptive approach or instead use thumbnail images in sizes listed on https://w.wiki/GHai. (0c640b1)"
+    },
+    {
+      "class": "sweatshirt",
+      "title": "File:Sweater (clothing).jpg",
+      "error": "HTTP Error 429: Too many requests - please contact noc@wikimedia.org to discuss a less disruptive approach or instead use thumbnail images in sizes listed on https://w.wiki/GHai. (0c640b1)"
+    },
+    {
+      "class": "sweatshirt",
+      "title": "File:Olive Green V-neck Sweater over a Floral Top (23026754936).jpg",
+      "error": "HTTP Error 429: Too many requests - please contact noc@wikimedia.org to discuss a less disruptive approach or instead use thumbnail images in sizes listed on https://w.wiki/GHai. (0c640b1)"
+    },
+    {
+      "class": "sweatshirt",
+      "title": "File:Sweater knitted on V-bed flat machine.jpg",
+      "error": "HTTP Error 429: Too many requests - please contact noc@wikimedia.org to discuss a less disruptive approach or instead use thumbnail images in sizes listed on https://w.wiki/GHai. (0c640b1)"
+    },
+    {
+      "class": "sweatshirt",
+      "title": "File:Pedek wool underwear (sweater).jpg",
+      "error": "HTTP Error 429: Too many requests - please contact noc@wikimedia.org to discuss a less disruptive approach or instead use thumbnail images in sizes listed on https://w.wiki/GHai. (0c640b1)"
+    },
+    {
+      "class": "sweatshirt",
+      "title": "File:Sweater (PSF).png",
+      "error": "HTTP Error 429: Too many requests - please contact noc@wikimedia.org to discuss a less disruptive approach or instead use thumbnail images in sizes listed on https://w.wiki/GHai. (0c640b1)"
+    },
+    {
+      "class": "sweatshirt",
+      "title": "File:HeadshotPinkSweaterNOV20.jpg",
+      "error": "HTTP Error 429: Too many requests - please contact noc@wikimedia.org to discuss a less disruptive approach or instead use thumbnail images in sizes listed on https://w.wiki/GHai. (0c640b1)"
+    },
+    {
+      "class": "usb_drive",
+      "title": "File:USB flash drive made by LG CNS 20050109.jpg",
+      "error": "HTTP Error 429: Too many requests - please contact noc@wikimedia.org to discuss a less disruptive approach or instead use thumbnail images in sizes listed on https://w.wiki/GHai. (0c640b1)"
+    },
+    {
+      "class": "usb_drive",
+      "title": "File:USB Flash Drive and Card Reader.jpg",
+      "error": "HTTP Error 429: Too many requests - please contact noc@wikimedia.org to discuss a less disruptive approach or instead use thumbnail images in sizes listed on https://w.wiki/GHai. (0c640b1)"
+    }
+  ],
+  "stats_after": {
+    "name": "VisionAR Own Dataset v1",
+    "root": "datasets\\visionar_own_v1",
+    "classes": [
+      "person",
+      "eyeglasses",
+      "shirt",
+      "nail_clipper",
+      "cell_phone",
+      "perfume_bottle",
+      "potted_plant",
+      "chair",
+      "marker",
+      "eraser",
+      "tv",
+      "fish",
+      "cat",
+      "dog",
+      "motorcycle",
+      "pencil_case",
+      "wallet",
+      "payment_card",
+      "fork",
+      "spoon",
+      "knife",
+      "pen",
+      "backpack",
+      "handbag",
+      "playing_card",
+      "adhesive_tape",
+      "screwdriver",
+      "paper_sheet",
+      "table",
+      "sofa",
+      "cap",
+      "sweatshirt",
+      "sneakers",
+      "wardrobe",
+      "pillow",
+      "keys",
+      "usb_drive",
+      "banknote"
+    ],
+    "images": {
+      "train": 0,
+      "val": 0,
+      "test": 0
+    },
+    "total_images": 0,
+    "annotations": 0,
+    "reviewed_annotations": 0,
+    "pending_annotations": 1411,
+    "candidate_images": 1034,
+    "pending_candidates": 1034,
+    "by_class": {
+      "person": 0,
+      "eyeglasses": 0,
+      "shirt": 0,
+      "nail_clipper": 0,
+      "cell_phone": 0,
+      "perfume_bottle": 0,
+      "potted_plant": 0,
+      "chair": 0,
+      "marker": 0,
+      "eraser": 0,
+      "tv": 0,
+      "fish": 0,
+      "cat": 0,
+      "dog": 0,
+      "motorcycle": 0,
+      "pencil_case": 0,
+      "wallet": 0,
+      "payment_card": 0,
+      "fork": 0,
+      "spoon": 0,
+      "knife": 0,
+      "pen": 0,
+      "backpack": 0,
+      "handbag": 0,
+      "playing_card": 0,
+      "adhesive_tape": 0,
+      "screwdriver": 0,
+      "paper_sheet": 0,
+      "table": 0,
+      "sofa": 0,
+      "cap": 0,
+      "sweatshirt": 0,
+      "sneakers": 0,
+      "wardrobe": 0,
+      "pillow": 0,
+      "keys": 0,
+      "usb_drive": 0,
+      "banknote": 0
+    },
+    "per_class": {
+      "person": {
+        "photos": 0,
+        "annotations": 0,
+        "reviewed": 0,
+        "pending": 79,
+        "target": 30,
+        "missing": 30,
+        "ready": false
+      },
+      "eyeglasses": {
+        "photos": 0,
+        "annotations": 0,
+        "reviewed": 0,
+        "pending": 34,
+        "target": 30,
+        "missing": 30,
+        "ready": false
+      },
+      "shirt": {
+        "photos": 0,
+        "annotations": 0,
+        "reviewed": 0,
+        "pending": 34,
+        "target": 30,
+        "missing": 30,
+        "ready": false
+      },
+      "nail_clipper": {
+        "photos": 0,
+        "annotations": 0,
+        "reviewed": 0,
+        "pending": 14,
+        "target": 30,
+        "missing": 30,
+        "ready": false
+      },
+      "cell_phone": {
+        "photos": 0,
+        "annotations": 0,
+        "reviewed": 0,
+        "pending": 40,
+        "target": 30,
+        "missing": 30,
+        "ready": false
+      },
+      "perfume_bottle": {
+        "photos": 0,
+        "annotations": 0,
+        "reviewed": 0,
+        "pending": 30,
+        "target": 30,
+        "missing": 30,
+        "ready": false
+      },
+      "potted_plant": {
+        "photos": 0,
+        "annotations": 0,
+        "reviewed": 0,
+        "pending": 55,
+        "target": 30,
+        "missing": 30,
+        "ready": false
+      },
+      "chair": {
+        "photos": 0,
+        "annotations": 0,
+        "reviewed": 0,
+        "pending": 67,
+        "target": 30,
+        "missing": 30,
+        "ready": false
+      },
+      "marker": {
+        "photos": 0,
+        "annotations": 0,
+        "reviewed": 0,
+        "pending": 30,
+        "target": 30,
+        "missing": 30,
+        "ready": false
+      },
+      "eraser": {
+        "photos": 0,
+        "annotations": 0,
+        "reviewed": 0,
+        "pending": 27,
+        "target": 30,
+        "missing": 30,
+        "ready": false
+      },
+      "tv": {
+        "photos": 0,
+        "annotations": 0,
+        "reviewed": 0,
+        "pending": 33,
+        "target": 30,
+        "missing": 30,
+        "ready": false
+      },
+      "fish": {
+        "photos": 0,
+        "annotations": 0,
+        "reviewed": 0,
+        "pending": 61,
+        "target": 30,
+        "missing": 30,
+        "ready": false
+      },
+      "cat": {
+        "photos": 0,
+        "annotations": 0,
+        "reviewed": 0,
+        "pending": 32,
+        "target": 30,
+        "missing": 30,
+        "ready": false
+      },
+      "dog": {
+        "photos": 0,
+        "annotations": 0,
+        "reviewed": 0,
+        "pending": 35,
+        "target": 30,
+        "missing": 30,
+        "ready": false
+      },
+      "motorcycle": {
+        "photos": 0,
+        "annotations": 0,
+        "reviewed": 0,
+        "pending": 47,
+        "target": 30,
+        "missing": 30,
+        "ready": false
+      },
+      "pencil_case": {
+        "photos": 0,
+        "annotations": 0,
+        "reviewed": 0,
+        "pending": 30,
+        "target": 30,
+        "missing": 30,
+        "ready": false
+      },
+      "wallet": {
+        "photos": 0,
+        "annotations": 0,
+        "reviewed": 0,
+        "pending": 30,
+        "target": 30,
+        "missing": 30,
+        "ready": false
+      },
+      "payment_card": {
+        "photos": 0,
+        "annotations": 0,
+        "reviewed": 0,
+        "pending": 18,
+        "target": 30,
+        "missing": 30,
+        "ready": false
+      },
+      "fork": {
+        "photos": 0,
+        "annotations": 0,
+        "reviewed": 0,
+        "pending": 39,
+        "target": 30,
+        "missing": 30,
+        "ready": false
+      },
+      "spoon": {
+        "photos": 0,
+        "annotations": 0,
+        "reviewed": 0,
+        "pending": 47,
+        "target": 30,
+        "missing": 30,
+        "ready": false
+      },
+      "knife": {
+        "photos": 0,
+        "annotations": 0,
+        "reviewed": 0,
+        "pending": 43,
+        "target": 30,
+        "missing": 30,
+        "ready": false
+      },
+      "pen": {
+        "photos": 0,
+        "annotations": 0,
+        "reviewed": 0,
+        "pending": 41,
+        "target": 30,
+        "missing": 30,
+        "ready": false
+      },
+      "backpack": {
+        "photos": 0,
+        "annotations": 0,
+        "reviewed": 0,
+        "pending": 37,
+        "target": 30,
+        "missing": 30,
+        "ready": false
+      },
+      "handbag": {
+        "photos": 0,
+        "annotations": 0,
+        "reviewed": 0,
+        "pending": 53,
+        "target": 30,
+        "missing": 30,
+        "ready": false
+      },
+      "playing_card": {
+        "photos": 0,
+        "annotations": 0,
+        "reviewed": 0,
+        "pending": 30,
+        "target": 30,
+        "missing": 30,
+        "ready": false
+      },
+      "adhesive_tape": {
+        "photos": 0,
+        "annotations": 0,
+        "reviewed": 0,
+        "pending": 30,
+        "target": 30,
+        "missing": 30,
+        "ready": false
+      },
+      "screwdriver": {
+        "photos": 0,
+        "annotations": 0,
+        "reviewed": 0,
+        "pending": 30,
+        "target": 30,
+        "missing": 30,
+        "ready": false
+      },
+      "paper_sheet": {
+        "photos": 0,
+        "annotations": 0,
+        "reviewed": 0,
+        "pending": 30,
+        "target": 30,
+        "missing": 30,
+        "ready": false
+      },
+      "table": {
+        "photos": 0,
+        "annotations": 0,
+        "reviewed": 0,
+        "pending": 55,
+        "target": 30,
+        "missing": 30,
+        "ready": false
+      },
+      "sofa": {
+        "photos": 0,
+        "annotations": 0,
+        "reviewed": 0,
+        "pending": 37,
+        "target": 30,
+        "missing": 30,
+        "ready": false
+      },
+      "cap": {
+        "photos": 0,
+        "annotations": 0,
+        "reviewed": 0,
+        "pending": 30,
+        "target": 30,
+        "missing": 30,
+        "ready": false
+      },
+      "sweatshirt": {
+        "photos": 0,
+        "annotations": 0,
+        "reviewed": 0,
+        "pending": 17,
+        "target": 30,
+        "missing": 30,
+        "ready": false
+      },
+      "sneakers": {
+        "photos": 0,
+        "annotations": 0,
+        "reviewed": 0,
+        "pending": 30,
+        "target": 30,
+        "missing": 30,
+        "ready": false
+      },
+      "wardrobe": {
+        "photos": 0,
+        "annotations": 0,
+        "reviewed": 0,
+        "pending": 30,
+        "target": 30,
+        "missing": 30,
+        "ready": false
+      },
+      "pillow": {
+        "photos": 0,
+        "annotations": 0,
+        "reviewed": 0,
+        "pending": 55,
+        "target": 30,
+        "missing": 30,
+        "ready": false
+      },
+      "keys": {
+        "photos": 0,
+        "annotations": 0,
+        "reviewed": 0,
+        "pending": 23,
+        "target": 30,
+        "missing": 30,
+        "ready": false
+      },
+      "usb_drive": {
+        "photos": 0,
+        "annotations": 0,
+        "reviewed": 0,
+        "pending": 28,
+        "target": 30,
+        "missing": 30,
+        "ready": false
+      },
+      "banknote": {
+        "photos": 0,
+        "annotations": 0,
+        "reviewed": 0,
+        "pending": 30,
+        "target": 30,
+        "missing": 30,
+        "ready": false
+      }
+    },
+    "ready_for_training": false,
+    "minimum_recommended_per_class": 30,
+    "required_annotations": 1140
+  }
+}

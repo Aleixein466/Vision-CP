@@ -1,0 +1,8 @@
+{
+  "url": "http://images.cocodataset.org/annotations/annotations_trainval2017.zip",
+  "path": "datasets\\raw\\annotations_trainval2017.zip",
+  "bytes": 252907541,
+  "sha256": "113a836d90195ee1f884e704da6304dfaaecff1f023f49b6ca93c4aaae470268",
+  "downloaded_at_utc": "2026-10-25T15:44:40.581884+00:00",
+  "expected_sha256": null
+}

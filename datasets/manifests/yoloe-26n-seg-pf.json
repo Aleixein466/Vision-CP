@@ -1,0 +1,9 @@
+{
+  "retrieved_at": "2026-10-25",
+  "source": "https://github.com/ultralytics/assets/releases/download/v8.4.0/yoloe-26n-seg-pf.pt",
+  "destination": "training/checkpoints/yoloe-26n-seg-pf.pt",
+  "bytes": 16271345,
+  "sha256": "ae805a9ac11c85214588b32da8248d68a516e1d071465e1e86a03cbfadb66ba7",
+  "purpose": "Detección abierta bajo demanda para objetos fuera de las 80 clases COCO",
+  "license_note": "Checkpoint oficial de Ultralytics; revisar los términos AGPL-3.0/Enterprise antes de redistribuir o integrar comercialmente."
+}

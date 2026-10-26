@@ -1,0 +1,9 @@
+{
+  "camera": 0,
+  "frames_inferred": 5,
+  "last_counts": {},
+  "last_fps": 9.228071794404078,
+  "confidence": 0.35,
+  "imgsz": 480,
+  "source": "live_camera"
+}

@@ -1,0 +1,22 @@
+{
+  "seed": 2602,
+  "requested_images_per_class": 20,
+  "unique_images": 100,
+  "images_per_class": {
+    "bottle": 30,
+    "cell phone": 28,
+    "laptop": 34,
+    "book": 27,
+    "car": 25
+  },
+  "boxes_per_class": {
+    "bottle": 82,
+    "cell phone": 36,
+    "laptop": 47,
+    "book": 150,
+    "car": 82
+  },
+  "downloaded_bytes": 15278748,
+  "annotation_source": "datasets\\external\\annotations\\instances_val2017.json",
+  "image_source_split": "COCO val2017"
+}

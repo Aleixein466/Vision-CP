@@ -1,0 +1,8 @@
+{
+  "retrieved_at": "2026-10-25",
+  "source": "https://github.com/ultralytics/assets/releases/download/v8.4.0/yolo26n-seg.pt",
+  "destination": "training/checkpoints/yolo26n-seg.pt",
+  "bytes": 6719965,
+  "sha256": "361fbabab285c3237700b6bb91d7ecfa602cd945fffda8dbe1242829b71e73f",
+  "purpose": "YOLO26 nano instance segmentation for real-time CPU inference"
+}

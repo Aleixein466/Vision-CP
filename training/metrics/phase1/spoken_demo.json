@@ -1,0 +1,19 @@
+{
+  "source": "C:\\Users\\alexi\\Desktop\\vision\\VISIONAR-AI\\datasets\\processed\\phase1_coco_val\\images\\test\\000000248631.jpg",
+  "output": "C:\\Users\\alexi\\Desktop\\vision\\VISIONAR-AI\\training\\metrics\\phase1\\spoken_demo.jpg",
+  "confidence_threshold": 0.35,
+  "detections": [
+    {
+      "class": "laptop",
+      "confidence": 0.9519601464271545
+    },
+    {
+      "class": "mouse",
+      "confidence": 0.6846201419830322
+    }
+  ],
+  "spoken_phrases": [
+    "Veo un computador portátil",
+    "Veo un ratón de computador"
+  ]
+}

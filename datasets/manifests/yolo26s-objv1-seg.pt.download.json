@@ -1,0 +1,10 @@
+{
+  "retrieved_at": "2026-10-25T20:20:00-05:00",
+  "source": "https://github.com/ultralytics/assets/releases/download/v8.4.0/yolo26s-objv1-seg.pt",
+  "destination": "training/checkpoints/yolo26s-objv1-seg.pt",
+  "bytes": 24002461,
+  "sha256": "de0f73b0338e9cffbf7e4a505a0d715230192b7229db7a67e520564e92e041ef",
+  "pretraining_dataset": "Objects365v1",
+  "classes": 365,
+  "role": "Small general instance segmenter used by VisionAR"
+}

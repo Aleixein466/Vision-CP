@@ -1,0 +1,10 @@
+{
+  "retrieved_at": "2026-10-25T20:00:00-05:00",
+  "source": "https://github.com/ultralytics/assets/releases/download/v8.3.0/yolov8n-oiv7.pt",
+  "destination": "training/checkpoints/yolov8n-oiv7.pt",
+  "bytes": 7226939,
+  "sha256": "3851dfbf39ed2a076b1f39215cc22dba64eb5646f282bf964703785b0bed6a41",
+  "pretraining_dataset": "Open Images V7",
+  "classes": 601,
+  "role": "installed research fallback; the live detector remains YOLO26 Objects365"
+}

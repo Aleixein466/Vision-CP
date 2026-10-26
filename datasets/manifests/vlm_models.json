@@ -1,0 +1,27 @@
+{
+  "retrieved_at": "2026-10-25",
+  "storage": "Hugging Face standard user cache",
+  "models": [
+    {
+      "repository": "ggml-org/Qwen2-VL-2B-Instruct-GGUF",
+      "revision": "bb307c036e8a1ed7b663bbd0c35b41c4c9294cfd",
+      "role": "primary",
+      "files": [
+        {"name": "Qwen2-VL-2B-Instruct-Q4_K_M.gguf", "bytes": 986046944, "sha256": "5745685d2e607a82a0696c1118e56a2a1ae0901da450fd9cd4f161c6b62867d7"},
+        {"name": "mmproj-Qwen2-VL-2B-Instruct-Q8_0.gguf", "bytes": 709883360, "sha256": "a0ad91f00a7a80dcf84d719a61b00ee2e07b71794f4ee2dfa81a254621a8c418"}
+      ],
+      "license": "Apache-2.0 according to the Hugging Face repository card"
+    },
+    {
+      "repository": "ggml-org/SmolVLM-500M-Instruct-GGUF",
+      "revision": "72e986006ef53e37cdd3f6d4241c90b0f01df376",
+      "role": "fallback_tested",
+      "files": [
+        {"name": "SmolVLM-500M-Instruct-Q8_0.gguf", "bytes": 436806912, "sha256": "9d4612de6a42214499e301494a3ecc2be0abdd9de44e663bda63f1152fad1bf4"},
+        {"name": "mmproj-SmolVLM-500M-Instruct-Q8_0.gguf", "bytes": 108783360, "sha256": "d1eb8b6b23979205fdf63703ed10f788131a3f812c7b1f72e0119d5d81295150"}
+      ],
+      "selection_note": "Más rápido, pero no siguió de forma fiable la instrucción de responder en español en tres pruebas."
+    }
+  ]
+}
+

@@ -1,0 +1,10 @@
+{
+  "retrieved_at": "2026-10-25T20:20:00-05:00",
+  "source": "https://github.com/ultralytics/assets/releases/download/v8.4.0/yolo26s-objv1-150.pt",
+  "destination": "training/checkpoints/yolo26s-objv1-150.pt",
+  "bytes": 20872197,
+  "sha256": "9d879c1bf2f79703d0b6175220fb113c6d8b700d61d30fcf4e37a664911933f0",
+  "pretraining_dataset": "Objects365v1",
+  "classes": 365,
+  "role": "Small general detector used by VisionAR"
+}

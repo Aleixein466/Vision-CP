@@ -1,0 +1,17 @@
+mode:
+  id: general
+  detector: yolo26n-objv1-150.pt
+  segmenter: yolo26n-objv1-seg.pt
+  vocabulary: Objects365-365
+  live: true
+  confidence: 0.30
+  imgsz: 320
+  guidance: One unified mode. Select a region only when a small object needs closer VLM inspection.
+performance:
+  pause_live_yolo_during_vlm: true
+  max_parallel_vlm_requests: 1
+  max_parallel_yolo_requests: 1
+  cpu_threads: 1
+  llama_threads: 2
+  llama_parallel_slots: 1
+  minimum_live_hits: 2

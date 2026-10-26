@@ -1,0 +1,24 @@
+{
+  "seed": 2601,
+  "selected_classes": {
+    "1": "bicycle",
+    "39": "bottle",
+    "56": "chair",
+    "63": "laptop",
+    "67": "cell phone"
+  },
+  "images": 21,
+  "split_images": {
+    "train": 15,
+    "val": 4,
+    "test": 2
+  },
+  "images_per_class": {
+    "laptop": 2,
+    "chair": 9,
+    "cell phone": 5,
+    "bottle": 6,
+    "bicycle": 3
+  },
+  "near_duplicate_threshold": 4
+}

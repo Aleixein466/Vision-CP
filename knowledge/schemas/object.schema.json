@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://visionar.local/schemas/object.schema.json",
+  "type": "object",
+  "required": ["id", "detector_class", "name_es", "category", "description", "references", "verification_level"],
+  "properties": {
+    "id": {"type": "string"},
+    "detector_class": {"type": "object", "required": ["id", "name", "model"]},
+    "name_es": {"type": "string"},
+    "category": {"type": "string"},
+    "description": {"type": "string"},
+    "references": {"type": "array", "items": {"type": "string", "format": "uri"}},
+    "verification_level": {"enum": ["unverified", "basic_single_reference", "verified_multiple_sources"]}
+  }
+}
+

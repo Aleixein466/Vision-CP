@@ -1,0 +1,43 @@
+path: .
+train: images/train
+val: images/val
+test: images/test
+names:
+  0: person
+  1: eyeglasses
+  2: shirt
+  3: nail_clipper
+  4: cell_phone
+  5: perfume_bottle
+  6: potted_plant
+  7: chair
+  8: marker
+  9: eraser
+  10: tv
+  11: fish
+  12: cat
+  13: dog
+  14: motorcycle
+  15: pencil_case
+  16: wallet
+  17: payment_card
+  18: fork
+  19: spoon
+  20: knife
+  21: pen
+  22: backpack
+  23: handbag
+  24: playing_card
+  25: adhesive_tape
+  26: screwdriver
+  27: paper_sheet
+  28: table
+  29: sofa
+  30: cap
+  31: sweatshirt
+  32: sneakers
+  33: wardrobe
+  34: pillow
+  35: keys
+  36: usb_drive
+  37: banknote

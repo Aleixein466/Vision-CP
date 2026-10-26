@@ -1,0 +1,8 @@
+{
+  "url": "https://github.com/ggml-org/llama.cpp/releases/download/b11879/llama-b11879-bin-win-cpu-x64.zip",
+  "path": "datasets\\raw\\llama-b11879-bin-win-cpu-x64.zip",
+  "bytes": 24216225,
+  "sha256": "9d730a9f1636a594d89a3666e44aef8dd6ffcaf1dbcf691eed3aac096bb8f895",
+  "downloaded_at_utc": "2026-10-25T16:19:08.599345+00:00",
+  "expected_sha256": null
+}

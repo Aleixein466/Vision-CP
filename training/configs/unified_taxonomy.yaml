@@ -1,0 +1,64 @@
+profile: general_unified
+live_detector: training/checkpoints/yolo26n-objv1-150.pt
+segmentation_detector: training/checkpoints/yolo26n-objv1-seg.pt
+pretraining_dataset: Objects365v1
+pretrained_classes: 365
+vlm_role: Describe visible attributes and verify classes absent from the detector vocabulary.
+
+own_dataset_classes:
+  - person
+  - eyeglasses
+  - shirt
+  - nail_clipper
+  - cell_phone
+  - perfume_bottle
+  - potted_plant
+  - chair
+  - marker
+  - eraser
+  - tv
+  - fish
+  - cat
+  - dog
+  - motorcycle
+  - pencil_case
+  - wallet
+  - payment_card
+  - fork
+  - spoon
+  - knife
+  - pen
+  - backpack
+  - handbag
+  - playing_card
+  - adhesive_tape
+  - screwdriver
+  - paper_sheet
+  - table
+  - sofa
+  - cap
+  - sweatshirt
+  - sneakers
+  - wardrobe
+  - pillow
+  - keys
+  - usb_drive
+  - banknote
+
+visual_attributes_for_vlm:
+  person:
+    - glasses_visible
+    - garment_type
+    - garment_color
+    - visible_pattern
+    - footwear_type
+    - visible_accessories
+  objects:
+    - dominant_color
+    - visible_material
+    - printed_text_if_legible
+
+attribute_policy:
+  - Colors, patterns and materials are attributes, not YOLO object classes.
+  - Never infer identity, gender, ethnicity, health or hidden properties from appearance.
+  - Payment cards may be detected by type, but private numbers and identity must not be stored.

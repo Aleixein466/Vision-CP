@@ -1,0 +1,75 @@
+{
+  "source": "temporary MP4 assembled from real COCO test photographs",
+  "frames_processed": 6,
+  "results": [
+    {
+      "frame": 1,
+      "classes": [
+        "teddy bear",
+        "bottle"
+      ],
+      "latency_ms": 99.11,
+      "wall_ms": 104.7
+    },
+    {
+      "frame": 2,
+      "classes": [
+        "person",
+        "chair",
+        "person",
+        "chair",
+        "person",
+        "chair",
+        "dining table",
+        "chair",
+        "person",
+        "dining table",
+        "chair",
+        "clock"
+      ],
+      "latency_ms": 58.2,
+      "wall_ms": 62.65
+    },
+    {
+      "frame": 3,
+      "classes": [
+        "person",
+        "person"
+      ],
+      "latency_ms": 56.29,
+      "wall_ms": 60.65
+    },
+    {
+      "frame": 4,
+      "classes": [
+        "laptop",
+        "bottle",
+        "person",
+        "book",
+        "backpack"
+      ],
+      "latency_ms": 57.16,
+      "wall_ms": 60.84
+    },
+    {
+      "frame": 5,
+      "classes": [
+        "remote",
+        "person",
+        "cell phone"
+      ],
+      "latency_ms": 51.87,
+      "wall_ms": 54.32
+    },
+    {
+      "frame": 6,
+      "classes": [
+        "laptop",
+        "cup"
+      ],
+      "latency_ms": 48.56,
+      "wall_ms": 50.96
+    }
+  ],
+  "average_wall_ms": 65.69
+}

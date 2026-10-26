@@ -1,0 +1,13 @@
+model: training/checkpoints/yolo26n-objv1-seg.pt
+data: datasets/visionar_own_v1/data.yaml
+task: segment
+device: cpu
+epochs: 40
+imgsz: 512
+batch: 2
+workers: 0
+patience: 10
+cache: false
+minimum_annotations_per_class: 30
+recommended_images_per_class: 100-200
+requires_reviewed_masks: true

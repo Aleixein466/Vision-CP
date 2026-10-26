@@ -1,0 +1,11 @@
+{
+  "retrieved_at": "2026-10-25T21:47:14-05:00",
+  "source": "https://github.com/ultralytics/assets/releases/download/v0.0.0/coco8-seg.zip",
+  "destination": "datasets/coco8-seg",
+  "images": 8,
+  "label_files": 8,
+  "splits": {"train": 4, "val": 4, "test": 0},
+  "provenance": "First 8 images from COCO train2017, packaged as COCO8-seg by Ultralytics",
+  "bundle_license_file": "datasets/coco8-seg/LICENSE",
+  "purpose": "Training pipeline smoke test only; not used as the VisionAR production dataset"
+}

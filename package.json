@@ -1,0 +1,32 @@
+{
+  "name": "visionar-ai",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Lanzador local del detector VisionAR AI",
+  "scripts": {
+    "dev": "python scripts/start_assistant.py --model smolvlm-500m",
+    "dev:smol": "python scripts/start_assistant.py --model smolvlm-500m",
+    "dev:qwen": "python scripts/start_assistant.py --model qwen2-vl-2b",
+    "camera": "python scripts/camera_detector.py --all-coco",
+    "dev:focus": "python scripts/camera_detector.py",
+    "camera:list": "python scripts/camera_detector.py --list-cameras",
+    "camera:test": "python scripts/camera_detector.py --camera 0 --smoke-frames 5 --no-speech",
+    "speech:test": "python scripts/camera_detector.py --test-speech",
+    "evaluate": "python scripts/evaluate_phase1.py",
+    "demo": "python scripts/recognize_image.py --image datasets/processed/phase1_coco_val/images/test/000000248631.jpg",
+    "vlm:test": "python scripts/test_vlm.py",
+    "fusion:test": "python scripts/test_web_api.py",
+    "modes:test": "python scripts/audit_general_coverage.py",
+    "focus:test": "python scripts/test_focus_api.py",
+    "video:test": "python scripts/test_video_pipeline.py",
+    "phase2:test": "python scripts/test_phase2_api.py",
+    "tracking:test": "node scripts/test_scene_tracking.js",
+    "stability:test": "python scripts/test_resource_stability.py",
+    "coverage:audit": "python scripts/audit_general_coverage.py",
+    "train:audit": "python scripts/train_visionar.py",
+    "train:smoke": "python scripts/train_smoke.py",
+    "train:own": "python scripts/train_visionar.py --execute",
+    "dataset:e2e": "python scripts/test_dataset_workflow.py",
+    "test": "python -m unittest discover -s tests -v"
+  }
+}

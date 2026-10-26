@@ -1,0 +1,8 @@
+{
+  "url": "https://storage.googleapis.com/openimages/v5/validation-annotations-bbox.csv",
+  "path": "datasets\\raw\\openimages-validation-annotations-bbox.csv",
+  "bytes": 25105048,
+  "sha256": "d8bbd59410af14835d7733165a7bb8a3f0213981b22dd5077b0b9f7878991ff2",
+  "downloaded_at_utc": "2026-10-26T03:23:37.127518+00:00",
+  "expected_sha256": null
+}

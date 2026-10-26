@@ -1,0 +1,35 @@
+{
+  "started_at": "2026-10-25T21:47:12.382280-05:00",
+  "finished_at": "2026-10-25T21:47:24.956794-05:00",
+  "purpose": "CPU training pipeline validation only; not a VisionAR production checkpoint",
+  "source_dataset": "COCO8-seg (real labeled subset distributed by Ultralytics)",
+  "base_model": "training/checkpoints/yolo26n-seg.pt",
+  "settings": {
+    "epochs": 1,
+    "imgsz": 320,
+    "batch": 1,
+    "device": "cpu",
+    "workers": 0
+  },
+  "save_dir": "training/runs/cpu_training_smoke",
+  "best_checkpoint": "training/runs/cpu_training_smoke/weights/best.pt",
+  "last_checkpoint": "training/runs/cpu_training_smoke/weights/last.pt",
+  "metrics": {
+    "metrics/precision(B)": 0.895,
+    "metrics/recall(B)": 0.45,
+    "metrics/mAP50(B)": 0.75827,
+    "metrics/mAP50-95(B)": 0.53972,
+    "metrics/precision(M)": 0.68,
+    "metrics/recall(M)": 0.435,
+    "metrics/mAP50(M)": 0.6462,
+    "metrics/mAP50-95(M)": 0.45256
+  },
+  "production_deployed": false,
+  "checkpoint_reload_validation": {
+    "image": "datasets/coco8-seg/images/val/000000000036.jpg",
+    "detections": 2,
+    "masks": 2,
+    "classes": ["umbrella", "person"],
+    "cold_latency_ms": 2672.03
+  }
+}

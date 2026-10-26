@@ -1,0 +1,82 @@
+{
+  "schema_version": "1.0.0",
+  "consulted_at": "2026-10-25",
+  "records": [
+    {
+      "id": "coco-1-bicycle",
+      "detector_class": {"id": 1, "name": "bicycle", "model": "yolo26n.pt"},
+      "name_es": "bicicleta",
+      "category": "transporte",
+      "description": "Vehículo terrestre de dos ruedas alineadas, propulsado normalmente mediante pedales.",
+      "characteristics": ["dos ruedas", "dirección mediante manillar", "propulsión humana habitual"],
+      "components": ["cuadro", "ruedas", "manillar", "sillín", "pedales", "transmisión", "frenos"],
+      "operation": "El pedaleo transmite par a una rueda; la dirección y el equilibrio controlan la trayectoria.",
+      "applications": ["movilidad", "deporte", "recreación"],
+      "materials": ["metal o compuesto en el cuadro", "caucho en neumáticos"],
+      "additional_information": "La detección genérica no identifica marca, talla, material exacto ni tipo de bicicleta.",
+      "references": ["https://fi.edu/en/science-and-education/collection/bicycle-technology"],
+      "verification_level": "basic_single_reference"
+    },
+    {
+      "id": "coco-39-bottle",
+      "detector_class": {"id": 39, "name": "bottle", "model": "yolo26n.pt"},
+      "name_es": "botella",
+      "category": "objeto_cotidiano",
+      "description": "Recipiente portátil, normalmente estrecho en la boca, destinado a contener líquidos u otras sustancias.",
+      "characteristics": ["cuerpo contenedor", "abertura estrecha", "cierre frecuente"],
+      "components": ["cuerpo", "cuello", "boca", "tapa opcional"],
+      "operation": "Contiene y permite verter el contenido a través de una abertura.",
+      "applications": ["almacenamiento", "transporte", "dosificación"],
+      "materials": ["vidrio", "plástico", "metal; no inferible por la clase"],
+      "additional_information": "No inferir contenido, volumen, seguridad alimentaria ni material a partir de la caja detectada.",
+      "references": ["https://dictionary.cambridge.org/us/dictionary/english/bottle"],
+      "verification_level": "basic_single_reference"
+    },
+    {
+      "id": "coco-56-chair",
+      "detector_class": {"id": 56, "name": "chair", "model": "yolo26n.pt"},
+      "name_es": "silla",
+      "category": "objeto_cotidiano",
+      "description": "Mueble destinado a sentar normalmente a una persona y provisto habitualmente de respaldo.",
+      "characteristics": ["superficie de asiento", "respaldo habitual", "soporte sobre el suelo"],
+      "components": ["asiento", "respaldo", "patas o base", "brazos opcionales"],
+      "operation": "Soporta el peso de una persona en posición sentada.",
+      "applications": ["hogar", "oficina", "educación", "espacios públicos"],
+      "materials": ["madera", "metal", "plástico", "textil; no inferible por la clase"],
+      "additional_information": "La clase COCO no identifica estilo, ergonomía, fabricante ni capacidad.",
+      "references": ["https://en.wikisource.org/wiki/1911_Encyclop%C3%A6dia_Britannica/Chair"],
+      "verification_level": "basic_single_reference"
+    },
+    {
+      "id": "coco-63-laptop",
+      "detector_class": {"id": 63, "name": "laptop", "model": "yolo26n.pt"},
+      "name_es": "computador portátil",
+      "category": "tecnologia",
+      "description": "Computador personal transportable que integra pantalla y controles de entrada en un chasis plegable o compacto.",
+      "characteristics": ["computación de propósito general", "pantalla integrada", "alimentación portátil habitual"],
+      "components": ["pantalla", "teclado", "dispositivo apuntador", "procesador", "memoria", "almacenamiento", "batería habitual"],
+      "operation": "Ejecuta instrucciones digitales y presenta resultados mediante periféricos integrados.",
+      "applications": ["productividad", "educación", "comunicación", "creación de contenido"],
+      "materials": ["mezcla de metales, polímeros, vidrio y componentes electrónicos; composición exacta desconocida"],
+      "additional_information": "No inferir marca, CPU, RAM, almacenamiento, sistema operativo ni estado funcional.",
+      "references": ["https://technav.ieee.org/topic/portable-computers/"],
+      "verification_level": "basic_single_reference"
+    },
+    {
+      "id": "coco-67-cell-phone",
+      "detector_class": {"id": 67, "name": "cell phone", "model": "yolo26n.pt"},
+      "name_es": "teléfono celular",
+      "category": "tecnologia",
+      "description": "Dispositivo portátil para comunicación mediante una red celular; muchos modelos incorporan funciones informáticas adicionales.",
+      "characteristics": ["radio celular", "interfaz de usuario", "alimentación por batería habitual"],
+      "components": ["pantalla o controles", "radio y antena", "procesador", "batería", "cámaras opcionales"],
+      "operation": "Intercambia voz o datos por radio con una red móvil y procesa información localmente.",
+      "applications": ["comunicación", "acceso a información", "captura multimedia", "navegación"],
+      "materials": ["vidrio, metal, polímeros y electrónica; composición exacta desconocida"],
+      "additional_information": "No inferir marca, modelo, capacidad, red, propiedad ni contenido de pantalla.",
+      "references": ["https://its.ntia.gov/media/66728/cichonski_isart2020.pdf"],
+      "verification_level": "basic_single_reference"
+    }
+  ]
+}
+

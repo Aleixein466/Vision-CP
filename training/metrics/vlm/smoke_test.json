@@ -1,0 +1,14 @@
+{
+  "answer": "En la imagen aparecen un ordenador portátil y un ratón.",
+  "usage": {
+    "completion_tokens": 17,
+    "prompt_tokens": 491,
+    "total_tokens": 508,
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    }
+  },
+  "model": "ggml-org/Qwen2-VL-2B-Instruct-GGUF:Q4_K_M",
+  "source": "datasets\\processed\\phase1_coco_val\\images\\test\\000000248631.jpg",
+  "elapsed_seconds": 39.3442342000053
+}

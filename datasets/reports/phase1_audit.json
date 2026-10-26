@@ -1,0 +1,22 @@
+{
+  "images_checked": 121,
+  "images_by_split": {
+    "pilot_train": 15,
+    "pilot_val": 4,
+    "pilot_test": 2,
+    "phase1_test": 100
+  },
+  "phase1_boxes_by_class": {
+    "39": 82,
+    "67": 36,
+    "63": 47,
+    "73": 150,
+    "2": 82
+  },
+  "issue_count": 0,
+  "issues": [],
+  "exact_cross_split_duplicates": [],
+  "near_cross_split_duplicates_hamming_le_4": [],
+  "missing_provenance": [],
+  "license_rows_with_name_and_url": 100
+}

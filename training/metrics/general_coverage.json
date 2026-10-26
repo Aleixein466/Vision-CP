@@ -1,0 +1,114 @@
+{
+  "audited_at": "2026-10-25T19:50:12.774359-05:00",
+  "model": "training/checkpoints/yolo26n-objv1-150.pt",
+  "pretrained_vocabulary_size": 365,
+  "requested_classes": 38,
+  "native_coverage_count": 28,
+  "native_coverage": {
+    "person": [
+      "person"
+    ],
+    "eyeglasses": [
+      "glasses"
+    ],
+    "cell_phone": [
+      "cell phone"
+    ],
+    "potted_plant": [
+      "potted plant"
+    ],
+    "chair": [
+      "chair"
+    ],
+    "marker": [
+      "marker"
+    ],
+    "eraser": [
+      "eraser",
+      "board eraser"
+    ],
+    "tv": [
+      "tv"
+    ],
+    "fish": [
+      "fish",
+      "goldfish"
+    ],
+    "cat": [
+      "cat"
+    ],
+    "dog": [
+      "dog"
+    ],
+    "motorcycle": [
+      "motorcycle"
+    ],
+    "pencil_case": [
+      "pencil case"
+    ],
+    "fork": [
+      "fork"
+    ],
+    "spoon": [
+      "spoon"
+    ],
+    "knife": [
+      "knife"
+    ],
+    "pen": [
+      "pen/pencil"
+    ],
+    "backpack": [
+      "backpack"
+    ],
+    "handbag": [
+      "handbag"
+    ],
+    "playing_card": [
+      "poker card"
+    ],
+    "adhesive_tape": [
+      "tape"
+    ],
+    "screwdriver": [
+      "screwdriver"
+    ],
+    "paper_sheet": [
+      "notepaper"
+    ],
+    "table": [
+      "dining table",
+      "coffee table"
+    ],
+    "sofa": [
+      "couch"
+    ],
+    "cap": [
+      "hat"
+    ],
+    "sneakers": [
+      "sneakers"
+    ],
+    "pillow": [
+      "pillow"
+    ]
+  },
+  "requires_own_data_or_vlm": [
+    "shirt",
+    "nail_clipper",
+    "perfume_bottle",
+    "wallet",
+    "payment_card",
+    "sweatshirt",
+    "wardrobe",
+    "keys",
+    "usb_drive",
+    "banknote"
+  ],
+  "attributes_handled_by_vlm": [
+    "garment color",
+    "visible shirt pattern",
+    "object color",
+    "visible material"
+  ]
+}

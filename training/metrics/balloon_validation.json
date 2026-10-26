@@ -1,0 +1,33 @@
+{
+  "validated_at": "2026-10-25T20:25:00-05:00",
+  "source": "https://commons.wikimedia.org/wiki/File:Party_Balloons.jpeg",
+  "license": "CC BY-SA 4.0",
+  "image_use": "temporary validation only; image removed after inference",
+  "settings": {
+    "confidence": 0.18,
+    "imgsz": 640,
+    "device": "cpu"
+  },
+  "results": {
+    "yolo26n-objv1-150.pt": {
+      "balloons": 2,
+      "balloon_confidences": [0.365, 0.320]
+    },
+    "yolo26s-objv1-150.pt": {
+      "balloons": 3,
+      "balloon_confidences": [0.667, 0.538, 0.475]
+    },
+    "yolo26s-objv1-seg.pt": {
+      "balloons": 2,
+      "balloon_confidences": [0.324, 0.237]
+    }
+  },
+  "http_api_validation": {
+    "selected_model": "yolo26s-objv1-150.pt",
+    "total_detections": 5,
+    "balloon_detections": 3,
+    "latency_ms": 224.43,
+    "status": 200
+  },
+  "conclusion": "Small Objects365 improved balloon detection. Static images now bypass temporal confirmation so boxes render after the first inference."
+}

@@ -1,0 +1,104 @@
+{
+  "model": "yolo26n.pt",
+  "model_sha256": "9b09cc8bf347f0fc8a5f7657480587f25db09b34bf33b0652110fb03a8ad4fef",
+  "ultralytics": "8.4.189",
+  "python": "3.11.6",
+  "platform": "Windows-10-10.0.26300-SP0",
+  "cpu_logical_count": 8,
+  "ram_gb": 11.83,
+  "settings": {
+    "device": "cpu",
+    "imgsz": 640,
+    "batch": 1,
+    "workers": 0
+  },
+  "held_out_test": {
+    "split": "test",
+    "data": "CONFIGURACION_YOLO.yaml",
+    "classes": [
+      1,
+      39,
+      56,
+      63,
+      67
+    ],
+    "precision": 0.7513758536618302,
+    "recall": 0.75,
+    "map50": 0.745,
+    "map50_95": 0.646,
+    "per_class": {
+      "1": {
+        "name": "bicycle",
+        "map50_95": 0.9949999999999999
+      },
+      "39": {
+        "name": "bottle",
+        "map50_95": null
+      },
+      "56": {
+        "name": "chair",
+        "map50_95": null
+      },
+      "63": {
+        "name": "laptop",
+        "map50_95": null
+      },
+      "67": {
+        "name": "cell phone",
+        "map50_95": 0.297
+      }
+    },
+    "speed_ms_per_image": {
+      "preprocess": 2.311249994818354,
+      "inference": 133.36994999917806,
+      "loss": 0.0020500010577961802,
+      "postprocess": 3.564149996236665
+    },
+    "elapsed_seconds_including_setup": 8.042354600002
+  },
+  "diagnostic_all_21": {
+    "split": "val",
+    "data": "training\\configs\\pilot_all_eval.yaml",
+    "classes": [
+      1,
+      39,
+      56,
+      63,
+      67
+    ],
+    "precision": 0.5506935892819441,
+    "recall": 0.49076623200184616,
+    "map50": 0.5182026327116491,
+    "map50_95": 0.3699984070779365,
+    "per_class": {
+      "1": {
+        "name": "bicycle",
+        "map50_95": 0.3181961038961039
+      },
+      "39": {
+        "name": "bottle",
+        "map50_95": 0.34821904761904765
+      },
+      "56": {
+        "name": "chair",
+        "map50_95": 0.2657512428488901
+      },
+      "63": {
+        "name": "laptop",
+        "map50_95": 0.7800000000000001
+      },
+      "67": {
+        "name": "cell phone",
+        "map50_95": 0.13782564102564102
+      }
+    },
+    "speed_ms_per_image": {
+      "preprocess": 1.9703761898286063,
+      "inference": 122.32268095180015,
+      "loss": 0.0014666664009425965,
+      "postprocess": 3.985747619437808
+    },
+    "elapsed_seconds_including_setup": 8.547451200000069
+  },
+  "warning": "Piloto diminuto y derivado de COCO train2017, dominio cercano al preentrenamiento. M\u00e9tricas exploratorias; no estiman producci\u00f3n/AR."
+}

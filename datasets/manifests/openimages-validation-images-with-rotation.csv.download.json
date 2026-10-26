@@ -1,0 +1,8 @@
+{
+  "url": "https://storage.googleapis.com/openimages/2018_04/validation/validation-images-with-rotation.csv",
+  "path": "datasets\\raw\\openimages-validation-images-with-rotation.csv",
+  "bytes": 15245485,
+  "sha256": "ed93a0e121fe345effdfc7359b848dbc64a1ff6778c8c73563157cb500b33a17",
+  "downloaded_at_utc": "2026-10-26T03:23:39.455393+00:00",
+  "expected_sha256": null
+}

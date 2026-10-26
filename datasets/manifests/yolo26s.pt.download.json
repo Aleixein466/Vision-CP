@@ -1,0 +1,10 @@
+{
+  "retrieved_at": "2026-10-25T20:20:00-05:00",
+  "source": "https://github.com/ultralytics/assets/releases/download/v8.4.0/yolo26s.pt",
+  "destination": "training/checkpoints/yolo26s.pt",
+  "bytes": 20422725,
+  "sha256": "646f8bc3fe0a656803d95c294f7852321748cb29d13466a1af8862e2db384a1b",
+  "pretraining_dataset": "COCO",
+  "classes": 80,
+  "installed_at_user_request": true
+}

@@ -1,0 +1,39 @@
+{
+  "schema_version": "1.0.0",
+  "consulted_at": "2026-10-25",
+  "downloaded_assets": 0,
+  "policy": {"target_triangles_max": 20000, "target_texture": "1K-2K", "target_glb_mb_max": 10, "preferred_license": "CC0"},
+  "records": [
+    {
+      "object_id": "coco-63-laptop", "title": "Classic Laptop", "source": "Poly Haven", "author": "Arrangemonk",
+      "url": "https://polyhaven.com/a/classic_laptop", "license": "CC0", "format": "glTF available", "published_download_size": "25.05 MB for shown 4K option",
+      "triangles": 14000, "textures": "PBR 1K-8K", "animations": null, "attribution_required": false, "web_compatibility": "yes; optimize textures", "status": "candidate_approved_not_downloaded"
+    },
+    {
+      "object_id": "coco-39-bottle", "title": "Water Bottle", "source": "Khronos glTF Sample Assets", "author": "Microsoft",
+      "url": "https://github.com/KhronosGroup/glTF-Sample-Assets/blob/main/Models/WaterBottle/README.md", "license": "CC0", "format": "GLB/glTF", "published_download_size": null,
+      "triangles": null, "textures": "PBR maps documented", "animations": null, "attribution_required": false, "web_compatibility": "reference glTF asset", "status": "candidate_approved_not_downloaded"
+    },
+    {
+      "object_id": "coco-56-chair", "title": "Plastic Monobloc Chair 01", "source": "Poly Haven", "author": "Kuutti Siitonen",
+      "url": "https://polyhaven.com/a/plastic_monobloc_chair_01", "license": "CC0", "format": "glTF available", "published_download_size": "42.94 MB for shown option",
+      "triangles": 3000, "textures": "PBR 1K-4K", "animations": null, "attribution_required": false, "web_compatibility": "yes; optimize textures", "status": "candidate_approved_not_downloaded"
+    },
+    {
+      "object_id": "coco-67-cell-phone", "title": "Apple iPhone based mobile phone", "source": "Sketchfab", "author": "Rescue3D Assets",
+      "url": "https://sketchfab.com/3d-models/apple-iphone-based-mobile-phone-ae46f6a92de042d8bc8082226f7d3489", "license": "CC BY", "format": "glTF/GLB/USDZ via authenticated API", "published_download_size": null,
+      "triangles": 4994, "textures": "3 PBR sets; 4K main, 2K emission/alpha", "animations": null, "attribution_required": true, "web_compatibility": "yes; attribution UI required", "status": "candidate_conditional_not_downloaded"
+    },
+    {
+      "object_id": "coco-1-bicycle", "title": "Classic Bicycle LowPoly Game Ready", "source": "Sketchfab", "author": "by__Rx",
+      "url": "https://sketchfab.com/3d-models/classic-bicycle-lowpoly-game-ready-da6507928c0c4a5c8776008cdb9f747e", "license": "CC BY", "format": "downloadable; verify archive formats after authenticated download", "published_download_size": null,
+      "triangles": 19800, "textures": "textured; exact maps/resolution not published in retrieved metadata", "animations": null, "attribution_required": true, "web_compatibility": "geometry meets initial target; inspect materials", "status": "candidate_conditional_not_downloaded"
+    }
+  ],
+  "fallbacks": [
+    {"object_id": "coco-56-chair", "title": "Smithsonian Side Chair", "url": "https://3d.si.edu/object/3d/side-chair%3A57d30b85-3549-40dc-99c3-255249867462", "license": "CC0", "formats": ["OBJ", "glTF", "GLB", "USDZ"]},
+    {"object_id": "coco-39-bottle", "title": "Plastic Bottle Gallon", "url": "https://polyhaven.com/a/plastic_bottle_gallon", "license": "CC0", "triangles": 14000}
+  ],
+  "note": "animations=null significa no publicado/no inspeccionado, no inexistente. Conservar original y crear derivado web-low con hash y registro de transformaciones."
+}
+

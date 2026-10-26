@@ -1,0 +1,35 @@
+{
+  "source": "datasets\\processed\\phase1_coco_val\\images\\test\\000000248631.jpg",
+  "focus": {
+    "x": 0.69,
+    "y": 0.54,
+    "w": 0.3,
+    "h": 0.4
+  },
+  "focus_used": true,
+  "mode": "small",
+  "answer": "A gray and red computer mouse with a cord.",
+  "detections": [
+    {
+      "id": "obj-2",
+      "class_id": 2729,
+      "class": "mouse",
+      "label": "ratón de computador",
+      "confidence": 0.8985,
+      "box": {
+        "x": 0.72357,
+        "y": 0.60096,
+        "w": 0.2442,
+        "h": 0.30064
+      }
+    }
+  ],
+  "yolo": {
+    "latency_ms": 4146.78,
+    "fps_equivalent": 0.24,
+    "model": "yoloe-26n-seg-pf.pt",
+    "confidence_threshold": 0.14,
+    "imgsz": 640
+  },
+  "elapsed_seconds": 15.773
+}

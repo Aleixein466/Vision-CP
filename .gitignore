@@ -1,0 +1,34 @@
+__pycache__/
+*.py[cod]
+.venv/
+# Variables de entorno y credenciales
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+credentials*.json
+secrets*.json
+
+# Datos, modelos y artefactos generados/locales
+datasets/raw/*
+datasets/external/*
+datasets/interim/*
+datasets/processed/*
+datasets/quarantine/*
+training/checkpoints/*.pt
+training/**/*.pt
+training/**/*.pth
+training/**/*.onnx
+training/metrics/runs/
+training/metrics/vlm/llama-server.log
+outputs/*
+*.log
+*.tmp
+*.cache
+node_modules/
+dist/
+build/
+tools/llama-*/
+!*/.gitkeep
+

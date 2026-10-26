@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>VisionAR AI 2.0 · Live Vision</title>
+  <link rel="stylesheet" href="/styles.css?v=2.7.0">
+  <link rel="stylesheet" href="/enhancements.css?v=2.5.0">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <div class="brand"><span class="brand-mark">V</span><div><strong>VisionAR</strong><small>AI 2.0 · LOCAL</small></div></div>
+      <nav aria-label="Módulos">
+        <button class="nav-item active" data-section="live"><span>◉</span><b>Live Vision</b></button>
+        <button class="nav-item" data-section="models"><span>◇</span><b>Modelos IA</b></button>
+        <button class="nav-item" data-section="history"><span>↺</span><b>Historial</b></button>
+        <button class="nav-item" data-section="dataset"><span>▦</span><b>Dataset Studio</b></button>
+        <p class="nav-label">Próximas fases</p>
+        <button class="nav-item disabled" disabled><span>△</span><b>Biblioteca 3D</b></button>
+        <button class="nav-item disabled" disabled><span>⌁</span><b>Realidad aumentada</b></button>
+      </nav>
+      <div class="privacy"><span>●</span><div><strong>Privado y local</strong><small>Las imágenes no salen del equipo</small></div></div>
+    </aside>
+
+    <main>
+      <header class="topbar">
+        <button id="menuButton" class="icon-button" aria-label="Mostrar navegación">☰</button>
+        <div><p class="eyebrow">ASISTENTE VISUAL MULTIMODAL</p><h1 id="pageTitle">Live Vision</h1></div>
+        <div class="top-status"><span id="statusDot" class="dot pending"></span><div><strong id="statusText">Iniciando modelos</strong><small id="activeModel">YOLO26 + VLM</small></div></div>
+      </header>
+
+      <section id="liveSection" class="section active-section">
+        <div class="metric-row">
+          <article><span>YOLO26</span><strong id="yoloMetric">Listo</strong><small id="yoloLatency">Sin inferencia</small></article>
+          <article><span>VLM activo</span><strong id="vlmMetric">—</strong><small id="vlmLatency">Esperando consulta</small></article>
+          <article><span>CPU del sistema</span><strong id="cpuMetric">—</strong><small>Medición real</small></article>
+          <article><span>RAM del sistema</span><strong id="ramMetric">—</strong><small id="llamaRam">Proceso VLM</small></article>
+        </div>
+
+        <div class="workspace">
+          <section class="vision-panel panel">
+            <div class="panel-heading">
+              <div><span class="live-pill"><i></i> CÁMARA</span><strong>Escena actual</strong></div>
+              <div class="panel-actions">
+                <select id="yoloScale" aria-label="Tamaño YOLO26">
+                  <option value="n">YOLO26 Nano</option><option value="s">Small</option>
+                  <option value="m">Medium</option><option value="l">Large</option><option value="x">Extra Large</option>
+                </select>
+                <select id="yoloTask" aria-label="Tipo de salida YOLO26">
+                  <option value="detect">Cajas</option><option value="segment">Máscaras</option>
+                </select>
+                <input id="visionMode" type="hidden" value="general">
+                <label class="switch"><input id="autoComment" type="checkbox" checked><span></span> Comentar cambios</label>
+                <label class="switch"><input id="liveDetection" type="checkbox" checked><span></span> Detección continua</label>
+              </div>
+            </div>
+            <div class="stage" id="stage">
+              <video id="video" autoplay playsinline muted></video>
+              <img id="uploadedImage" alt="Imagen cargada para análisis">
+              <canvas id="overlay"></canvas>
+              <canvas id="captureCanvas" hidden></canvas>
+              <div id="cameraEmpty" class="empty-state"><div class="aperture"></div><strong id="cameraEmptyTitle">Activa la cámara o abre una imagen</strong><small id="cameraEmptyDetail">El procesamiento se realizará en este computador</small></div>
+              <div class="stage-badges"><span id="resolutionBadge">—</span><span id="fpsBadge">YOLO — FPS</span></div>
+            </div>
+            <div class="camera-controls">
+              <select id="cameraSelect" aria-label="Seleccionar cámara"><option>Buscando cámaras…</option></select>
+              <button id="startCamera" class="button secondary">Activar cámara</button>
+              <label class="button secondary file-button">Abrir imagen<input id="imageFile" type="file" accept="image/jpeg,image/png,image/webp"></label>
+              <label class="button secondary file-button">Abrir video<input id="videoFile" type="file" accept="video/mp4,video/webm,video/ogg,video/quicktime"></label>
+              <button id="selectRegion" class="button secondary" disabled>Seleccionar zona</button>
+              <button id="clearRegion" class="text-button" hidden>Quitar selección</button>
+              <button id="capture" class="button primary" disabled>Analizar escena</button>
+            </div>
+            <div id="objectChips" class="object-chips"><span class="muted">Detección general activa. Para objetos muy pequeños, selecciona la zona y analiza.</span></div>
+          </section>
+
+          <section class="chat-panel panel">
+            <div class="panel-heading">
+              <div><span class="assistant-orb"></span><strong>Asistente visual</strong></div>
+              <button id="clearChat" class="text-button">Nueva conversación</button>
+            </div>
+            <div id="chat" class="chat" aria-live="polite">
+              <div class="message assistant"><span>VA</span><div><p>Estoy listo. Activa la cámara o abre una imagen y pregúntame qué aparece.</p><small>Las respuestas se contrastan con YOLO26.</small></div></div>
+            </div>
+            <div class="suggestions">
+              <button data-prompt="Describe los objetos, personas, ropa y relaciones visibles. Separa hechos de interpretaciones.">Describir escena</button>
+              <button data-prompt="¿Cuántos objetos de cada tipo aparecen? Usa las detecciones de YOLO como apoyo.">Contar objetos</button>
+              <button data-prompt="¿Qué objetos parecen estar sobre una mesa o superficie? Indica incertidumbre.">Relaciones espaciales</button>
+              <button data-prompt="Analiza la billetera o recipiente seleccionado y enumera únicamente el dinero, tarjetas, monedas, llaves u otros objetos realmente visibles.">Revisar contenidos</button>
+            </div>
+            <div class="composer">
+              <textarea id="prompt" rows="2" placeholder="Pregunta algo sobre la escena…">¿Qué objetos principales aparecen y dónde están?</textarea>
+              <div class="composer-actions">
+                <button id="micButton" class="icon-button" title="Dictar pregunta">◉</button>
+                <button id="cancelButton" class="button danger" hidden>Cancelar</button>
+                <button id="askButton" class="button primary" disabled>Preguntar</button>
+              </div>
+            </div>
+            <div class="voice-row">
+              <label><input id="speak" type="checkbox" checked> Narrar respuestas</label>
+              <select id="voiceSelect" aria-label="Voz"></select>
+              <label>Velocidad <input id="voiceRate" type="range" min="0.7" max="1.3" value="0.95" step="0.05"></label>
+              <button id="stopSpeech" class="text-button">Detener voz</button>
+            </div>
+          </section>
+        </div>
+      </section>
+
+      <section id="modelsSection" class="section">
+        <div class="section-intro"><div><p class="eyebrow">AI MODEL MANAGER</p><h2>Modelos multimodales</h2></div><p>Solo se muestran modelos cuya entrada visual fue comprobada. Cambiar de modelo reinicia únicamente el servidor administrado por VisionAR.</p></div>
+        <div id="modelGrid" class="model-grid"></div>
+      </section>
+
+      <section id="historySection" class="section">
+        <div class="section-intro"><div><p class="eyebrow">SESIÓN ACTUAL</p><h2>Historial efímero</h2></div><p>Se guardan preguntas, respuestas y métricas en memoria. Las imágenes no se almacenan.</p></div>
+        <div id="historyList" class="history-list"><div class="panel empty-list">Todavía no hay análisis en esta sesión.</div></div>
+      </section>
+
+      <section id="datasetSection" class="section">
+        <div class="section-intro"><div><p class="eyebrow">DATASET PROPIO</p><h2>Dataset Studio</h2></div><p>Importa fotos reales, revisa cada sugerencia y aprueba manualmente la caja y la clase. Una predicción automática nunca cuenta como revisada.</p></div>
+        <div class="dataset-layout">
+          <article class="panel dataset-capture">
+            <h3>1. Capturar o importar</h3>
+            <p>Selecciona fotos o una carpeta. En móvil, el botón de cámara abre la cámara trasera. Cada archivo conserva procedencia y licencia.</p>
+            <label>Procedencia<input id="datasetSource" value="captura propia" maxlength="300"></label>
+            <label>Licencia<input id="datasetLicense" value="privada/no redistribuir" maxlength="200"></label>
+            <div class="dataset-actions">
+              <label class="button secondary file-button">Elegir fotos<input id="datasetFiles" type="file" accept="image/*" multiple></label>
+              <label class="button secondary file-button">Usar cámara móvil<input id="datasetMobile" type="file" accept="image/*" capture="environment"></label>
+              <label class="button secondary file-button">Carpeta/dataset<input id="datasetFolder" type="file" webkitdirectory multiple></label>
+              <button id="importCurrentFrame" class="button secondary">Importar escena actual</button>
+            </div>
+            <label>URL pública<input id="datasetPublicUrl" type="url" placeholder="Imagen HTTPS de Hugging Face o Roboflow"></label>
+            <button id="importPublicUrl" class="button secondary">Importar URL con licencia declarada</button>
+            <div id="datasetImportProgress" class="dataset-message"></div>
+            <h3>2. Cola de revisión</h3>
+            <select id="candidateList"><option value="">Sin candidatos pendientes</option></select>
+            <button id="loadCandidate" class="button secondary">Abrir candidato</button>
+            <div id="datasetEditor" class="dataset-editor">
+              <img id="candidateImage" alt="Candidato para anotar">
+              <canvas id="candidateCanvas"></canvas>
+              <div id="candidateEmpty">Importa y abre una imagen para dibujar una caja.</div>
+            </div>
+            <p class="dataset-hint">Arrastra sobre el objeto. Puedes pulsar una sugerencia de YOLO y luego ajustar la caja dibujándola de nuevo.</p>
+            <div id="suggestionList" class="suggestion-list"></div>
+            <div class="dataset-actions"><button id="suggestCandidate" class="button secondary">Sugerir con YOLO</button><button id="rejectCandidate" class="button danger">Rechazar imagen</button></div>
+            <h3>3. Corregir y aprobar</h3>
+            <label>Clase<select id="datasetClass"><option value="">Cargando clases…</option></select></label>
+            <label>Conjunto<select id="datasetSplit"><option value="train">Entrenamiento</option><option value="val">Validación</option><option value="test">Prueba</option></select></label>
+            <button id="approveCandidate" class="button primary">Aprobar anotación revisada</button>
+            <div id="datasetMessage" class="dataset-message"></div>
+          </article>
+          <article class="panel dataset-stats">
+            <div class="panel-heading"><strong>Estado del dataset</strong><button id="refreshDataset" class="text-button">Actualizar</button></div>
+            <div id="datasetStats" class="stats-grid">Cargando estadísticas…</div>
+            <div class="training-controls"><h3>Auditoría y entrenamiento</h3><div class="dataset-actions"><button id="auditDataset" class="button secondary">Auditar dataset</button><button id="startTraining" class="button primary">Iniciar entrenamiento</button><button id="cancelTraining" class="button danger">Cancelar</button></div><pre id="trainingStatus">Esperando auditoría.</pre></div>
+            <p class="dataset-note">Objetivo inicial: mínimo 30 anotaciones revisadas por clase. El entrenamiento autorizado se iniciará solo cuando el auditor confirme cobertura, máscaras revisadas y ausencia de duplicados entre conjuntos.</p>
+          </article>
+        </div>
+      </section>
+
+      <footer><span>VisionAR AI 2.0 · CPU local</span><span>Verifica información importante: YOLO y el VLM pueden equivocarse.</span></footer>
+    </main>
+  </div>
+  <script src="/scene-tracker.js?v=2.6.0"></script>
+  <script src="/app.js?v=2.7.0"></script>
+</body>
+</html>
