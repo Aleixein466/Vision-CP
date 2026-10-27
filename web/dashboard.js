@@ -13,7 +13,7 @@ openCandidate=async function(){
   saved.replaceChildren();
   for(const annotation of activeCandidate.annotations||[]){
     if(annotation.withdrawn_at)continue;
-    const row=document.createElement('p');row.textContent=`Guardada: ${annotation.class_name} · ${annotation.task||'detect'} `;
+    const row=document.createElement('p');row.textContent=`Guardada: ${datasetClassLabel(annotation.class_name)} · ${annotation.task||'detect'} `;
     const button=document.createElement('button');button.className='text-button';button.textContent='Retirar para corregir';
     button.onclick=()=>datasetAction(async()=>{await post('/api/dataset/withdraw',{annotation_id:annotation.annotation_id});await openCandidate();await loadDatasetStats();});
     row.append(button);saved.append(row);
@@ -27,10 +27,12 @@ loadCandidateQueue=async function(){
   $('#nextBatch').disabled=queueOffset+12>=data.total;
   $('#candidateList').replaceChildren(); $('#reviewGrid').replaceChildren();
   for(const c of data.items){
-    const option=new Option(`${c.filename} · ${c.status}`,c.id); $('#candidateList').add(option);
+    const spanishClasses=(c.intended_classes||[]).map(datasetClassLabel).join(', ');
+    const option=new Option(`${c.filename}${spanishClasses ? ` · ${spanishClasses}` : ''} · ${c.status}`,c.id); $('#candidateList').add(option);
     const button=document.createElement('button'); button.className='review-card';
     const img=document.createElement('img'); img.alt=c.filename; img.loading='lazy';
     const label=document.createElement('span'); label.textContent=(c.intended_classes||[]).join(', ') || c.filename;
+    label.textContent=spanishClasses || c.filename;
     button.append(img,label); button.title=`${c.source} · ${c.license}`;
     button.onclick=()=>{ $('#candidateList').value=c.id; openCandidate().catch(notifyError); };
     $('#reviewGrid').append(button);
@@ -44,6 +46,7 @@ renderSuggestions=function(suggestions=[]){
   const aliases={'cell phone':'cell_phone','potted plant':'potted_plant','dining table':'table','couch':'sofa'};
   for(const item of suggestions){
     const button=document.createElement('button'); button.textContent=`Propuesta: ${item.class_name}`;
+    button.textContent=`Propuesta: ${datasetClassLabel(item.class_name)}`;
     button.onclick=()=>{
       candidateBox={...item.box};
       const name=aliases[item.class_name]||item.class_name.replaceAll(' ','_');
@@ -80,7 +83,7 @@ function renderDrafts(){
   $('#reviewDrafts').replaceChildren();
   for(const [id,draft] of reviewDrafts){
     const row=document.createElement('div');
-    row.textContent=`${id}: ${draft.objects.map(o=>o.class_name).join(', ')} · ${draft.complete?'revisión completa':'revisión parcial'} `;
+    row.textContent=`${id}: ${draft.objects.map(o=>datasetClassLabel(o.class_name)).join(', ')} · ${draft.complete?'revisión completa':'revisión parcial'} `;
     const remove=document.createElement('button');remove.className='text-button';remove.textContent='Quitar del lote';
     remove.onclick=()=>{reviewDrafts.delete(id);renderDrafts();};row.append(remove);$('#reviewDrafts').append(row);
   }
@@ -126,7 +129,7 @@ startTraining=async function(){
 };
 cancelTraining=async function(){const result=await post('/api/training/cancel');$('#trainingStatus').textContent=result.detail||result.reason;};
 async function loadExperiments(){
-  if(!$('#trainClasses').options.length){ const data=await apiJson('/api/dataset/stats');data.classes.forEach(c=>$('#trainClasses').add(new Option(c,c))); }
+  if(!$('#trainClasses').options.length){ const data=await apiJson('/api/dataset/stats');data.classes.forEach(c=>$('#trainClasses').add(new Option(datasetClassLabel(c),c))); }
   const data=await apiJson('/api/training/experiments');$('#experimentsList').replaceChildren();
   for(const id of ['compareLeft','compareRight']){
     const selected=$('#'+id).value;$('#'+id).replaceChildren();

@@ -127,9 +127,10 @@
             <label>Licencia<input id="datasetLicense" value="privada/no redistribuir" maxlength="200"></label>
             <div class="dataset-actions">
               <label class="button secondary file-button">Elegir fotos<input id="datasetFiles" type="file" accept="image/*" multiple></label>
-              <label class="button secondary file-button">Usar cámara móvil<input id="datasetMobile" type="file" accept="image/*" capture="environment"></label>
+              <label class="button primary file-button">Cámara móvil: guardar y aprobar<input id="datasetMobile" type="file" accept="image/*" capture="environment"></label>
               <label class="button secondary file-button">Carpeta/dataset<input id="datasetFolder" type="file" webkitdirectory multiple></label>
-              <button id="importCurrentFrame" class="button secondary">Importar escena actual</button>
+              <button id="importCurrentFrame" class="button secondary">Guardar escena en dataset</button>
+              <button id="captureAndApprove" class="button primary">Guardar y aprobar detecciones visibles</button>
             </div>
             <label>URL pública<input id="datasetPublicUrl" type="url" placeholder="Imagen HTTPS de Hugging Face o Roboflow"></label>
             <button id="importPublicUrl" class="button secondary">Importar URL con licencia declarada</button>
@@ -203,7 +204,7 @@
     </main>
   </div>
   <script src="/scene-tracker.js?v=2.6.0"></script>
-  <script src="/app.js?v=2.7.0"></script>
-  <script src="/dashboard.js?v=3"></script>
+  <script src="/app.js?v=2.8.0"></script>
+  <script src="/dashboard.js?v=3.1"></script>
 </body>
 </html>

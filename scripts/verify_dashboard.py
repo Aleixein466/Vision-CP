@@ -35,6 +35,17 @@ def main():
             status,detected=request('/api/detect',{'image':image,'imgsz':320})
             assert status==200 and detected['detections']
             report['real_inference']={'status':status,'detections':len(detected['detections']),'latency_ms':detected['latency_ms']}
+            camera_photo=ROOT/'datasets'/'coco8-seg'/'images'/'val'/'000000000049.jpg'
+            camera_image='data:image/jpeg;base64,'+base64.b64encode(camera_photo.read_bytes()).decode()
+            status,capture=request('/api/dataset/capture-and-approve',{
+                'image':camera_image,'filename':'camera-fixture.jpg','source':'camera fixture',
+                'license':'private/test','split':'train','imgsz':320,
+            })
+            assert status==201 and capture['result']['imported'] and capture['approved']['approved']
+            report['camera_capture_and_approval']={
+                'status':status,'approved_boxes':len(capture['approved']['approved']),
+                'class':capture['approved']['approved'][0]['class_name'],
+            }
             status,bad=request('/api/dataset/candidate?id=../private')
             assert status==400
             status,bad=request('/api/dataset/import',{},headers={'Origin':'https://example.com'})
@@ -61,11 +72,11 @@ def main():
                 page.locator('#datasetClass').select_option('person')
                 page.locator('#completeReview').check()
                 page.locator('#addReviewObject').click()
-                page.locator('#reviewDrafts').filter(has_text='person').wait_for()
+                page.locator('#reviewDrafts').filter(has_text='persona').wait_for()
                 page.locator('#saveReviewBatch').click()
                 page.locator('#datasetMessage').filter(has_text='fotografías guardadas').wait_for(timeout=30000)
                 status,stats=request('/api/dataset/stats')
-                assert stats['reviewed_annotations']==1 and stats['total_images']==1
+                assert stats['reviewed_annotations']>=2 and stats['total_images']>=2
                 report['browser_import_review']='passed; temporary fixture only'
                 page.evaluate('window.scrollTo(0,0)')
                 page.screenshot(path=str(EVIDENCE/'dashboard-desktop.png'),full_page=True)

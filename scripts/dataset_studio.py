@@ -38,6 +38,14 @@ CLASSES = [
     "wardrobe", "pillow", "keys", "usb_drive", "banknote",
 ]
 SPLITS = {"train", "val", "test"}
+CLASS_ALIASES = {
+    **{name: name for name in CLASSES},
+    "cell phone": "cell_phone", "mobile phone": "cell_phone", "potted plant": "potted_plant",
+    "dining table": "table", "couch": "sofa", "tvmonitor": "tv", "tv monitor": "tv",
+    "purse": "handbag", "glasses": "eyeglasses", "spectacles": "eyeglasses",
+    "sneaker": "sneakers", "shoe": "sneakers", "usb flash drive": "usb_drive",
+    "flash drive": "usb_drive", "marker pen": "marker",
+}
 REVIEWED_ANNOTATION_METHODS = {
     "manual_rectangle_reviewed",
     "manual_polygon_reviewed",
@@ -45,6 +53,7 @@ REVIEWED_ANNOTATION_METHODS = {
     # Created only by the explicit-confirmation batch command. This prevents
     # model suggestions from silently becoming human-reviewed labels.
     "batch_human_confirmed_openimages_rectangle",
+    "capture_user_confirmed_yolo_rectangle",
 }
 
 
@@ -141,6 +150,12 @@ class DatasetStudio:
     def _hamming(a: str, b: str) -> int:
         return (int(a, 16) ^ int(b, 16)).bit_count()
 
+    @staticmethod
+    def normalize_class_name(value: str) -> str | None:
+        """Map detector vocabulary to the stable internal YOLO class identifier."""
+        key = str(value or "").strip().lower().replace("-", " ")
+        return CLASS_ALIASES.get(key) or CLASS_ALIASES.get(key.replace(" ", "_"))
+
     @transactional
     def import_candidate(self, image_url: str, filename: str, source: str, license_name: str,
                          reject_near: bool = False, group_id: str = '') -> dict:
@@ -230,7 +245,10 @@ class DatasetStudio:
             raise ValueError("Clase no permitida")
         if split not in SPLITS:
             raise ValueError("Split no valido")
-        if annotation_method not in {'manual_rectangle_reviewed', 'batch_human_confirmed_openimages_rectangle'}:
+        if annotation_method not in {
+            'manual_rectangle_reviewed', 'batch_human_confirmed_openimages_rectangle',
+            'capture_user_confirmed_yolo_rectangle',
+        }:
             raise ValueError('Las etiquetas externas requieren revisión humana explícita en Dataset Studio')
         x, y, w, h = self._validate_box(box)
         with self.lock:
@@ -281,6 +299,30 @@ class DatasetStudio:
             self._write_jsonl(self.candidate_manifest, candidates)
         return {"saved": True, "annotation_id": annotation_id, "stem": stem, "class_name": class_name,
                 "split": split, "reviewed": True, "task": "detect", "polygon": None}
+
+    @transactional
+    def approve_camera_detections(self, candidate_id: str, detections: list[dict], split: str) -> dict:
+        """Persist a user's explicit acceptance of YOLO boxes from one camera frame."""
+        if not isinstance(detections, list) or len(detections) > 100:
+            raise ValueError("Cantidad de detecciones no válida")
+        approved, skipped = [], []
+        for detection in detections:
+            raw_class = detection.get("class_name") or detection.get("class") or detection.get("label")
+            class_name = self.normalize_class_name(raw_class)
+            if not class_name:
+                skipped.append(str(raw_class or "sin clase"))
+                continue
+            approved.append(self.approve_candidate(candidate_id, class_name, detection.get("box"), split,
+                                                   "capture_user_confirmed_yolo_rectangle"))
+        candidate = self.candidate(candidate_id)
+        candidate.pop("annotations", None)
+        candidate["review_complete"] = bool(approved)
+        candidate["review_scope"] = "user-confirmed live camera detections"
+        candidate["review_method"] = "capture_user_confirmed_yolo_rectangle"
+        candidate["reviewed_at"] = _now()
+        self.store.put("candidate", [candidate])
+        return {"candidate_id": candidate_id, "approved": approved, "skipped": skipped,
+                "review_complete": bool(approved)}
 
     @transactional
     def reject_candidate(self, candidate_id: str) -> dict:

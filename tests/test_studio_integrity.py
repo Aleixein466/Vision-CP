@@ -86,6 +86,16 @@ class IntegrityTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             self.studio.approve_candidate(ids[1],'person',self.box,'val')
 
+    def test_user_confirmed_camera_detections_are_traceable(self):
+        identity=self.candidate()
+        result=self.studio.approve_camera_detections(identity,[{
+            'class_name':'cell phone','confidence':.91,'box':self.box
+        }],'train')
+        self.assertEqual(result['approved'][0]['class_name'],'cell_phone')
+        annotation=self.studio._records()[0]
+        self.assertEqual(annotation['annotation'],'capture_user_confirmed_yolo_rectangle')
+        self.assertTrue(self.studio.candidate(identity)['review_complete'])
+
     def test_withdraw_preserves_history_and_excludes_export(self):
         result=self.studio.approve_candidate(self.candidate(),'person',self.box,'train')
         self.studio.withdraw_annotation(result['annotation_id'])

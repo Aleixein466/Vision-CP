@@ -315,6 +315,32 @@ def make_handler(llama_url: str, api_key: str | None = None, model_manager=None,
                     self._json(HTTPStatus.CREATED if result["imported"] else HTTPStatus.OK,
                                {"result": result, "stats": dataset.stats()})
                     return
+                if self.path == "/api/dataset/capture-and-approve":
+                    request = self._request_json()
+                    source = str(request.get("source", "web_camera"))
+                    result = dataset.import_candidate(
+                        request.get("image", ""), str(request.get("filename", "camera-capture.jpg")),
+                        source, str(request.get("license", "")), group_id=str(request.get("group_id", "")),
+                    )
+                    candidate = result["candidate"]
+                    if not result["imported"]:
+                        self._json(HTTPStatus.OK, {"result": result, "approved": None, "stats": dataset.stats()})
+                        return
+                    with detect_gate:
+                        detection = fusion.detect(request.get("image", ""), request.get("confidence", .30),
+                                                   request.get("imgsz", 640), "general",
+                                                   request.get("scale", "n"), "detect")
+                    suggestions = [{"class_name": item.get("class"), "confidence": item.get("confidence"),
+                                    "box": item.get("box")} for item in detection.get("detections", [])]
+                    dataset.set_suggestions(candidate["id"], suggestions)
+                    approved = dataset.approve_camera_detections(candidate["id"], suggestions,
+                                                                 str(request.get("split", "train")))
+                    self._json(HTTPStatus.CREATED, {"result": result, "approved": approved,
+                                                     "detector": {"detections": len(suggestions),
+                                                                  "latency_ms": detection.get("latency_ms"),
+                                                                  "model": detection.get("model")},
+                                                     "stats": dataset.stats()})
+                    return
                 if self.path == "/api/dataset/import-url":
                     request = self._request_json()
                     url = str(request.get("url", "")).strip()

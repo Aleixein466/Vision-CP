@@ -2,6 +2,25 @@ const $ = (selector) => document.querySelector(selector);
 const video = $('#video');
 const uploadedImage = $('#uploadedImage');
 const captureCanvas = $('#captureCanvas');
+const DATASET_CLASS_LABELS_ES = Object.freeze({
+  person: 'persona', eyeglasses: 'gafas', shirt: 'camisa', nail_clipper: 'cortaúñas', cell_phone: 'teléfono celular',
+  perfume_bottle: 'frasco de perfume', potted_plant: 'planta en maceta', chair: 'silla', marker: 'marcador', eraser: 'borrador',
+  tv: 'televisor', fish: 'pez', cat: 'gato', dog: 'perro', motorcycle: 'motocicleta', pencil_case: 'cartuchera',
+  wallet: 'billetera', payment_card: 'tarjeta de pago', fork: 'tenedor', spoon: 'cuchara', knife: 'cuchillo', pen: 'bolígrafo',
+  backpack: 'mochila', handbag: 'bolso de mano', playing_card: 'naipe', adhesive_tape: 'cinta adhesiva', screwdriver: 'destornillador',
+  paper_sheet: 'hoja de papel', table: 'mesa', sofa: 'sofá', cap: 'gorra', sweatshirt: 'sudadera', sneakers: 'zapatillas',
+  wardrobe: 'armario', pillow: 'almohada', keys: 'llaves', usb_drive: 'memoria USB', banknote: 'billete',
+});
+const DATASET_CLASS_ALIASES = Object.freeze({
+  'cell phone': 'cell_phone', 'mobile phone': 'cell_phone', 'potted plant': 'potted_plant',
+  'dining table': 'table', couch: 'sofa', purse: 'handbag', glasses: 'eyeglasses',
+  sneaker: 'sneakers', shoe: 'sneakers', 'usb flash drive': 'usb_drive', 'flash drive': 'usb_drive',
+});
+const datasetClassLabel = (name) => {
+  const raw = String(name || '').trim().toLowerCase();
+  const internal = DATASET_CLASS_ALIASES[raw] || raw.replaceAll(' ', '_');
+  return DATASET_CLASS_LABELS_ES[internal] || raw.replaceAll('_', ' ');
+};
 const overlay = $('#overlay');
 const overlayContext = overlay.getContext('2d');
 const chat = $('#chat');
@@ -709,6 +728,29 @@ async function importDatasetFiles(files) {
   await Promise.all([loadDatasetStats(), loadCandidateQueue()]);
 }
 
+async function captureAndApproveDatasetFiles(files) {
+  const progress = $('#datasetImportProgress');
+  const source = $('#datasetSource').value.trim() || 'web_camera';
+  const license = $('#datasetLicense').value.trim();
+  if (!license) throw new Error('Indica la licencia o conserva “privada/no redistribuir”');
+  const images = [...files].filter((file) => file.type.startsWith('image/'));
+  const groupId = crypto.randomUUID(); let approved = 0; let saved = 0; let failed = 0;
+  for (let index = 0; index < images.length; index += 1) {
+    progress.textContent = `Guardando y detectando ${index + 1}/${images.length}: ${images[index].name}`;
+    try {
+      const image = await fileToDatasetImage(images[index]);
+      const data = await apiJson('/api/dataset/capture-and-approve', { method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ image, filename: images[index].name, source, license, group_id: groupId,
+          split: $('#datasetSplit').value, scale: $('#yoloScale').value, confidence: .30, imgsz: 640 }) });
+      saved += Number(data.result.imported);
+      approved += data.approved?.approved?.length || 0;
+    } catch (error) { failed += 1; progress.textContent = error.message; }
+  }
+  progress.textContent = `${saved} capturas guardadas · ${approved} detecciones aprobadas · ${failed} con error`;
+  progress.className = `dataset-message ${failed ? 'error' : 'success'}`;
+  await Promise.all([loadDatasetStats(), loadCandidateQueue()]);
+}
+
 async function importCurrentFrame() {
   if (stream || videoFileMode || imageMode) captureFrame(1600);
   if (!currentFrame) throw new Error('No hay una escena activa; abre la cámara, una imagen o un video');
@@ -717,6 +759,27 @@ async function importCurrentFrame() {
   const data = await apiJson('/api/dataset/import', { method: 'POST', headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ image: currentFrame, filename: `${source}-${Date.now()}.jpg`, source, license: $('#datasetLicense').value.trim(), group_id: stream || videoFileMode ? captureGroup : '' }) });
   $('#datasetImportProgress').textContent = data.result.imported ? 'Fotograma añadido a revisión.' : 'El fotograma ya existía y no se duplicó.';
+  await Promise.all([loadDatasetStats(), loadCandidateQueue()]);
+}
+
+async function captureAndApproveCurrentFrame() {
+  if (stream || videoFileMode || imageMode) captureFrame(1600);
+  if (!currentFrame) throw new Error('No hay una escena activa; abre la cámara, una imagen o un video');
+  const source = stream ? 'web_camera' : videoFileMode ? 'local_video_frame' : 'local_image';
+  $('#datasetSource').value = source;
+  const data = await apiJson('/api/dataset/capture-and-approve', { method: 'POST', headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ image: currentFrame, filename: `${source}-${Date.now()}.jpg`, source,
+      license: $('#datasetLicense').value.trim(), group_id: stream || videoFileMode ? captureGroup : '',
+      split: $('#datasetSplit').value, scale: $('#yoloScale').value, confidence: .30, imgsz: 640 }) });
+  if (!data.result.imported) {
+    $('#datasetImportProgress').textContent = 'El fotograma ya existía; no se duplicó ni se volvió a aprobar.';
+  } else if (data.approved?.approved?.length) {
+    const names = data.approved.approved.map((item) => datasetClassLabel(item.class_name)).join(', ');
+    $('#datasetImportProgress').textContent = `Captura guardada y aprobada: ${names}.`;
+  } else {
+    $('#datasetImportProgress').textContent = 'Captura guardada, pero YOLO no encontró una clase compatible para aprobar.';
+  }
+  $('#datasetImportProgress').className = 'dataset-message success';
   await Promise.all([loadDatasetStats(), loadCandidateQueue()]);
 }
 
@@ -736,7 +799,7 @@ async function loadCandidateQueue() {
   list.innerHTML = '<option value="">Selecciona un candidato pendiente</option>';
   data.items.forEach((item) => {
     const option = document.createElement('option'); option.value = item.id;
-    const targets = (item.intended_classes || []).join(', ');
+    const targets = (item.intended_classes || []).map(datasetClassLabel).join(', ');
     option.textContent = `${item.status === 'reviewed' ? '✓' : '•'} ${item.filename}${targets ? ` · ${targets}` : ''}${item.near_duplicate_of ? ' · posible duplicado' : ''}`; list.append(option);
   });
   if (data.items.some((item) => item.id === selected && item.status !== 'rejected')) list.value = selected;
@@ -771,7 +834,7 @@ function renderSuggestions(suggestions = []) {
   const container = $('#suggestionList'); container.innerHTML = '';
   suggestions.forEach((item) => {
     const button = document.createElement('button');
-    button.textContent = `${item.class_name} ${Math.round(item.confidence * 100)}%`;
+    button.textContent = `${datasetClassLabel(item.class_name)} ${Math.round(item.confidence * 100)}%`;
     button.addEventListener('click', () => { candidateBox = item.box; drawCandidateBox(); });
     container.append(button);
   });
@@ -816,7 +879,7 @@ async function loadDatasetStats() {
   const data = await apiJson('/api/dataset/stats', { cache: 'no-store' });
   const container = $('#datasetStats'); container.innerHTML = '';
   const classSelect = $('#datasetClass'); const previousClass = classSelect.value; classSelect.innerHTML = '';
-  data.classes.forEach((name) => { const option = document.createElement('option'); option.value = name; option.textContent = name.replaceAll('_', ' '); classSelect.append(option); });
+  data.classes.forEach((name) => { const option = document.createElement('option'); option.value = name; option.textContent = datasetClassLabel(name); classSelect.append(option); });
   if (data.classes.includes(previousClass)) classSelect.value = previousClass;
   const summary = document.createElement('div'); summary.className = 'dataset-summary';
   summary.innerHTML = `<strong>${data.reviewed_annotations}/${data.required_annotations}</strong><span>anotaciones revisadas necesarias</span><small>${data.total_images} imágenes YOLO · ${data.pending_candidates} candidatos pendientes</small>`;
@@ -825,6 +888,7 @@ async function loadDatasetStats() {
     const row = document.createElement('div'); row.className = 'dataset-class-row';
     const progress = Math.min(100, (values.reviewed / values.target) * 100);
     row.innerHTML = `<div><span>${escapeText(name)} · ${values.photos} fotos aprobadas</span><b>${values.reviewed}/${values.target}${values.pending ? ` · ${values.pending} fotos pendientes` : ''}</b></div><i><em style="width:${progress}%"></em></i>`;
+    row.querySelector('span').textContent = `${datasetClassLabel(name)} · ${values.photos} fotos aprobadas`;
     container.append(row);
   });
   $('#startTraining').disabled = false;
@@ -944,9 +1008,10 @@ overlay.addEventListener('pointerup', () => {
 $('#stopSpeech').addEventListener('click', () => speechSynthesis?.cancel());
 const datasetAction = (action) => Promise.resolve().then(action).catch((error) => { $('#datasetMessage').textContent = error.message; $('#datasetMessage').className = 'dataset-message error'; if ($('#trainingSection').classList.contains('active-section')) $('#trainingStatus').textContent = error.message; });
 $('#datasetFiles').addEventListener('change', (event) => datasetAction(() => importDatasetFiles(event.target.files)));
-$('#datasetMobile').addEventListener('change', (event) => datasetAction(() => importDatasetFiles(event.target.files)));
+$('#datasetMobile').addEventListener('change', (event) => datasetAction(() => captureAndApproveDatasetFiles(event.target.files)));
 $('#datasetFolder').addEventListener('change', (event) => datasetAction(() => importDatasetFiles(event.target.files)));
 $('#importCurrentFrame').addEventListener('click', () => datasetAction(importCurrentFrame));
+$('#captureAndApprove').addEventListener('click', () => datasetAction(captureAndApproveCurrentFrame));
 $('#importPublicUrl').addEventListener('click', () => datasetAction(importPublicUrl));
 $('#loadCandidate').addEventListener('click', () => datasetAction(openCandidate));
 $('#suggestCandidate').addEventListener('click', () => datasetAction(suggestCandidate));
